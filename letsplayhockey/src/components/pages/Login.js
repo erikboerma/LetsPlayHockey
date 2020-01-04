@@ -1,18 +1,53 @@
 import React from "react";
 
 function Login() {
-  return (
-    <div>
-      <h1>About Page</h1>
-      <p>
-        Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
-        mauris, ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus
-        porta. Nam quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam
-        semper imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed
-        rhoncus mollis diam, sit amet facilisis lectus blandit at.
-      </p>
-    </div>
-  );
+    return (
+        <div class="container">
+            <div class="row">
+                <div class="loginPage">
+                    <form>
+                        <h1 id="textTop"> Login Page </h1>
+                        <label>
+                            Name:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                        <label>
+                            {" "}
+                            Email:
+            <input type="text" name="email" />
+                        </label>
+                        <br />
+                        <label>
+                            Phone:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                        <label>
+                            Position:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                        <label>
+                            Highest level played:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                        <label>
+                            Preferred Rinks:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                        <label>
+                            Availability:
+            <input type="text" name="name" />
+                        </label>
+                        <br />
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Login;
