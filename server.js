@@ -1,4 +1,4 @@
-import express from 'request';
+import express from 'express';
 import Cors from 'cors';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
@@ -21,8 +21,8 @@ app.use(express.static("public"));
 app.use('/static', express.static('public'));
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/registerUser")(app);
+require("./routes/loginUser")(app);
 
 const syncOptions = {
     force: true
