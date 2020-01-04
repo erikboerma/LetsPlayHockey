@@ -1,7 +1,8 @@
-require("dotenv").config();
-
-const express = require("express");
-const exphbs = require("express-handlebars");
+import express from 'request';
+import Cors from 'cors';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import passport from 'passport';
 
 const db = require("./models");
 
@@ -9,13 +10,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({
+app.use(Cors());
+app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(logger('dev'));
+app.use(passport.initialize());
 app.use(express.static("public"));
-
-app.use('/static', express.static('public'))
+app.use('/static', express.static('public'));
 
 // Routes
 require("./routes/apiRoutes")(app);
@@ -33,9 +36,9 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-    app.listen(PORT, function () {
+    app.listen(PORT, () => {
         console.log(
-            `==> 🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`
+            `Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`
         );
     });
 });
