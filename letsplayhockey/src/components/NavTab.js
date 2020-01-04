@@ -14,7 +14,7 @@ function NavTabs() {
           to="/Login"
           className={window.location.pathname === "/Login" ? "nav-link active" : "nav-link"}
         >
-          About
+          Login
         </Link>
       </li>
       
