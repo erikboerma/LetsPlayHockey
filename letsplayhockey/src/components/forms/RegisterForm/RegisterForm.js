@@ -14,49 +14,52 @@ const RegisterForm = (props) => {
                   <strong>Register</strong>
                 </h3>
               </div>
-              <MDBInput
-                label="Email Address"
-                group
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-                onChange={e => props.setEmail(e.target.value)}
-              />
-              <MDBInput
-                label="Username"
-                group
-                type
-                validate
-                error="wrong"
-                success="right"
-                onChange={e => props.setUsername(e.target.value)}
-              />
-              <MDBInput
-                label="Password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-                onChange={e => props.setPassword(e.target.value)}
-              />
-              <MDBInput
-                label="Confirm Password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
-              <div className="text-center mb-3">
-                <MDBBtn
-                  type="button"
-                  gradient="blue"
-                  rounded
-                  className="btn-block z-depth-1a"
-                >
-                  Register
-                </MDBBtn>
-              </div>
+              <form onSubmit={props.submitForm}>
+                <MDBInput
+                  label="Email Address"
+                  group
+                  type="email"
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setEmail(e.target.value)}
+                />
+                <MDBInput
+                  label="Username"
+                  group
+                  type
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setUsername(e.target.value)}
+                />
+                <MDBInput
+                  label="Password"
+                  group
+                  type="password"
+                  validate
+                  containerClass="mb-0"
+                  onChange={e => props.setPassword(e.target.value)}
+                />
+                <MDBInput
+                  label="Confirm Password"
+                  group
+                  type="password"
+                  validate
+                  containerClass="mb-0"
+                  onChange={e => props.setPasswordConfirm(e.target.value)}
+                />
+                <div className="text-center mb-3">
+                  <MDBBtn
+                    type="button"
+                    gradient="blue"
+                    rounded
+                    className="btn-block z-depth-1a"
+                  >
+                    Register
+                  </MDBBtn>
+                </div>
+              </form>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
