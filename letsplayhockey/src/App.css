@@ -56,7 +56,6 @@ li a {
   margin: 100px;
   justify-content: center;
   display: inline-block;
-  border: 10px solid black;
   /* overflow: scroll; */
 }
 
