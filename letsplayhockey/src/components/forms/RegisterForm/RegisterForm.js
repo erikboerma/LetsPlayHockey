@@ -18,6 +18,7 @@ const FormPage = () => {
                 label="Your email"
                 group
                 type="email"
+                name="email"
                 validate
                 error="wrong"
                 success="right"
@@ -26,6 +27,7 @@ const FormPage = () => {
                 label="Your password"
                 group
                 type="password"
+                name="password"
                 validate
                 containerClass="mb-0"
               />
