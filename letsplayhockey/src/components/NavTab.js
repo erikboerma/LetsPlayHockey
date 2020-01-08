@@ -25,6 +25,14 @@ function NavTabs() {
           Register
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to="/CreateProfile"
+          className={window.location.pathname === "/CreateProfile" ? "nav-link active" : "nav-link"}
+        >
+          CreateProfile
+        </Link>
+      </li>
       
     </ul>
   );
