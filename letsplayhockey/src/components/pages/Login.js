@@ -1,9 +1,9 @@
 import React from "react";
-import SignInForm from '../SignInForm/SignInForm'
+import LoginForm from '../forms/LoginForm/LoginForm'
 
 function Login() {
     return (
-        <SignInForm></SignInForm>
+        <LoginForm></LoginForm>
     );
 }
 
