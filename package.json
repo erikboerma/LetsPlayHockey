@@ -4,6 +4,7 @@
   "description": "A resource for hockey players and teams to connect.  Need a sub?  See who's available!",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,5 +39,9 @@
 
     "sequelize": "^5.21.3",
     "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }

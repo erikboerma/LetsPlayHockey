@@ -5,7 +5,7 @@ const BCRYPT_SALT_ROUNDS = 12;
 
 const passport = require('passport'),
     localStrategy = require('passport-local').Strategy,
-    User = require('../sequelize'),
+    User = require('../models/user'),
     JWTstrategy = require('passport-jwt').Strategy,
     ExtractJWT = require('passport-jwt').ExtractJwt;
 
