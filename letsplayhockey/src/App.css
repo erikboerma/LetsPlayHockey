@@ -7,6 +7,9 @@
   pointer-events: none;
 }
 
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -56,7 +59,7 @@ li a {
   margin: 100px;
   justify-content: center;
   display: inline-block;
-  border: 10px solid black;
+
   /* overflow: scroll; */
 }
 
@@ -81,7 +84,12 @@ justify-content: center;
   align-self: center;
 }
 
+/* home page  */
 #logo {
   height: 200px;
   width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
 }
+
