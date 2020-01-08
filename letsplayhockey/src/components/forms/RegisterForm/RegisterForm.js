@@ -11,11 +11,11 @@ const FormPage = () => {
             <MDBCardBody className="mx-4">
               <div className="text-center">
                 <h3 className="dark-grey-text mb-5">
-                  <strong>Sign in</strong>
+                  <strong>Register</strong>
                 </h3>
               </div>
               <MDBInput
-                label="Your email"
+                label="Email Address"
                 group
                 type="email"
                 name="email"
@@ -24,20 +24,28 @@ const FormPage = () => {
                 success="right"
               />
               <MDBInput
-                label="Your password"
+                label="Username"
+                group
+                type
+                validate
+                error="wrong"
+                success="right"
+              />
+              <MDBInput
+                label="Password"
+                group
+                type="password"
+                validate
+                containerClass="mb-0"
+              />
+              <MDBInput
+                label="Confirm Password"
                 group
                 type="password"
                 name="password"
                 validate
                 containerClass="mb-0"
               />
-              <p className="font-small blue-text d-flex justify-content-end pb-3">
-                Forgot
-                <a href="#!" className="blue-text ml-1">
-
-                  Password?
-                </a>
-              </p>
               <div className="text-center mb-3">
                 <MDBBtn
                   type="button"
@@ -45,23 +53,10 @@ const FormPage = () => {
                   rounded
                   className="btn-block z-depth-1a"
                 >
-                  Sign in
+                  Register
                 </MDBBtn>
               </div>
-              <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
-
-                or Sign in with:
-              </p>
             </MDBCardBody>
-            <MDBModalFooter className="mx-5 pt-3 mb-1">
-              <p className="font-small grey-text d-flex justify-content-end">
-                Not a member?
-                <a href="#!" className="blue-text ml-1">
-
-                  Sign Up
-                </a>
-              </p>
-            </MDBModalFooter>
           </MDBCard>
         </MDBCol>
       </MDBRow>
