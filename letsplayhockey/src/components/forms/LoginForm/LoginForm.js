@@ -46,10 +46,6 @@ const FormPage = () => {
                   Sign in
                 </MDBBtn>
               </div>
-              <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
-
-                or Sign in with:
-              </p>
             </MDBCardBody>
             <MDBModalFooter className="mx-5 pt-3 mb-1">
               <p className="font-small grey-text d-flex justify-content-end">

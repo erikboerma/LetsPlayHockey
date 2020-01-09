@@ -7,6 +7,11 @@
   pointer-events: none;
 }
 
+background-img{
+  max-width: 100%;
+  height: auto;
+}
+
 
 
 
@@ -53,14 +58,11 @@ li a {
 /* log in page css  */
 
 .container {
-  width: 75%;
   height: 600px;
-  background: white;
-  margin: 100px;
+  margin: 100px 100px 0 100px;
   justify-content: center;
-  display: inline-block;
+  display: inline-block; 
 
-  /* overflow: scroll; */
 }
 
 .row {
@@ -90,6 +92,7 @@ justify-content: center;
   width: 200px;
   display: block;
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
+
 }
 
