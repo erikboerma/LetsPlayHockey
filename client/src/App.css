@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+li a {
+  display: block;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  float: right;
+  
+}
+
+/* log in page css  */
+
+.container {
+  width: 75%;
+  height: 600px;
+  background: white;
+  margin: 100px;
+  justify-content: center;
+  display: inline-block;
+  /* overflow: scroll; */
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.loginPage{
+display: flex;
+align-items: left;
+background-color: blue;
+border: solid black 2px;
+width: 300px;
+justify-content: center;
+
+}
+
+#textTop{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+#logo {
+  height: 200px;
+  width: 200px;
+}
