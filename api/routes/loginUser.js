@@ -1,5 +1,5 @@
-import User from '../models/user';
-import jwtSecret from '../config/jwtConfig';
+import User from '../../../models/user';
+import jwtSecret from '../../../config/jwtConfig';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 

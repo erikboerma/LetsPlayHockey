@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
-function Register() {
+const Register = () => {
   const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirm, setPasswordConfirm] = useState();
   const [messageFromServer, setMessageFromServer] = useState();
 
-  const registerUser = async (event) => {
+  const handleSubmit = async (event) => {
+    console.log("test");
     event.preventDefault();
+
     const response = await axios.post(
-      '/registerUser',
+      '/registerUserTest',
       {
         email,
         username,
         password
       }
     );
-    const setMessageFromServer = response.data.message;
-    console.log(setMessageFromServer)
+    console.log(response.data.message)
   };
 
   return (
@@ -29,10 +30,10 @@ function Register() {
       setUsername={setUsername}
       setPassword={setPassword}
       setPasswordConfirm={setPasswordConfirm}
-      submitForm={registerUser}
+      submitForm={handleSubmit}
     >
     </RegisterForm>
   );
-}
+};
 
 export default Register;
