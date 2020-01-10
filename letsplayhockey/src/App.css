@@ -7,10 +7,7 @@
   pointer-events: none;
 }
 
-background-img{
-  max-width: 100%;
-  height: auto;
-}
+
 
 
 
@@ -94,5 +91,25 @@ justify-content: center;
   margin-left: auto;
   margin-right: auto;
 
+}
+
+img.homeBg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+  
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+  
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+#homeText {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
 }
 
