@@ -1,21 +1,25 @@
 import React from "react";
-import logo from "../../assets/images/letsplayhockey.jpg";
+import logo from "../../assets/images/letsplayhockey.png";
+import rink from "../../assets/images/icehockeyrink.jpg"
+
 
 function Home() {
   return (
-    <div class ="container">
-         <img id="logo" src={logo} alt="Logo" />;      
-         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
+      <div class="container">
+        <img src={rink} alt="bg" class="homeBg" />
+        <img id="logo" src={logo} alt="Logo" />;
+         <h3 id="homeText">
+         Welcome to Lets Play Hockey!<br/>
+         A resource designed for hockey players to be able to find players or games when they want!  <br/>
+          Have a free night and trying to find a team who needs subs?  You can do that here! <br/>
+          Short on players and need to see if you can find subs for the game?  You can do that too!<br/>
+
+          Register and create a profile, indicated the days you're free and the amount of notice you need.. thats it!<br/>
+          If you're looking for subs, create a profile and you can search for players!<br/>
+
+        </h3>
+      </div>
+
   );
 }
 
