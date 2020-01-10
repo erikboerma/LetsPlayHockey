@@ -106,7 +106,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
-                label="Su"
+                label="Sun"
                 group
                 type="checkbox"
                 validate
