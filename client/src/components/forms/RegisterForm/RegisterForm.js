@@ -27,7 +27,6 @@ const RegisterForm = (props) => {
                 <MDBInput
                   label="Username"
                   group
-                  type
                   validate
                   error="wrong"
                   success="right"

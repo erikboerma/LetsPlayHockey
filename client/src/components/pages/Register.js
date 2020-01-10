@@ -14,7 +14,7 @@ const Register = () => {
     event.preventDefault();
 
     const response = await axios.post(
-      '/registerUserTest',
+      'http://localhost:3000/registerUserTest',
       {
         email,
         username,
