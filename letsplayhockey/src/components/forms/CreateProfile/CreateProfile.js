@@ -22,23 +22,87 @@ const CreateProfile = () => {
                 error
                 success
               />
+              <div className="text-center">
+              <h4>Position</h4>
+              </div>
+              <div className="row">
               <MDBInput
-                label="Position"
+                label="Offence"
                 group
-                type
-                validate
-                error
-                success
-              />
-              <MDBInput
-                label="Right or Left Handed"
-                group
-                type
+                type="checkbox"
                 validate
                 containerClass
               />
+              <MDBInput
+                label="Defense"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              <MDBInput
+                label="Goalie"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              </div><hr/>
               <div className="text-center">
-              <h4>Availablity</h4>
+              <h4>Shot</h4>
+              </div>
+              <div className="row">
+              <MDBInput
+                label="Right Hand"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              <MDBInput
+                label="Left Hand"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              </div><hr/>
+              <div className="text-center">
+              <h4>Skill Level</h4>
+              </div>
+              <div className="row">
+              <MDBInput
+                label="A"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              <MDBInput
+                label="B"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              <MDBInput
+                label="C"
+                group
+                type="checkbox"
+                validate
+                containerClass
+              />
+              <MDBInput
+              label="Novice"
+              group
+              type="checkbox"
+              validate
+              containerClass
+            />
+            
+              </div><hr/>
+              <div className="text-center">
+              <h4>Availability</h4>
               </div>
               <div className="row">
               <MDBInput
@@ -90,41 +154,34 @@ const CreateProfile = () => {
                 validate
                 containerClass
               />
-              </div>
+              </div><hr/>
               <div className="text-center">
-              <h4>Skill Level</h4>
+              <h4>Amount of Notice Needed to Play</h4>
               </div>
               <div className="row">
               <MDBInput
-                label="A"
+                label="Less than 24 hours"
                 group
                 type="checkbox"
                 validate
                 containerClass
               />
               <MDBInput
-                label="B"
+                label="24-48 hours"
                 group
                 type="checkbox"
                 validate
                 containerClass
               />
               <MDBInput
-                label="C"
+                label="48+ hours"
                 group
                 type="checkbox"
                 validate
                 containerClass
               />
-              <MDBInput
-              label="Novice"
-              group
-              type="checkbox"
-              validate
-              containerClass
-            />
-            
-              </div>
+              </div><hr/>
+              
               <div className="text-center mb-3">
                 <MDBBtn
                   type="button"
