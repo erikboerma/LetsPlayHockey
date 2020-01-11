@@ -14,7 +14,23 @@ const RegisterForm = (props) => {
                   <strong>Register</strong>
                 </h3>
               </div>
-              <form onSubmit={props.submitForm}>
+              <form>
+                <MDBInput
+                  label="First Name"
+                  group
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setFirstName(e.target.value)}
+                />
+                <MDBInput
+                  label="Last Name"
+                  group
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setLastName(e.target.value)}
+                />
                 <MDBInput
                   label="Email Address"
                   group

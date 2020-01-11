@@ -21,7 +21,6 @@ app.use(express.static("public"));
 app.use('/static', express.static('public'));
 
 // Routes
-require("./routes/register")(app);
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
 

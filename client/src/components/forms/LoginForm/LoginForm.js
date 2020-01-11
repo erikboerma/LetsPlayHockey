@@ -14,40 +14,43 @@ const LoginForm = (props) => {
                   <strong>Sign in</strong>
                 </h3>
               </div>
-              <MDBInput
-                label="Your email"
-                group
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-                onChange={e => props.setEmail(e.target.value)}
-              />
-              <MDBInput
-                label="Your password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-                onChange={e => props.setPassword(e.target.value)}
-              />
-              <p className="font-small blue-text d-flex justify-content-end pb-3">
-                Forgot
+              <form>
+                <MDBInput
+                  label="Your email"
+                  group
+                  type="email"
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setEmail(e.target.value)}
+                />
+                <MDBInput
+                  label="Your password"
+                  group
+                  type="password"
+                  validate
+                  containerClass="mb-0"
+                  onChange={e => props.setPassword(e.target.value)}
+                />
+                <p className="font-small blue-text d-flex justify-content-end pb-3">
+                  Forgot
                 <a href="#!" className="blue-text ml-1">
 
-                  Password?
+                    Password?
                 </a>
-              </p>
-              <div className="text-center mb-3">
-                <MDBBtn
-                  type="button"
-                  gradient="blue"
-                  rounded
-                  className="btn-block z-depth-1a"
-                >
-                  Sign in
+                </p>
+                <div className="text-center mb-3">
+                  <MDBBtn
+                    type="button"
+                    gradient="blue"
+                    rounded
+                    className="btn-block z-depth-1a"
+                    onClick={props.submitForm}
+                  >
+                    Sign in
                 </MDBBtn>
-              </div>
+                </div>
+              </form>
             </MDBCardBody>
             <MDBModalFooter className="mx-5 pt-3 mb-1">
               <p className="font-small grey-text d-flex justify-content-end">

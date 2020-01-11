@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs');
 
 const BCRYPT_SALT_ROUNDS = 12;
 
-const passport = require('passport'),
-  localStrategy = require('passport-local').Strategy,
-  User = require('../models/user'),
-  JWTstrategy = require('passport-jwt').Strategy,
-  ExtractJWT = require('passport-jwt').ExtractJwt;
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const User = require('../sequelize');
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 passport.use(
   'register',
