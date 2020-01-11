@@ -22,7 +22,7 @@ const LoginForm = (props) => {
                   validate
                   error="wrong"
                   success="right"
-                  onChange={e => props.setEmail(e.target.value)}
+                  onChange={e => props.setUsername(e.target.value)}
                 />
                 <MDBInput
                   label="Your password"

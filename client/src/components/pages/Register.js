@@ -27,7 +27,7 @@ const Register = (props) => {
       }
     ).then(resp => {
       console.log(resp);
-      const userCreated = resp.status === 200
+      const userCreated = resp.data.message === "user created";
       if (userCreated) {
         history.push('/CreateProfile')
       };

@@ -3,24 +3,27 @@ import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 function Login() {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.get(
+    const response = await axios.post(
       '/loginUser',
       {
-        email,
+        username,
         password
       }
-    );
+    ).then(resp => {
+      console.log(resp);
+
+    })
   };
 
   return (
     <LoginForm
-      setEmail={setEmail}
+      setUsername={setUsername}
       setPassword={setPassword}
       submitForm={handleSubmit}
     >

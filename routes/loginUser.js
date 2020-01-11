@@ -4,12 +4,14 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
 module.exports = app => {
-  app.get('/loginUser', (req, res, next) => {
+  app.post('/loginUser', (req, res, next) => {
+    console.log(req.body)
     passport.authenticate('login', (err, user, info) => {
       if (err) {
         console.log(err);
       }
       if (info != undefined) {
+        console.log(user)
         console.log(info.message);
         res.send(info.message);
       } else {
@@ -19,7 +21,9 @@ module.exports = app => {
               username: user.username,
             },
           }).then(user => {
-            const token = jwt.sign({ id: user.username }, jwtSecret.secret);
+            const token = jwt.sign({
+              id: user.username
+            }, jwtSecret.secret);
             res.status(200).send({
               auth: true,
               token: token,
