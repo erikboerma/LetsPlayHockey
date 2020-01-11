@@ -1,5 +1,5 @@
-import User from '../models/user';
-import passport from 'passport';
+const passport = require('passport');
+const User = require('../sequelize');
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
@@ -13,8 +13,6 @@ module.exports = app => {
       } else {
         req.logIn(user, err => {
           const data = {
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
             email: req.body.email,
             username: user.username,
           };

@@ -5,7 +5,10 @@ function NavTabs() {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        <Link
+          to="/"
+          className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+        >
           Home
         </Link>
       </li>
@@ -25,9 +28,16 @@ function NavTabs() {
           Register
         </Link>
       </li>
-      
+      <li className="nav-item">
+        <Link
+          to="/CreateProfile"
+          className={window.location.pathname === "/CreateProfile" ? "nav-link active" : "nav-link"}
+        >
+          CreateProfile
+        </Link>
+      </li>
     </ul>
   );
-}
+};
 
 export default NavTabs;
