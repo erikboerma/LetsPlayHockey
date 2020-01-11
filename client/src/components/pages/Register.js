@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Route, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
@@ -10,8 +10,8 @@ const Register = (props) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirm, setPasswordConfirm] = useState();
-  const [messageFromServer, setMessageFromServer] = useState();
-  const [isRegistered, setRegistered] = useState();
+
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,14 +27,11 @@ const Register = (props) => {
       }
     ).then(resp => {
       console.log(resp);
-      if (resp.data.message === "user created") {
-        // setRegistered(true);
-        // return (
-        //   <Redirect to="/CreateProfile"></Redirect>
-        // )
-        this.props.history.push('CreateProfile')
-      }
-    })
+      const userCreated = resp.status === 200
+      if (userCreated) {
+        history.push('/CreateProfile')
+      };
+    });
   };
 
   return (
