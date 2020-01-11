@@ -1,10 +1,13 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
 import './style.css'
+import rinkLine from "../../../assets/images/icerink.png"
+
 
 const CreateProfile = () => {
   return (
     <MDBContainer>
+      <img src={rinkLine} alt="bg" class="homeBg" />
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>

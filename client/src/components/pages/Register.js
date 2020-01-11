@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
+
 const Register = () => {
   const [email, setEmail] = useState();
   const [username, setUsername] = useState();
