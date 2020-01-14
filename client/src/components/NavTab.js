@@ -36,6 +36,14 @@ function NavTabs() {
           CreateProfile
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to="/Dashboard"
+          className={window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"}
+        >
+          Dashboard
+        </Link>
+      </li>
     </ul>
   );
 };
