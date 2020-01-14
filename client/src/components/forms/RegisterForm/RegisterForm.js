@@ -14,7 +14,7 @@ const FormPage = () => {
                   <strong>Register</strong>
                 </h3>
               </div>
-              <form>
+              <form onSubmit={props.submitForm}>
                 <MDBInput
                   label="First Name"
                   group
@@ -66,11 +66,10 @@ const FormPage = () => {
                 />
                 <div className="text-center mb-3">
                   <MDBBtn
-                    type="button"
+                    type="submit"
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={props.submitForm}
                   >
                     Register
                   </MDBBtn>
