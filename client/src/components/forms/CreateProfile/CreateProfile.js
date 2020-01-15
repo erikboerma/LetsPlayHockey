@@ -7,7 +7,7 @@ import rinkLine from "../../../assets/images/icerink.png"
 const CreateProfile = () => {
   return (
     <MDBContainer>
-      <img src={rinkLine} alt="bg" class="homeBg" />
+      <img src={rinkLine} alt="bg" className="rinkLine" />
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
@@ -30,6 +30,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
+              className="checkbox"
                 label="Offence"
                 group
                 type="checkbox"
@@ -37,6 +38,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Defense"
                 group
                 type="checkbox"
@@ -44,6 +46,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Goalie"
                 group
                 type="checkbox"
@@ -56,6 +59,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
+              className="checkbox"
                 label="Right Hand"
                 group
                 type="checkbox"
@@ -63,6 +67,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Left Hand"
                 group
                 type="checkbox"
@@ -75,6 +80,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
+              className="checkbox"
                 label="A"
                 group
                 type="checkbox"
@@ -82,6 +88,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="B"
                 group
                 type="checkbox"
@@ -89,6 +96,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="C"
                 group
                 type="checkbox"
@@ -96,6 +104,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
               label="Novice"
               group
               type="checkbox"
@@ -109,6 +118,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
+              className="checkbox"
                 label="Sun"
                 group
                 type="checkbox"
@@ -116,6 +126,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Mon"
                 group
                 type="checkbox"
@@ -123,6 +134,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Tues"
                 group
                 type="checkbox"
@@ -130,6 +142,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
               label="Wed"
               group
               type="checkbox"
@@ -137,6 +150,7 @@ const CreateProfile = () => {
               containerClass
             />
             <MDBInput
+            className="checkbox"
                 label="Thurs"
                 group
                 type="checkbox"
@@ -144,6 +158,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Fri"
                 group
                 type="checkbox"
@@ -151,6 +166,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="Sat"
                 group
                 type="checkbox"
@@ -163,6 +179,7 @@ const CreateProfile = () => {
               </div>
               <div className="row">
               <MDBInput
+              className="checkbox"
                 label="Less than 24 hours"
                 group
                 type="checkbox"
@@ -170,6 +187,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="24-48 hours"
                 group
                 type="checkbox"
@@ -177,6 +195,7 @@ const CreateProfile = () => {
                 containerClass
               />
               <MDBInput
+              className="checkbox"
                 label="48+ hours"
                 group
                 type="checkbox"
