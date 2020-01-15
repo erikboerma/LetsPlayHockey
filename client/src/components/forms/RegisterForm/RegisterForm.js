@@ -1,8 +1,8 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
 import './style.css'
 
-const RegisterForm = (props) => {
+const FormPage = () => {
   return (
     <MDBContainer>
       <MDBRow>
@@ -83,4 +83,4 @@ const RegisterForm = (props) => {
   );
 };
 
-export default RegisterForm;
+export default FormPage;
