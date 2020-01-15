@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm/LoginForm';
+import { withGlobalState } from 'react-globally'
 import axios from 'axios';
 
-function Login() {
+const Login = props => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -22,7 +23,8 @@ function Login() {
       console.log(resp);
       const userLoggedIn = "user found & logged in"
       if (userLoggedIn) {
-        history.push('/Dashboard')
+        props.setGlobalState({ jwt: resp.data.token });
+        history.push('/Dashboard');
       }
     });
   };
@@ -37,4 +39,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withGlobalState(Login);

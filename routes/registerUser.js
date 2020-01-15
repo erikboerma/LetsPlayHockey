@@ -3,7 +3,9 @@ const User = require('../sequelize');
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
+    console.log(req.body)
     passport.authenticate('register', (err, user, info) => {
+      console.log(user);
       if (err) {
         console.log(err);
       }
