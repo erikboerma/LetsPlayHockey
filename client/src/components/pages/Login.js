@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
+
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  
+  let history = useHistory();
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -15,7 +19,12 @@ function Login() {
         email,
         password
       }
-    );
+    ).then(resp => {
+      const success = resp.data.message === "login success"
+      if (success) {
+        history.push('/CreateProfile')
+      };
+    });
   };
 
   return (

@@ -17,10 +17,10 @@ const CreateProfile = () => {
               <MDBInput
                 label="Phone Number"
                 group
-                type
+                type="number"
                 validate
-                error
-                success
+                error="wrong"
+                success="right"
               />
               <div className="text-center">
               <h4>Position</h4>
@@ -31,21 +31,21 @@ const CreateProfile = () => {
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Defense"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Goalie"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               </div><hr/>
               <div className="text-center">
@@ -57,14 +57,14 @@ const CreateProfile = () => {
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Left Hand"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               </div><hr/>
               <div className="text-center">
@@ -76,28 +76,28 @@ const CreateProfile = () => {
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="B"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="C"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
               label="Novice"
               group
               type="checkbox"
               validate
-              containerClass
+              // containerClass
             />
             
               </div><hr/>
@@ -110,49 +110,49 @@ const CreateProfile = () => {
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Mon"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Tues"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
               label="Wed"
               group
               type="checkbox"
               validate
-              containerClass
+              // containerClass
             />
             <MDBInput
                 label="Thurs"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Fri"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="Sat"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               </div><hr/>
               <div className="text-center">
@@ -164,21 +164,21 @@ const CreateProfile = () => {
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="24-48 hours"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               <MDBInput
                 label="48+ hours"
                 group
                 type="checkbox"
                 validate
-                containerClass
+                // containerClass
               />
               </div><hr/>
               

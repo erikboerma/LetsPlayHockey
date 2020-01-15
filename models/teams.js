@@ -13,6 +13,13 @@ module.exports = (sequelize, DataTypes) => {
             notEmpty: true,
             max: 15
         },
+        location: {
+            type: DataTypes.STRING,
+            validate: {
+                allowNull: false,
+                notEmpty: true,
+            }
+        }
     })
     Team.hasMany(User);
     return Team;
