@@ -13,6 +13,8 @@ module.exports = app => {
       } else {
         req.logIn(user, err => {
           const data = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             username: user.username,
           };
@@ -23,8 +25,8 @@ module.exports = app => {
           }).then(user => {
             user
               .update({
-                first_name: data.first_name,
-                last_name: data.last_name,
+                firstName: data.firstName,
+                lastName: data.lastName,
                 email: data.email,
               })
               .then(() => {

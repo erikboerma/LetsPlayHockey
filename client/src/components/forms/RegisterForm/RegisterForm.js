@@ -16,6 +16,22 @@ const RegisterForm = (props) => {
               </div>
               <form onSubmit={props.submitForm}>
                 <MDBInput
+                  label="First Name"
+                  group
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setFirstName(e.target.value)}
+                />
+                <MDBInput
+                  label="Last Name"
+                  group
+                  validate
+                  error="wrong"
+                  success="right"
+                  onChange={e => props.setLastName(e.target.value)}
+                />
+                <MDBInput
                   label="Email Address"
                   group
                   type="email"
@@ -50,11 +66,10 @@ const RegisterForm = (props) => {
                 />
                 <div className="text-center mb-3">
                   <MDBBtn
-                    type="button"
+                    type="submit"
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={props.submitForm}
                   >
                     Register
                   </MDBBtn>

@@ -21,9 +21,9 @@ app.use(express.static("public"));
 app.use('/static', express.static('public'));
 
 // Routes
-require("./routes/register")(app);
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
+
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
 
