@@ -2,6 +2,7 @@ import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdbreact';
 import './style.css'
 
+
 const RegisterForm = props => (
     <MDBContainer>
       <MDBRow>

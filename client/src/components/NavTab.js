@@ -44,6 +44,14 @@ function NavTabs() {
           Dashboard
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to="/Calendar"
+          className={window.location.pathname === "/Calendar" ? "nav-link active" : "nav-link"}
+        >
+          Calendar
+        </Link>
+      </li>
     </ul>
   );
 };
