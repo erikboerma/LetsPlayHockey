@@ -31,6 +31,12 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
+        jwt: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
         // position: {
         //     type: DataTypes.STRING,
         //     validate: {

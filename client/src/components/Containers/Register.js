@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { AuthConsumer } from '../../AuthContext';
+import { withGlobalState } from 'react-globally'
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
@@ -23,7 +25,7 @@ const Register = props => {
         lastName,
         email,
         username,
-        password
+        password,
       }
     ).then(resp => {
       console.log(resp);
