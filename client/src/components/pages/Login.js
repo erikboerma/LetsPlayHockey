@@ -17,8 +17,7 @@ function Login() {
       }
     ).then(resp => {
       console.log(resp);
-
-    })
+    });
   };
 
   return (
