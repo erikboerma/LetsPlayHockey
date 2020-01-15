@@ -62,6 +62,7 @@ passport.use(
             username: username,
           },
         }).then(user => {
+          console.log(user)
           if (user === null) {
             return done(null, false, {
               message: 'bad username'

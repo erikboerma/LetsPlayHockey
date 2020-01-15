@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 
 function Login() {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   
   let history = useHistory();
@@ -13,10 +14,10 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.get(
+    const response = await axios.post(
       '/loginUser',
       {
-        email,
+        username,
         password
       }
     ).then(resp => {
@@ -29,7 +30,7 @@ function Login() {
 
   return (
     <LoginForm
-      setEmail={setEmail}
+      setUsername={setUsername}
       setPassword={setPassword}
       submitForm={handleSubmit}
     >
