@@ -6,12 +6,19 @@ function Dashboard() {
         <div class="container">
             <div class="row">
                 <div class="column">
-                    <h1>PLayer profile</h1>
-                    <h3>Edit my profile</h3>
-                    
+                    <h1><u>Player profile</u></h1> 
+                    <ul>
+                        <li>Name:</li>
+                        <li>Position:</li>
+                        <li>Skill Level:</li>
+                        <li>Availability:</li>
+                        <li>Notice needed:</li>
+                    </ul>
+                    <br/>
+                    <button>Edit my profile</button>
                 </div>
                 <div class="column">
-                    <h1>Available games</h1>
+                    <h1><u>Available games</u></h1>
                     
                 </div>
             </div>
