@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +20,10 @@ function Login() {
       }
     ).then(resp => {
       console.log(resp);
+      const userLoggedIn = "user found & logged in"
+      if (userLoggedIn) {
+        history.push('/Dashboard')
+      }
     });
   };
 

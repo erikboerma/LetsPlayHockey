@@ -29,7 +29,7 @@ const Register = props => {
       console.log(resp);
       const userCreated = resp.data.message === "user created";
       if (userCreated) {
-        history.push('/CreateProfile')
+        history.push('/CreateProfile');
       };
     });
   };

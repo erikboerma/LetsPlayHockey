@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "../../assets/images/letsplayhockey.png";
-import rink from "../../assets/images/icehockeyrink.jpg"
-
+import logo from "../../assets/images/letsplayhockey.jpg";
+import rink from "../../assets/images/icehockeyrink.jpg";
 
 const Home = () => (
-  <div class="container">
-    <img src={rink} alt="bg" class="homeBg" />
+  <div className="container">
+    <img src={rink} alt="bg" className="homeBg" />
     <img id="logo" src={logo} alt="Logo" />;
          <h3 id="homeText">
       Welcome to Lets Play Hockey!<br />
