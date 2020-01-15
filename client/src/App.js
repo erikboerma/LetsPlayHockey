@@ -8,6 +8,7 @@ import Register from "./components/Containers/Register";
 import CreateProfile from './components/forms/CreateProfile/CreateProfile';
 import Dashboard from "./components/Containers/Dashboard";
 import GlobalControls from './GlobalControls';
+import Calendar from "./components/pages/Calendar";
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/Register" component={Register} />
         <Route exact path="/CreateProfile" component={CreateProfile} />
         <Route exact path="/Dashboard" component={Dashboard} />
+        <Route exact path="/Calendar" component={Calendar} />
       </Router>
     </GlobalControls>
   </>

@@ -5,6 +5,7 @@ import { withGlobalState } from 'react-globally'
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
+
 const Register = props => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
