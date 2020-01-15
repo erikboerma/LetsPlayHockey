@@ -1,9 +1,9 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdbreact';
 import './style.css'
 
-const FormPage = (props) => {
-  return (
+
+const RegisterForm = props => (
     <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
@@ -73,14 +73,13 @@ const FormPage = (props) => {
                   >
                     Register
                   </MDBBtn>
-                </div>
-              </form>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
-};
+              </div>
+            </form>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+    </MDBRow>
+  </MDBContainer>
+);
 
-export default FormPage;
+export default RegisterForm;

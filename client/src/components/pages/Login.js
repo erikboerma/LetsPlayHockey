@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 function Login() {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.get(
+    const response = await axios.post(
       '/loginUser',
       {
-        email,
+        username,
         password
       }
-    );
+    ).then(resp => {
+      console.log(resp);
+      const userLoggedIn = "user found & logged in"
+      if (userLoggedIn) {
+        history.push('/Dashboard')
+      }
+    });
   };
 
   return (
     <LoginForm
-      setEmail={setEmail}
+      setUsername={setUsername}
       setPassword={setPassword}
       submitForm={handleSubmit}
     >

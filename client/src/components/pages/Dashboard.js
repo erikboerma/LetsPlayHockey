@@ -6,17 +6,25 @@ import './style.css'
 
 function Dashboard() {
     return (
-        <div class="container">
-            <div class="row">
-                <div class="column">
-                    <h1><u>Player profile</u></h1>
+        <div className="container">
+            <div className="row">
+                <div className="column">
+                    <h1><u>Player Profile</u></h1>
+
                     <ul>
                         <li>Name:</li>
                         <li>Position:</li>
                         <li>Skill Level:</li>
                         <li>Availability:</li>
-                        <li>Notice needed:</li>
+                        <li>Notice Needed:</li>
                     </ul>
+
+                    <br/>
+                    <button>Edit My Profile</button>
+                </div>
+                <div className="column">
+                    <h1><u>Available Games</u></h1>                    
+
                     <br />
                     <button id="editProfile">Edit my profile</button>
                     <div id="myModal" class="modal">
@@ -34,6 +42,7 @@ function Dashboard() {
                     <br />
                     <h1><u>Selected games</u></h1>
                     <Calendar />
+
                 </div>
 
             </div>
