@@ -2,7 +2,8 @@ const passport = require('passport');
 const User = require('../sequelize');
 
 module.exports = (app) => {
-    app.get('/findUser', (req, res, next) => {
+    app.post('/findUser', (req, res, next) => {
+      console.log('req ' + req)
       passport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
           console.log(err);
@@ -10,10 +11,10 @@ module.exports = (app) => {
         if (info !== undefined) {
           console.log(info.message);
           res.status(401).send(info.message);
-        } else if (user.username === req.query.username) {
+        } else if (user.jwt === req.query.jwt) {
           User.findOne({
             where: {
-              username: req.query.username,
+              jwt: req.query.jwt,
             },
           }).then((userInfo) => {
             if (userInfo != null) {
