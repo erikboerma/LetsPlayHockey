@@ -7,8 +7,8 @@ import Login from "./components/Containers/Login";
 import Register from "./components/Containers/Register";
 import CreateProfile from './components/forms/CreateProfile/CreateProfile';
 import Dashboard from "./components/Containers/Dashboard";
+import Calendar from "./components/Containers/Calendar";
 import GlobalControls from './GlobalControls';
-import Calendar from "./components/pages/Calendar";
 
 
 const App = () => (
