@@ -1,10 +1,11 @@
 import React from "react";
-import CreateProfile from '../forms/CreateProfile/CreateProfile'
+import CreateProfileForm from '../forms/CreateProfileForm/CreateProfileForm';
+import { withGlobalState } from 'react-globally'
 import rinkLine from "../../assets/images/icerink.png"
 
-const Create = () => (
-    <CreateProfile rinkImg={rinkLine} />
+const CreateProfile = () => (
+    <CreateProfileForm rinkImg={rinkLine} />
 );
 
 
-export default Create;
+export default withGlobalState(CreateProfile);

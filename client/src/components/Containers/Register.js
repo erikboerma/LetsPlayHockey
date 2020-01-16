@@ -15,6 +15,10 @@ const Register = props => {
 
   let history = useHistory();
 
+  const validate = () => {
+    
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
