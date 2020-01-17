@@ -89,17 +89,18 @@ passport.use(
 );
 
 const opts = {
-  jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: jwtSecret.secret,
 };
 
 passport.use(
   'jwt',
   new JWTstrategy(opts, (jwt_payload, done) => {
+    console.log('jwt_payload - ' + JSON.stringify(jwt_payload))
     try {
       User.findOne({
         where: {
-          jwt: jwt_payload.id,
+          username: jwt_payload.id,
         },
       }).then(user => {
         if (user) {
