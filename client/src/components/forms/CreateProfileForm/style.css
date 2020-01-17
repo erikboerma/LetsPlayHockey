@@ -12,10 +12,6 @@
     -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
     box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
-<<<<<<< HEAD:client/src/components/forms/CreateProfile/style.css
-
-=======
->>>>>>> 7781a099035e28e9b3a0672308882e46c9696e7e:client/src/components/forms/CreateProfileForm/style.css
 .checkbox {
     width: 20px;
     height: 20px;
