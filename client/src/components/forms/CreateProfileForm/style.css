@@ -12,7 +12,11 @@
     -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
     box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
+.checkbox {
+    width: 20px;
+    height: 20px;
+}
 
-.text-center {
-    justify-content: left;
+img.homeBG{
+    margin-top: 50px;
 }

@@ -3,14 +3,12 @@ module.exports = (sequelize, DataTypes) => {
         firstName: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
         lastName: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
@@ -18,39 +16,57 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             validate: {
                 isEmail: true,
-                allowNull: false,
+                notEmpty: true
+            }
+        },
+        username: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        jwt: {
+            type: DataTypes.STRING,
+            validate: {
                 notEmpty: true
             }
         },
         position: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
         skill: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
         availability: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
         noticeNeeded: {
             type: DataTypes.INTEGER,
             validate: {
-                allowNull: false,
                 notEmpty: true
             }
         },
     });
-
+    User.associate = (models) => {
+        User.belongsToMany(models.Team, {
+            through: models.UserTeam,
+            as: 'teams',
+        });
+    };
     return User;
 };
