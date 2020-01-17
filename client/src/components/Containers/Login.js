@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { withGlobalState } from 'react-globally'
-import LoginForm from '../forms/LoginForm/LoginForm';
+import LoginForm from '../Forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 const Login = props => {

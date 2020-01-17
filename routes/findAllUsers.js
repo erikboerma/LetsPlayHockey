@@ -1,7 +1,7 @@
 const passport = require('passport');
 const User = require('../sequelize');
 
-module.exports = (app) => {
+module.exports = app => {
     app.get('/findAllUsers', (req, res, next) => {
       passport.authenticate('jwt', { session: false }, (err, user, info) => {
         if (err) {
@@ -10,7 +10,7 @@ module.exports = (app) => {
         if (info !== undefined) {
           console.log(info.message);
           res.status(401).send(info.message);
-        } else if (user.username === req.query.username) {
+        } else {
           User.findAll({
           }).then((userInfo) => {
             if (userInfo != null) {
@@ -29,10 +29,7 @@ module.exports = (app) => {
               res.status(401).send('no user exists in db with that username');
             }
           });
-        } else {
-          console.error('jwt id and username do not match');
-          res.status(403).send('username and jwt token do not match');
-        }
+        };
       })(req, res, next);
     });
   };

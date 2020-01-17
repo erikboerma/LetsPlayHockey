@@ -8,7 +8,8 @@ import {
   MDBInput,
   MDBBtn
 } from "mdbreact";
-import "./style.css";
+import Checkbox from "../../Checkbox/Checkbox";
+import "./createProfileForm.css";
 
 const CreateProfileForm = props => (
   <MDBContainer>
@@ -22,31 +23,25 @@ const CreateProfileForm = props => (
                 <strong>Create Profile</strong>
               </h3>
             </div>
-            <MDBInput label="Phone Number" group validate />
+            <hr />
             <div className="text-center">
               <h4>Position</h4>
             </div>
             <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Offence"
-                group
-                type="checkbox"
-                validate
+              <Checkbox
+                label="Offense"
+                name="Offense"
+                onChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Defense"
-                group
-                type="checkbox"
-                validate
+                name="Defense"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Goalie"
-                group
-                type="checkbox"
-                validate
+                name="Goalie"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
             </div>
             <hr />
@@ -54,19 +49,15 @@ const CreateProfileForm = props => (
               <h4>Shot</h4>
             </div>
             <div className="row">
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Right Hand"
-                group
-                type="checkbox"
-                validate
+                name="Right Hand"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Left Hand"
-                group
-                type="checkbox"
-                validate
+                name="Left Hand"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
             </div>
             <hr />
@@ -74,33 +65,25 @@ const CreateProfileForm = props => (
               <h4>Skill Level</h4>
             </div>
             <div className="row">
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="A"
-                group
-                type="checkbox"
-                validate
+                name="A"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="B"
-                group
-                type="checkbox"
-                validate
+                name="B"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="C"
-                group
-                type="checkbox"
-                validate
+                name="C"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Novice"
-                group
-                type="checkbox"
-                validate
+                name="Novice"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
             </div>
             <hr />
@@ -108,54 +91,40 @@ const CreateProfileForm = props => (
               <h4>Availability</h4>
             </div>
             <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Sun"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Mon"
-                group
-                type="checkbox"
-                validate
+                name="Mon"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Tues"
-                group
-                type="checkbox"
-                validate
+                name="Tues"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Wed"
-                group
-                type="checkbox"
-                validate
+                name="Wed"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Thurs"
-                group
-                type="checkbox"
-                validate
+                name="Thurs"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Fri"
-                group
-                type="checkbox"
-                validate
+                name="Fri"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Sat"
-                group
-                type="checkbox"
-                validate
+                name="Sat"
+                handleCheckboxChange={props.handleCheckboxChange}
+              />
+              <Checkbox
+                label="Sun"
+                name="Sun"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
             </div>
             <hr />
@@ -163,26 +132,20 @@ const CreateProfileForm = props => (
               <h4>Amount of Notice Needed to Play</h4>
             </div>
             <div className="row">
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="Less than 24 hours"
-                group
-                type="checkbox"
-                validate
+                name="Less than 24 hours"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="24-48 hours"
-                group
-                type="checkbox"
-                validate
+                name="24-48 hours"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
-              <MDBInput
-                className="checkbox"
+              <Checkbox
                 label="48+ hours"
-                group
-                type="checkbox"
-                validate
+                name="48+ hours"
+                handleCheckboxChange={props.handleCheckboxChange}
               />
             </div>
             <hr />
@@ -194,7 +157,7 @@ const CreateProfileForm = props => (
                 rounded
                 className="btn-block z-depth-1a"
               >
-                Confirm
+                Save
               </MDBBtn>
             </div>
           </MDBCardBody>

@@ -12,9 +12,7 @@ module.exports = app => {
         console.log(err);
       }
       if (info !== undefined) {
-        console.log(info)
         console.log(info.message);
-        console.log("Here")
         res.status(401).send(info.message);
       } else {
         User.findOne({
@@ -28,6 +26,9 @@ module.exports = app => {
               auth: true,
               firstName: userInfo.firstName,
               lastName: userInfo.lastName,
+              position: userInfo.position,
+              skill: userInfo.skill,
+              availability: userInfo.availability,
               email: userInfo.email,
               username: userInfo.username,
               password: userInfo.password,

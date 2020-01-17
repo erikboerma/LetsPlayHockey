@@ -1,12 +1,17 @@
 import React from "react";
 import NavTab from './NavTab/NavTab';
+import './navbar.css';
+import logo from '../../assets/images/letsplayhockey.png';
 
 const Navbar = () => (
   <ul className="nav nav-tabs">
-    <NavTab
-      location="/"
-      title="Home">
-    </NavTab>
+    <div className="row">
+      <img src={logo} id="nav-logo"></img>
+      <NavTab
+        location="/"
+        title="LetsPlayHockey">
+      </NavTab>
+    </div>
     <NavTab
       location="/Login"
       title="Login">
