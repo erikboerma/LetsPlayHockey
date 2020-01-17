@@ -20,22 +20,10 @@ function Dashboard() {
                     </ul>
 
                     <br/>
-                    <button>Edit My Profile</button>
+                    <button>Edit My Profile
+                    </button>
                 </div>
-                <div className="column">
-                    <h1><u>Available Games</u></h1>                    
-
-                    <br />
-                    <button id="editProfile">Edit my profile</button>
-                    <div id="myModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <CreateProfile />
-                        </div>
-
-                    </div>
-
-                </div>
+                
                 <div class="column">
                     <h1><u>Available games</u></h1>
                     <Calendar />
