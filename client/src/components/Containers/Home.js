@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/images/letsplayhockey.jpg";
+import logo from "../../assets/images/letsplayhockey.png";
 import rink from "../../assets/images/icehockeyrink.jpg";
 
 const Home = () => (
