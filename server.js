@@ -25,6 +25,7 @@ app.use('/static', express.static('public'));
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
 require("./routes/findTeams")(app);
+require("./routes/findUser")(app);
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
 

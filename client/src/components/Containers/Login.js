@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { withGlobalState } from 'react-globally'
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
 
-function Login() {
+const Login = props => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   
@@ -19,10 +20,12 @@ function Login() {
         password
       }
     ).then(resp => {
-      const success = resp.data.message === "login success"
-      if (success) {
-        history.push('/CreateProfile')
-      };
+      console.log(resp);
+      const userLoggedIn = "user found & logged in"
+      if (userLoggedIn) {
+        props.setGlobalState({ jwt: resp.data.token });
+        history.push('/Dashboard');
+      }
     });
   };
 
@@ -36,4 +39,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withGlobalState(Login);
