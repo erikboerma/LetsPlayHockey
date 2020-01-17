@@ -54,13 +54,13 @@ li a {
 
 /* log in page css  */
 
-.container {
+/* .container {
   height: 600px;
   margin: 100px 100px 0 100px;
   justify-content: center;
   display: inline-block; 
 
-}
+} */
 
 .row {
   display: flex;

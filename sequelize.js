@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
+const TeamModel = require('./models/team');
 
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
   host: "127.0.0.1",
@@ -7,6 +8,7 @@ const sequelize = new Sequelize('letsplayhockey', 'root', null, {
 });
 
 const User = UserModel(sequelize, Sequelize);
+const Team = TeamModel(sequelize, Sequelize);
 
 sequelize.sync().then(() => {
   // eslint-disable-next-line no-console

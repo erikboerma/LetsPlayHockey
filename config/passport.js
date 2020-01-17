@@ -62,6 +62,7 @@ passport.use(
             username: username,
           },
         }).then(user => {
+          console.log(user)
           if (user === null) {
             return done(null, false, {
               message: 'bad username'
@@ -98,7 +99,7 @@ passport.use(
     try {
       User.findOne({
         where: {
-          username: jwt_payload.id,
+          jwt: jwt_payload.id,
         },
       }).then(user => {
         if (user) {

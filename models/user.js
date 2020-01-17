@@ -31,34 +31,36 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        // position: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // skill: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // availability: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // noticeNeeded: {
-        //     type: DataTypes.INTEGER,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
+        jwt: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        position: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        skill: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        availability: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        noticeNeeded: {
+            type: DataTypes.INTEGER,
+            validate: {
+                notEmpty: true
+            }
+        },
     });
 
     return User;
