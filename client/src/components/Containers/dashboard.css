@@ -7,8 +7,10 @@
     height: 250px;
 }
 
-.row {
+
+.dashboard-name {
     justify-content: space-between;
+    align-items: center;
 }
 
 .dashboard-text {

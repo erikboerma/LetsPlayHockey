@@ -39,16 +39,16 @@ const Dashboard = props => {
         <div className="col-8">
           <ul>
             <li>
-              <div className="row">
-                <h2 className="dashboard-text" id="">
+              <div className="dashboard-name row">
+                <h2 className="dashboard-text">
                   {/* {firstName} {lastName} */}
                   <span>Valon Rama</span>
                 </h2>
+                <div>
                 <MDBBtn tag="a" size="med" floating gradient="blue">
-                  Edit
-                  <br></br>
                   <MDBIcon icon="edit" />
                 </MDBBtn>
+                </div>
               </div>
             </li>
             <li className="secondary dashboard-text">{position} Goalie</li>
