@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
 import axios from "axios";
+import Calendar from "../Calendar";
 
 const Dashboard = props => {
   const [firstName, setFirstName] = useState();
@@ -8,8 +9,6 @@ const Dashboard = props => {
 
   useEffect(() => {
     const token = props.globalState.jwt;
-    console.log(token);
-
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
@@ -18,7 +17,6 @@ const Dashboard = props => {
       `/findUser`,
        config
     ).then(resp => {
-      console.log(resp);
       setFirstName(resp.data.firstName)
       setLastName(resp.data.lastName)
     });
@@ -57,11 +55,6 @@ const Dashboard = props => {
               <span className="close">&times;</span>
             </div>
           </div>
-        </div>
-        <div className="col">
-          <h1>
-            <u>Available games</u>
-          </h1>
         </div>
       </div>
     </div>
