@@ -28,21 +28,21 @@ const CreateProfileForm = props => (
             </div>
             <div className="row">
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Offence"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Defense"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Goalie"
                 group
                 type="checkbox"
@@ -55,14 +55,14 @@ const CreateProfileForm = props => (
             </div>
             <div className="row">
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Right Hand"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Left Hand"
                 group
                 type="checkbox"
@@ -75,85 +75,83 @@ const CreateProfileForm = props => (
             </div>
             <div className="row">
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="A"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="B"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="C"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
-              label="Novice"
-              group
-              type="checkbox"
-              validate
-              containerClass
-            />
-            
-              </div><hr/>
-              <div className="text-center">
+                className="checkbox"
+                label="Novice"
+                group
+                type="checkbox"
+                validate
+              />
+            </div>
+            <hr />
+            <div className="text-center">
               <h4>Availability</h4>
             </div>
             <div className="row">
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Sun"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Mon"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Tues"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
-              label="Wed"
-              group
-              type="checkbox"
-              validate
-              containerClass
-            />
-            <MDBInput
-            className="checkbox"
+                className="checkbox"
+                label="Wed"
+                group
+                type="checkbox"
+                validate
+              />
+              <MDBInput
+                className="checkbox"
                 label="Thurs"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Fri"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Sat"
                 group
                 type="checkbox"
@@ -166,21 +164,21 @@ const CreateProfileForm = props => (
             </div>
             <div className="row">
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="Less than 24 hours"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="24-48 hours"
                 group
                 type="checkbox"
                 validate
               />
               <MDBInput
-              className="checkbox"
+                className="checkbox"
                 label="48+ hours"
                 group
                 type="checkbox"
