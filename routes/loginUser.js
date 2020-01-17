@@ -5,7 +5,7 @@ const passport = require('passport');
 
 module.exports = app => {
   app.post('/loginUser', (req, res, next) => {
-    console.log(`req.body - ${JSON.stringify(req.body)}\n`)
+    // console.log(`req.body - ${JSON.stringify(req.body)}\n`)
     passport.authenticate('login', (err, user, info) => {
       if (err) {
         console.log(err);
@@ -15,7 +15,7 @@ module.exports = app => {
         res.send(info.message);
       } else {
         req.logIn(user, err => {
-          console.log(`user - ${JSON.stringify(user)}\n`)
+          // console.log(`user - ${JSON.stringify(user)}\n`)
           User.findOne({
             where: {
               username: user.username,
