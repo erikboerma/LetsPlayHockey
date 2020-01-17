@@ -2,13 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import NavTabs from "./components/NavTab";
-import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
-import Register from "./components/pages/Register";
-import CreateProfile from './components/forms/CreateProfile/CreateProfile';
-import Dashboard from "./components/pages/Dashboard";
-import Calendar from "./components/pages/Calendar";
-
+import Home from "./components/Containers/Home";
+import Login from "./components/Containers/Login";
+import Register from "./components/Containers/Register";
+import CreateProfile from './components/Containers/CreateProfile';
+import Dashboard from "./components/Containers/Dashboard";
 
 function App() {
   return (
@@ -20,9 +18,7 @@ function App() {
         <Route exact path="/Register" component={Register} />
         <Route exact path="/CreateProfile" component={CreateProfile}/>
         <Route exact path="/Dashboard" component={Dashboard}/>
-        <Route exact path="/Calendar" component={Calendar}/>
-
-
+        
       </div>
     </Router>
   );

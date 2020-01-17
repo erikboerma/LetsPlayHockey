@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm/LoginForm';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-
 
 function Login() {
   const [username, setUsername] = useState();

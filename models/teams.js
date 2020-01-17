@@ -3,24 +3,37 @@ module.exports = (sequelize, DataTypes) => {
         teamName: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
+                // allowNull: false,
                 notEmpty: true
             }
         },
-        positionsAvailable: DataTypes.INTEGER,
-        validate: {
-            allowNull: false,
-            notEmpty: true,
-            max: 15
+        positionsAvailable: {
+            type: DataTypes.INTEGER,
+            validate: {
+                // allowNull: false,
+                notEmpty: true,
+                max: 15
+            }
         },
         location: {
             type: DataTypes.STRING,
             validate: {
-                allowNull: false,
+                // allowNull: false,
                 notEmpty: true,
             }
+        },
+        date: {
+            type: DataTypes.DATE,
+        },
+        time: {
+            type: DataTypes.TIME,
         }
-    })
-    Team.hasMany(User);
+    });
+    Team.associate = (models) => {
+        Team.hasMany(models.User,
+            {
+                as: 'team',
+            })
+    };
     return Team;
-}
+};
