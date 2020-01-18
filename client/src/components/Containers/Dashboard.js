@@ -14,14 +14,13 @@ const Dashboard = props => {
   const [availability, setAvailability] = useState();
 
   useEffect(() => {
-    const token = props.globalState.jwt;
+    const token = props.globalState.authToken;
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
 
     axios.get(`/findUser`, config).then(resp => {
-      console.log(resp);
       setFirstName(resp.data.firstName);
       setLastName(resp.data.lastName);
       setPosition(resp.data.position);
@@ -41,8 +40,8 @@ const Dashboard = props => {
             <li>
               <div className="dashboard-name row">
                 <h2 className="dashboard-text">
-                  {/* {firstName} {lastName} */}
-                  <span>Valon Rama</span>
+                  <span>{firstName} {lastName}</span>
+                  {/* <span>Valon Rama</span> */}
                 </h2>
                 <div>
                 <MDBBtn tag="a" size="med" floating gradient="blue">
@@ -51,7 +50,7 @@ const Dashboard = props => {
                 </div>
               </div>
             </li>
-            <li className="secondary dashboard-text">{position} Goalie</li>
+            <li className="secondary dashboard-text">{position}</li>
             <li>Skill Level - A</li>
             <li>Availability:</li>
             <li>Notice Needed:</li>
