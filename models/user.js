@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        jwt: {
+        authToken: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
@@ -43,7 +43,13 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        skill: {
+        shot: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        skillLevel: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
@@ -55,13 +61,18 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        noticeNeeded: {
-            type: DataTypes.INTEGER,
+        notice: {
+            type: DataTypes.STRING,
             validate: {
                 notEmpty: true
             }
         },
     });
-
+    User.associate = (models) => {
+        User.belongsToMany(models.Team, {
+            through: models.UserTeam,
+            as: 'teams',
+        });
+    };
     return User;
 };

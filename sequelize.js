@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
-const TeamModel = require('./models/team');
+const TeamModel = require('./models/teams');
 
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
   host: "127.0.0.1",
@@ -16,3 +16,4 @@ sequelize.sync().then(() => {
 });
 
 module.exports = User;
+module.exports = Team;

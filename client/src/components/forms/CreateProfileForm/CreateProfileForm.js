@@ -1,14 +1,28 @@
-import React from "react";
+import React from "./node_modules/react";
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBBtn
-} from "mdbreact";
-import "./style.css";
+} from "./node_modules/mdbreact";
+import Checkbox from "../../Checkbox/Checkbox";
+import Select from "./node_modules/react-select";
+import { position, shot, skillLevel, days, notice } from "../../../constants";
+import "./createProfileForm.css";
+
+const mapArray = (arr, state) => {
+  let newArr = [];
+  arr.map((key, i) => {
+    newArr.push({
+      state: state,
+      label: key,
+      value: i
+    });
+  });
+  return newArr;
+};
 
 const CreateProfileForm = props => (
   <MDBContainer>
@@ -17,186 +31,97 @@ const CreateProfileForm = props => (
       <MDBCol md="6">
         <MDBCard>
           <MDBCardBody className="mx-4">
-            <div className="text-center">
-              <h3 className="dark-grey-text mb-5">
-                <strong>Create Profile</strong>
-              </h3>
-            </div>
-            <MDBInput label="Phone Number" group validate />
-            <div className="text-center">
-              <h4>Position</h4>
-            </div>
-            <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Offence"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Defense"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Goalie"
-                group
-                type="checkbox"
-                validate
-              />
-            </div>
-            <hr />
-            <div className="text-center">
-              <h4>Shot</h4>
-            </div>
-            <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Right Hand"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Left Hand"
-                group
-                type="checkbox"
-                validate
-              />
-            </div>
-            <hr />
-            <div className="text-center">
-              <h4>Skill Level</h4>
-            </div>
-            <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="A"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="B"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="C"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Novice"
-                group
-                type="checkbox"
-                validate
-              />
-            </div>
-            <hr />
-            <div className="text-center">
-              <h4>Availability</h4>
-            </div>
-            <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Sun"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Mon"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Tues"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Wed"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Thurs"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Fri"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="Sat"
-                group
-                type="checkbox"
-                validate
-              />
-            </div>
-            <hr />
-            <div className="text-center">
-              <h4>Amount of Notice Needed to Play</h4>
-            </div>
-            <div className="row">
-              <MDBInput
-                className="checkbox"
-                label="Less than 24 hours"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="24-48 hours"
-                group
-                type="checkbox"
-                validate
-              />
-              <MDBInput
-                className="checkbox"
-                label="48+ hours"
-                group
-                type="checkbox"
-                validate
-              />
-            </div>
-            <hr />
+            <form onSubmit={props.handleSubmit}>
+              <div className="text-center">
+                <h3 className="dark-grey-text mb-5">
+                  <strong>Create Profile</strong>
+                </h3>
+              </div>
+              <hr />
 
-            <div className="text-center mb-3">
-              <MDBBtn
-                type="button"
-                gradient="blue"
-                rounded
-                className="btn-block z-depth-1a"
-              >
-                Confirm
-              </MDBBtn>
-            </div>
+              <div className="row drop-down">
+                <div className="text-center">
+                  <h4>Position</h4>
+                </div>
+                <div className="position-select">
+                  <Select
+                    placeholder="Position"
+                    options={mapArray(position, "position")}
+                    onChange={props.handleChange}
+                  />
+                </div>
+              </div>
+              <hr />
+
+              <div className="row drop-down">
+                <div className="text-center">
+                  <h4>Shot</h4>
+                </div>
+                <div className="position-select">
+                  <Select
+                    placeholder="Shot"
+                    options={mapArray(shot, "shot")}
+                    onChange={props.handleChange}
+                  />
+                </div>
+              </div>
+              <hr />
+
+              <div className="row drop-down">
+                <div className="text-center">
+                  <h4>Skill Level</h4>
+                </div>
+                <div className="position-select">
+                  <Select
+                    placeholder="Skill Level"
+                    options={mapArray(skillLevel, "skillLevel")}
+                    onChange={props.handleChange}
+                  />
+                </div>
+              </div>
+              <hr />
+
+              <div className="row drop-down">
+                <div className="text-center">
+                  <h4>Availability</h4>
+                </div>
+                <div className="position-select">
+                  <Select
+                    placeholder="Availability"
+                    options={mapArray(days, "availability")}
+                    onChange={props.handleChange}
+                    isMulti
+                  />
+                </div>
+              </div>
+              <hr />
+
+              <div className="row drop-down">
+                <div className="text-center">
+                  <h4>Notice Needed</h4>
+                </div>
+                <div className="position-select">
+                  <Select
+                    placeholder="Notice Needed"
+                    options={mapArray(notice, "notice")}
+                    onChange={props.handleChange}
+                  />
+                </div>
+              </div>
+              <hr />
+
+              <div className="text-center mb-3">
+                <MDBBtn
+                  type="submit"
+                  gradient="blue"
+                  rounded
+                  className="btn-block z-depth-1a"
+                  onClick={props.handleSubmit}
+                >
+                  Save
+                </MDBBtn>
+              </div>
+            </form>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>

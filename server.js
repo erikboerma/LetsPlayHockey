@@ -9,6 +9,7 @@ const API_PORT = process.env.PORT || 3001;
 
 require('./config/passport');
 
+
 // Middleware
 app.use(Cors());
 app.use(bodyParser.urlencoded({
@@ -23,7 +24,14 @@ app.use('/static', express.static('public'));
 // Routes
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
+require("./routes/findTeams")(app);
+require("./routes/findUser")(app);
+<<<<<<< HEAD
+=======
+require("./routes/updateUser")(app);
+require("./routes/updateUserTest")(app);
 
+>>>>>>> 95e6d73ec6165f196259589e68ea710e5e05a343
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
 

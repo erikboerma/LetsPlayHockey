@@ -8,7 +8,7 @@ import {
   MDBInput,
   MDBBtn
 } from "mdbreact";
-import "./style.css";
+import "./registerForm.css";
 
 const RegisterForm = props => (
   <MDBContainer>
@@ -24,50 +24,38 @@ const RegisterForm = props => (
             <form onSubmit={props.submitForm}>
               <MDBInput
                 label="First Name"
-                group
-                validate
                 error="wrong"
                 success="right"
                 onChange={e => props.setFirstName(e.target.value)}
               />
               <MDBInput
                 label="Last Name"
-                group
-                validate
                 error="wrong"
                 success="right"
                 onChange={e => props.setLastName(e.target.value)}
               />
               <MDBInput
                 label="Email Address"
-                group
                 type="email"
-                validate
                 error="wrong"
                 success="right"
                 onChange={e => props.setEmail(e.target.value)}
               />
               <MDBInput
                 label="Username"
-                group
-                validate
                 error="wrong"
                 success="right"
                 onChange={e => props.setUsername(e.target.value)}
               />
               <MDBInput
                 label="Password"
-                group
                 type="password"
-                validate
                 containerClass="mb-0"
                 onChange={e => props.setPassword(e.target.value)}
               />
               <MDBInput
                 label="Confirm Password"
-                group
                 type="password"
-                validate
                 containerClass="mb-0"
                 onChange={e => props.setPasswordConfirm(e.target.value)}
               />

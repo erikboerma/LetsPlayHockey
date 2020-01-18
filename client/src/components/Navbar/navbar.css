@@ -1,0 +1,16 @@
+.nav-tabs {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 500;
+}
+
+#nav-logo {
+    width: 65px;
+    height: 50px;
+}

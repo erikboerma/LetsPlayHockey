@@ -1,4 +1,5 @@
 import React from "react";
+import { withGlobalState } from 'react-globally';
 import logo from "../../assets/images/letsplayhockey.png";
 import rink from "../../assets/images/icehockeyrink.jpg";
 
@@ -19,4 +20,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default withGlobalState(Home);
