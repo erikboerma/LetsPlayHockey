@@ -23,6 +23,7 @@ const Login = props => {
       console.log(resp);
       const userLoggedIn = "user found & logged in"
       if (userLoggedIn) {
+        localStorage.setItem('authToken', resp.data.token)
         props.setGlobalState({ authToken: resp.data.token });
         history.push('/Dashboard');
       }

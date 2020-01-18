@@ -14,7 +14,7 @@ const Dashboard = props => {
   const [availability, setAvailability] = useState();
 
   useEffect(() => {
-    const token = props.globalState.authToken;
+    const token = localStorage.getItem('authToken');
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }

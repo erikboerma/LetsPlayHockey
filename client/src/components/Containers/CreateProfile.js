@@ -11,6 +11,10 @@ const CreateProfile = props => {
   const [availability, setAvailability] = useState([]);
   const [notice, setNotice] = useState();
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+  })
+
   const handleSubmit = async event => {
     event.preventDefault();
 

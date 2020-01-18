@@ -24,7 +24,7 @@ app.use('/static', express.static('public'));
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
 require("./routes/findUser")(app);
-require("./routes/findUserTest")(app);
+require("./routes/updateUser")(app);
 
 
 

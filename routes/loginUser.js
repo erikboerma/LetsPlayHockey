@@ -31,7 +31,7 @@ module.exports = app => {
             });
 
             user.update({
-              jwt: token
+              authToken: token
             });
 
           });

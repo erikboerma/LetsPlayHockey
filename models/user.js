@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        jwt: {
+        authToken: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
