@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import CreateProfileForm from "../Forms/CreateProfileForm/CreateProfileForm";
 import { withGlobalState } from "react-globally";
 import axios from "axios";
@@ -9,6 +10,8 @@ const CreateProfile = props => {
   const [skillLevel, setSkillLevel] = useState(null);
   const [availability, setAvailability] = useState([]);
   const [notice, setNotice] = useState();
+
+  let history = useHistory();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -31,6 +34,7 @@ const CreateProfile = props => {
       notice
     }).then(resp => {
       console.log(resp)
+      history.push('/Login')
     })
   };
 

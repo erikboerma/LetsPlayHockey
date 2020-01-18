@@ -27,6 +27,11 @@ module.exports = app => {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
+                position: req.body.position,
+                shot: req.body.shot,
+                skillLevel: req.body.skillLevel,
+                availability: req.body.availability,
+                notice: req.body.notice,
               })
               .then(() => {
                 console.log('user created in db');

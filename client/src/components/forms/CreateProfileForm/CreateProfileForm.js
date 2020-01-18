@@ -24,14 +24,18 @@ const mapArray = (arr, state) => {
   return newArr;
 };
 
-const CreateProfileForm = props => (
-  <MDBContainer>
-    <img src={props.rinkImg} alt="bg" className="homeBg" />
-    <MDBRow>
-      <MDBCol md="6">
-        <MDBCard>
-          <MDBCardBody className="mx-4">
-            <form onSubmit={props.handleSubmit}>
+const CreateProfileForm = props => {
+  if (props.currentStep !== 2) {
+    return null
+  }
+
+  return (
+    <MDBContainer>
+      <img src={props.rinkImg} alt="bg" className="homeBg" />
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody className="mx-4">
               <div className="text-center">
                 <h3 className="dark-grey-text mb-5">
                   <strong>Create Profile</strong>
@@ -110,23 +114,38 @@ const CreateProfileForm = props => (
               </div>
               <hr />
 
-              <div className="text-center mb-3">
-                <MDBBtn
-                  type="submit"
-                  gradient="blue"
-                  rounded
-                  className="btn-block z-depth-1a"
-                  onClick={props.handleSubmit}
-                >
-                  Save
+              <div className="row">
+
+                <div className="text-left mb-3">
+                  <MDBBtn
+                    type="button"
+                    gradient="blue"
+                    rounded
+                    className="btn-block z-depth-1a"
+                    onClick={props.prevStep}
+                  >
+                    Back
                 </MDBBtn>
+                </div>
+
+                <div className="text-right mb-3">
+                  <MDBBtn
+                    type="submit"
+                    gradient="blue"
+                    rounded
+                    className="btn-block z-depth-1a"
+                    onClick={props.handleSubmit}
+                  >
+                    Register
+                </MDBBtn>
+                </div>
               </div>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-);
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+  );
+};
 
 export default CreateProfileForm;
