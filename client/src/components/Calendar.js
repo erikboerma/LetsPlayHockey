@@ -48,8 +48,8 @@ const Calendar = () => {
                             <Moment tz="America/New_York">{team.date}</Moment>
                             <td>{team.time}</td>
                             <td>{team.positionsAvailable}</td>
-                        </tr>
-                        )
+                        </tr>                    
+                        );
                     })}
             </tbody>
         </table>
