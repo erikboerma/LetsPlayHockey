@@ -62,6 +62,11 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
     });
-
+    User.associate = (models) => {
+        User.belongsToMany(models.Team, {
+            through: models.UserTeam,
+            as: 'teams',
+        });
+    };
     return User;
 };

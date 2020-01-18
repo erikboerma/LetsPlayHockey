@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { withGlobalState } from "react-globally";
-import axios from "axios";
 import Calendar from "../Calendar";
+import './style.css';
+import axios from 'axios';
 
 const Dashboard = props => {
   const [firstName, setFirstName] = useState();
@@ -15,7 +15,7 @@ const Dashboard = props => {
 
     axios.get(
       `/findUser`,
-       config
+      config
     ).then(resp => {
       setFirstName(resp.data.firstName)
       setLastName(resp.data.lastName)
@@ -43,18 +43,23 @@ const Dashboard = props => {
           <br />
           <button>Edit My Profile</button>
         </div>
-        <div className="col">
-          <h1>
-            <u>Available Games</u>
-          </h1>
-
-          <br />
-          <button id="editProfile">Edit my profile</button>
+        <div className="column">
           <div id="myModal" className="modal">
             <div className="modal-content">
               <span className="close">&times;</span>
             </div>
+
           </div>
+
+        </div>
+        <div className="column">
+          <h1><u>Available games</u></h1>
+          <Calendar />
+
+          <br />
+          <h1><u>Selected games</u></h1>
+          <Calendar />
+
         </div>
       </div>
     </div>
@@ -62,4 +67,4 @@ const Dashboard = props => {
 }
 
 
-export default withGlobalState(Dashboard);
+export default Dashboard;

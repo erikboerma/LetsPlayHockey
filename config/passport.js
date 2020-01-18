@@ -36,7 +36,7 @@ passport.use(
               }).then(user => {
                 console.log('user created');
                 // note the return needed with passport local - remove this return for passport JWT to work
-                return done(null, user);
+                // return done(null, user);
               });
             });
           }

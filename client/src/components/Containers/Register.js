@@ -4,7 +4,6 @@ import { withGlobalState } from 'react-globally';
 import RegisterForm from '../forms/RegisterForm/RegisterForm';
 import axios from 'axios';
 
-
 const Register = props => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -33,7 +32,7 @@ const Register = props => {
       }
     ).then(resp => {
       console.log(resp);
-      const userCreated = resp.data.message === "user created";
+      const userCreated = resp.data.message === "user created"
       if (userCreated) {
         history.push('/CreateProfile');
       };
