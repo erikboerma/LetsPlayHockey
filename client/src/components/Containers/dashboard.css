@@ -1,0 +1,28 @@
+.container {
+    margin-top: 50px;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+}
+
+
+.dashboard-name {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-text {
+    font-weight: 600;
+    text-align: left;
+}
+
+.dashboard-text > span {
+    padding-left: 15px;
+}
+
+
+.secondary {
+    color: #2196F3;
+}

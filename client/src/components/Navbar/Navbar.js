@@ -1,28 +1,15 @@
 import React from "react";
-import NavTab from './NavTab/NavTab';
+import NavTab from "./NavTab/NavTab";
+import "./navbar.css";
+import logo from "../../assets/images/letsplayhockey.png";
 
 const Navbar = () => (
   <ul className="nav nav-tabs">
-    <NavTab
-      location="/"
-      title="Home">
-    </NavTab>
-    <NavTab
-      location="/Login"
-      title="Login">
-    </NavTab>
-    <NavTab
-      location="/Register"
-      title="Register">
-    </NavTab>
-    <NavTab
-      location="/CreateProfile"
-      title="Create Profile">
-    </NavTab>
-    <NavTab
-      location="/Dashboard"
-      title="Dashboard">
-    </NavTab>
+    <NavTab location="/" title="LetsPlayHockey" logo={logo} />
+    <NavTab location="/Login" title="Login" />
+    <NavTab location="/Register" title="Register" />
+    <NavTab location="/CreateProfile" title="Create Profile" />
+    <NavTab location="/Dashboard" title="Dashboard" />
   </ul>
 );
 
