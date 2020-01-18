@@ -5,11 +5,27 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBBtn
 } from "mdbreact";
 import Checkbox from "../../Checkbox/Checkbox";
+import Select from "react-select";
 import "./createProfileForm.css";
+
+const mapArray = (arr, state) => {
+  let newArr = [];
+  arr.map((key, i) => {
+    newArr.push({
+      state: state,
+      label: key,
+      value: i
+    });
+  });
+  return newArr;
+};
+
+const positions = ["Offense", "Defense", "Goalie"];
+const shot = ["Left Hand", "Right Hand"];
+const skillLevel = ["A", "B", "C", "Novice"];
 
 const CreateProfileForm = props => (
   <MDBContainer>
@@ -24,69 +40,46 @@ const CreateProfileForm = props => (
               </h3>
             </div>
             <hr />
-            <div className="text-center">
-              <h4>Position</h4>
-            </div>
-            <div className="row">
-              <Checkbox
-                label="Offense"
-                name="Offense"
-                onChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="Defense"
-                name="Defense"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="Goalie"
-                name="Goalie"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
+
+            <div className="row drop-down">
+              <div className="text-center">
+                <h4>Position</h4>
+              </div>
+              <div className="position-select">
+                <Select
+                  options={mapArray(positions, "position")}
+                  onChange={props.handleChange}
+                />
+              </div>
             </div>
             <hr />
-            <div className="text-center">
-              <h4>Shot</h4>
-            </div>
-            <div className="row">
-              <Checkbox
-                label="Right Hand"
-                name="Right Hand"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="Left Hand"
-                name="Left Hand"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
+
+            <div className="row drop-down">
+              <div className="text-center">
+                <h4>Shot</h4>
+              </div>
+              <div className="position-select">
+                <Select
+                  options={mapArray(shot, "shot")}
+                  onChange={props.handleChange}
+                />
+              </div>
             </div>
             <hr />
-            <div className="text-center">
-              <h4>Skill Level</h4>
-            </div>
-            <div className="row">
-              <Checkbox
-                label="A"
-                name="A"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="B"
-                name="B"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="C"
-                name="C"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
-              <Checkbox
-                label="Novice"
-                name="Novice"
-                handleCheckboxChange={props.handleCheckboxChange}
-              />
+
+            <div className="row drop-down">
+              <div className="text-center">
+                <h4>Skill Level</h4>
+              </div>
+              <div className="position-select">
+                <Select
+                  options={mapArray(skillLevel, "skillLevel")}
+                  onChange={props.handleChange}
+                />
+              </div>
             </div>
             <hr />
+
             <div className="text-center">
               <h4>Availability</h4>
             </div>

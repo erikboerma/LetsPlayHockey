@@ -13,7 +13,8 @@
     "react-dom": "^16.12.0",
     "react-globally": "^1.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "react-select": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +24,9 @@
   },
   "eslintConfig": {
     "extends": "react-app",
-    "plugins": ["prettier"],
+    "plugins": [
+      "prettier"
+    ],
     "rules": {
       "prettier/prettier": "error"
     }

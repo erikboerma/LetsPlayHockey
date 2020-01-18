@@ -3,7 +3,7 @@ import { MDBBtn, MDBIcon } from "mdbreact";
 import { withGlobalState } from "react-globally";
 import "./dashboard.css";
 import axios from "axios";
-import Calendar from "../Calendar";
+import Calendar from "../Calendar/Calendar";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
 
 const Dashboard = props => {

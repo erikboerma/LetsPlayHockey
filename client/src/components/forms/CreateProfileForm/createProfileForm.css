@@ -16,3 +16,16 @@
 img.homeBG{
     margin-top: 50px;
 }
+
+.drop-down {
+    justify-content: space-between;
+}
+
+.drop-down > div > h4 {
+    padding-top: 4px;
+}
+
+.position-select {
+    width: 40%;
+    padding-bottom: 4px;
+}
