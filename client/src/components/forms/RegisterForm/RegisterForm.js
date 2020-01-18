@@ -1,9 +1,21 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdbreact';
-import './style.css'
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBBtn
+} from "mdbreact";
+import "./registerForm.css";
 
+const RegisterForm = props => {
+  if (props.currentStep !== 1) {
+    return null
+  }
 
-const RegisterForm = props => (
+  return (
     <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
@@ -14,72 +26,60 @@ const RegisterForm = props => (
                   <strong>Register</strong>
                 </h3>
               </div>
-              <form onSubmit={props.submitForm}>
-                <MDBInput
-                  label="First Name"
-                  group
-                  validate
-                  error="wrong"
-                  success="right"
-                  onChange={e => props.setFirstName(e.target.value)}
-                />
-                <MDBInput
-                  label="Last Name"
-                  group
-                  validate
-                  error="wrong"
-                  success="right"
-                  onChange={e => props.setLastName(e.target.value)}
-                />
-                <MDBInput
-                  label="Email Address"
-                  group
-                  type="email"
-                  validate
-                  error="wrong"
-                  success="right"
-                  onChange={e => props.setEmail(e.target.value)}
-                />
-                <MDBInput
-                  label="Username"
-                  group
-                  validate
-                  error="wrong"
-                  success="right"
-                  onChange={e => props.setUsername(e.target.value)}
-                />
-                <MDBInput
-                  label="Password"
-                  group
-                  type="password"
-                  validate
-                  containerClass="mb-0"
-                  onChange={e => props.setPassword(e.target.value)}
-                />
-                <MDBInput
-                  label="Confirm Password"
-                  group
-                  type="password"
-                  validate
-                  containerClass="mb-0"
-                  onChange={e => props.setPasswordConfirm(e.target.value)}
-                />
-                <div className="text-center mb-3">
-                  <MDBBtn
-                    type="submit"
-                    gradient="blue"
-                    rounded
-                    className="btn-block z-depth-1a"
-                  >
-                    Register
-                  </MDBBtn>
+              <MDBInput
+                label="First Name"
+                error="wrong"
+                success="right"
+                onChange={e => props.setFirstName(e.target.value)}
+              />
+              <MDBInput
+                label="Last Name"
+                error="wrong"
+                success="right"
+                onChange={e => props.setLastName(e.target.value)}
+              />
+              <MDBInput
+                label="Email Address"
+                type="email"
+                error="wrong"
+                success="right"
+                onChange={e => props.setEmail(e.target.value)}
+              />
+              <MDBInput
+                label="Username"
+                error="wrong"
+                success="right"
+                onChange={e => props.setUsername(e.target.value)}
+              />
+              <MDBInput
+                label="Password"
+                type="password"
+                containerClass="mb-0"
+                onChange={e => props.setPassword(e.target.value)}
+              />
+              <MDBInput
+                label="Confirm Password"
+                type="password"
+                containerClass="mb-0"
+                onChange={e => props.setPasswordConfirm(e.target.value)}
+              />
+              <div className="text-center mb-3">
+                <MDBBtn
+                  type="submit"
+                  gradient="blue"
+                  rounded
+                  className="btn-block z-depth-1a"
+                  onClick={props.nextStep}
+                >
+                  Next
+                </MDBBtn>
               </div>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-);
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+  );
+};
 
 export default RegisterForm;

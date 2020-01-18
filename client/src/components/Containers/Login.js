@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import LoginForm from '../forms/LoginForm/LoginForm';
+import { withGlobalState } from 'react-globally'
+import LoginForm from '../Forms/LoginForm/LoginForm';
 import axios from 'axios';
 
-function Login() {
+const Login = props => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   
@@ -12,16 +13,19 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.post(
+    await axios.post(
       '/loginUser',
       {
         username,
         password
       }
     ).then(resp => {
-      const success = resp.data.message === "login success"
-      if (success) {
-        history.push('/CreateProfile')
+      console.log(resp);
+      const userLoggedIn = "user found & logged in"
+      if (userLoggedIn) {
+        localStorage.setItem('authToken', resp.data.token)
+        props.setGlobalState({ authToken: resp.data.token });
+        history.push('/Dashboard');
       };
     });
   };
@@ -36,4 +40,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withGlobalState(Login);

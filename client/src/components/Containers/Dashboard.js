@@ -1,55 +1,98 @@
-import React from "react";
-import Calendar from "../Calendar";
-import CreateProfile from "../forms/CreateProfile/CreateProfile";
-import './style.css'
+import React, { useState, useEffect, Component } from "react";
+import { MDBBtn, MDBIcon } from "mdbreact";
+import { withGlobalState } from "react-globally";
+import "./dashboard.css";
+import axios from "axios";
+import Calendar from "../Calendar/Calendar";
+import defaultAvatar from "../../assets/images/default-avatar.jpg";
+import ModalPage from "../modal"
 
-function Dashboard() {
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="column">
-                    <h1><u>Player Profile</u></h1>
 
-                    <ul>
-                        <li>Name:</li>
-                        <li>Position:</li>
-                        <li>Skill Level:</li>
-                        <li>Availability:</li>
-                        <li>Notice Needed:</li>
-                    </ul>
+const Dashboard = props => {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [position, setPosition] = useState();
+  const [skill, setSkill] = useState();
+  const [shot, setShot] = useState();
+  const [availability, setAvailability] = useState();
+  const [notice, setNotice] = useState();
 
-                    <br/>
-                    <button>Edit My Profile</button>
-                </div>
-                <div className="column">
-                    {/* <h1><u>Available Games</u></h1>                     */}
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    
 
-                    {/* <br />
-                    <button id="editProfile">Edit my profile</button> */}
-                    <div id="myModal" className="modal">
-                        <div className="modal-content">
-                            <span className="close">&times;</span>
-                            <CreateProfile />
-                        </div>
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
 
-                    </div>
+    axios.get(`/findUser`, config).then(resp => {
+      console.log(resp.data)
+      setFirstName(resp.data.firstName);
+      setLastName(resp.data.lastName);
+      setPosition(resp.data.position);
+      setSkill(resp.data.skillLevel);
+      setShot(resp.data.shot);
+      setAvailability(resp.data.availability);
+      setNotice(resp.data.notice);
+    });
+  });
 
-                </div>
-                <div className="column">
-                    <h1><u>Available games</u></h1>
-                    <Calendar />
-                    
-                    <br />
-                    <h1><u>Selected games</u></h1>
-                    <Calendar />
+  function handleClick(event) {
+    event.preventDefault();
+  }
 
-                </div>
-
-            </div>
-
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-4">
+          <img className="avatar" src={defaultAvatar} />
         </div>
+        <div className="col-8">
+          <ul>
+            <li>
+              <div className="dashboard-name row">
+                <h2 className="dashboard-text">
+                  <span>
+                    {firstName} {lastName}
+                  </span>
+                  {/* <span>Valon Rama</span> */}
+                </h2>
+                <div><MDBBtn
+                  onClick={handleClick}
+                  >
+                    < ModalPage position={position} skill={skill} shot={shot} notice={notice} />
+                </MDBBtn>
 
-    );
+                </div>
+              </div>
+            </li>
+            <li className="secondary dashboard-text">{position}</li>
+            <li>
+              Skill Level -
+              <span className="secondary dashboard-text"> {skill}</span>
+            </li>
+            <li>Availability:</li>
+            <li>
+              Notice Needed -
+              <span className="secondary dashboard-text"> {notice}</span>
+            </li>
+          </ul>
+
+          <br />
+          <h1>
+            <u>Available Games</u>
+          </h1>
+          <Calendar />
+          <br />
+          <h1>
+            <u>Selected Games</u>
+          </h1>
+          <Calendar />
+        </div>
+      </div>
+    </div>
+  );
 }
+
 
 export default Dashboard;

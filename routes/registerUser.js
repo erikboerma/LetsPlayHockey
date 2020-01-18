@@ -3,7 +3,11 @@ const User = require('../sequelize');
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
+
+    console.log('Req.Body - ' + JSON.stringify(req.body))
+
     passport.authenticate('register', (err, user, info) => {
+      console.log('User - ' + JSON.stringify(user));
       if (err) {
         console.log(err);
       }
@@ -11,27 +15,29 @@ module.exports = app => {
         console.log(info.message);
         res.send(info.message);
       } else {
+
         req.logIn(user, err => {
-          const data = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            username: user.username,
-          };
           User.findOne({
             where: {
-              username: data.username,
+              username: req.body.username,
             },
           }).then(user => {
             user
               .update({
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                position: req.body.position,
+                shot: req.body.shot,
+                skillLevel: req.body.skillLevel,
+                availability: req.body.availability,
+                notice: req.body.notice,
               })
               .then(() => {
                 console.log('user created in db');
-                res.status(200).send({ message: 'user created' });
+                res.status(200).send({
+                  message: 'user created'
+                });
               });
           });
         });

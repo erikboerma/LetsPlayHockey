@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Team = sequelize.define("Teams", {
+    const Team = sequelize.define("Team", {
         teamName: {
             type: DataTypes.STRING,
             validate: {
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     Team.associate = (models) => {
         Team.hasMany(models.User,
             {
-                as: 'team',
+                as: 'Team',
             })
     };
     return Team;

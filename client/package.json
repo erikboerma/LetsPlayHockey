@@ -8,11 +8,16 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.1",
+    "bootstrap": "^4.4.1",
     "mdbreact": "^4.24.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
+    "react-globally": "^1.1.0",
+    "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "react-select": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,7 +26,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
   },
   "browserslist": {
     "production": [

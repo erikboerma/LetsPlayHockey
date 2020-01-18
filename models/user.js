@@ -31,34 +31,42 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        // position: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // skill: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // availability: {
-        //     type: DataTypes.STRING,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
-        // noticeNeeded: {
-        //     type: DataTypes.INTEGER,
-        //     validate: {
-        //         allowNull: false,
-        //         notEmpty: true
-        //     }
-        // },
+        authToken: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        position: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        shot: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        skillLevel: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        availability: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
+        notice: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true
+            }
+        },
     });
     User.associate = (models) => {
         User.belongsToMany(models.Team, {
