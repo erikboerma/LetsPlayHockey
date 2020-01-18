@@ -7,6 +7,7 @@ import {
   MDBCardBody,
   MDBBtn
 } from "mdbreact";
+import Checkbox from "../../Checkbox/Checkbox";
 import Select from "react-select";
 import { position, shot, skillLevel, days, notice } from "../../../constants";
 import "./createProfileForm.css";

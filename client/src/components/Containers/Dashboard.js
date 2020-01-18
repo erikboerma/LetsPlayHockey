@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { withGlobalState } from "react-globally";
 import "./dashboard.css";
 import axios from "axios";
 import Calendar from "../Calendar/Calendar";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
+import ModalPage from "../modal"
+
 
 const Dashboard = props => {
   const [firstName, setFirstName] = useState();
@@ -35,6 +37,10 @@ const Dashboard = props => {
     });
   });
 
+  function handleClick(event) {
+    event.preventDefault();
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -51,16 +57,18 @@ const Dashboard = props => {
                   </span>
                   {/* <span>Valon Rama</span> */}
                 </h2>
-                <div>
-                  <MDBBtn tag="a" size="med" gradient="blue">
-                    <MDBIcon icon="edit" />
-                  </MDBBtn>
+                <div><MDBBtn
+                  onClick={handleClick}
+                  >
+                    < ModalPage position={position} skill={skill} shot={shot} notice={notice} />
+                </MDBBtn>
+
                 </div>
               </div>
             </li>
             <li className="secondary dashboard-text">{position}</li>
             <li>
-              Skill Level - 
+              Skill Level -
               <span className="secondary dashboard-text"> {skill}</span>
             </li>
             <li>Availability:</li>
