@@ -44,7 +44,7 @@ const Dashboard = props => {
                   {/* <span>Valon Rama</span> */}
                 </h2>
                 <div>
-                <MDBBtn tag="a" size="med" floating gradient="blue">
+                <MDBBtn tag="a" size="med" gradient="blue">
                   <MDBIcon icon="edit" />
                 </MDBBtn>
                 </div>
