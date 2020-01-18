@@ -6,8 +6,6 @@ module.exports = app => {
     passport.authenticate('jwt', {
       session: false
     }, (err, user, info) => {
-      console.log(`\nUser Server Side - ${JSON.stringify(user)}`)
-
       if (err) {
         console.log(err);
       }
@@ -27,8 +25,10 @@ module.exports = app => {
               firstName: userInfo.firstName,
               lastName: userInfo.lastName,
               position: userInfo.position,
-              skill: userInfo.skill,
+              skillLevel: userInfo.skillLevel,
+              shot: userInfo.shot,
               availability: userInfo.availability,
+              notice: userInfo.notice,
               email: userInfo.email,
               username: userInfo.username,
               password: userInfo.password,

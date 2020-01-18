@@ -1,39 +1,44 @@
 const User = require('../sequelize');
-const jwtSecret = require('../config/jwtConfig');
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
 module.exports = app => {
-  app.post('/updateUser', (req, res, next) => {
+  app.put('/updateUser', (req, res, next) => {
+    // console.log(req)
     passport.authenticate('jwt', {
       session: false
     }, (err, user, info) => {
-      console.log(`\nUser Server Side - ${JSON.stringify(user)}`)
-
+      console.log(`User - ${user}`)
       if (err) {
-        console.log(err);
+        console.error(err);
       }
       if (info !== undefined) {
-        console.log(info.message);
-        res.status(401).send(info.message);
+        console.error(info.message);
+        res.status(403).send(info.message);
       } else {
         User.findOne({
           where: {
-            username: user.username,
+            username: req.body.username,
           },
-        }).then(userInfo => {
+        }).then((userInfo) => {
           if (userInfo != null) {
-            console.log('user found in db from findUsers');
-            console.log(user);
-            user.update({
-              position: req.body.position,
-              shot: req.body.shot,
-              skillLevel: req.body.skillLevel,
-              notice: req.body.notice,
-            });
+            console.log('user found in db');
+            userInfo
+              .update({
+                position: req.body.position,
+                shot: req.body.shot,
+                skillLevel: req.body.skillLevel,
+                notice: req.body.notice
+              })
+              .then(() => {
+                console.log('user updated');
+                res.status(200).send({
+                  auth: true,
+                  message: 'user updated'
+                });
+              });
           } else {
-            console.error('no user exists in db with that username');
-            res.status(401).send('no user exists in db with that username');
+            console.error('no user exists in db to update');
+            res.status(401).send('no user exists in db to update');
           }
         });
       }

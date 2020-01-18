@@ -11,23 +11,28 @@ const CreateProfile = props => {
   const [availability, setAvailability] = useState([]);
   const [notice, setNotice] = useState();
 
-  useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
-  })
-
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const token = props.globalState.authToken;
-    console.log(token)
+    const token = localStorage.getItem("authToken");
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
 
-    axios.post(`/updateUser`, config).then(resp => {
-      console.log(resp);
+    const user = await axios.get('/findUser', config).then(resp => {
+      return resp.data.username;
     });
+
+    await axios.put('/updateUserTest', {
+      username: user,
+      position,
+      shot: shot,
+      skillLevel,
+      notice
+    }).then(resp => {
+      console.log(resp)
+    })
   };
 
   const handleChange = selectedOption => {

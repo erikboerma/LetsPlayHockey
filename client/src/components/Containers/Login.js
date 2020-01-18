@@ -13,7 +13,7 @@ const Login = props => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.post(
+    await axios.post(
       '/loginUser',
       {
         username,
@@ -26,7 +26,7 @@ const Login = props => {
         localStorage.setItem('authToken', resp.data.token)
         props.setGlobalState({ authToken: resp.data.token });
         history.push('/Dashboard');
-      }
+      };
     });
   };
 

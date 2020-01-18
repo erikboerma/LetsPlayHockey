@@ -116,6 +116,7 @@ const CreateProfileForm = props => (
                   gradient="blue"
                   rounded
                   className="btn-block z-depth-1a"
+                  onClick={props.handleSubmit}
                 >
                   Save
                 </MDBBtn>

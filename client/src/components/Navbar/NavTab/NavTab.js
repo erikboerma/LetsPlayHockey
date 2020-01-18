@@ -19,7 +19,7 @@ const NavTab = props => {
 
   return props.logo ? (
     <div className="row">
-      <img src={props.logo} id="nav-logo" />
+      <img src={props.logo} id="nav-logo" alt=""/>
       {navItem}
     </div>
   ) : (

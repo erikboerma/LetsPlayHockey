@@ -43,7 +43,7 @@ const LoginForm = props => (
               </p>
               <div className="text-center mb-3">
                 <MDBBtn
-                  type="button"
+                  type="submit"
                   gradient="blue"
                   rounded
                   className="btn-block z-depth-1a"
