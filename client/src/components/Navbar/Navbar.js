@@ -1,7 +1,7 @@
 import React from "react";
 import NavTab from "./NavTab/NavTab";
 import "./navbar.css";
-import logo from "../../assets/images/letsplayhockey.png";
+import logo from "../../assets/images/letsPlayHockeyNew.png";
 import { withGlobalState } from 'react-globally';
 
 const Navbar = props => {
