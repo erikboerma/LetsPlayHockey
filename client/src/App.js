@@ -8,7 +8,6 @@ import Login from "./components/Containers/Login";
 import Register from "./components/Containers/Register";
 import CreateProfile from './components/Containers/CreateProfile';
 import Dashboard from "./components/Containers/Dashboard";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => (

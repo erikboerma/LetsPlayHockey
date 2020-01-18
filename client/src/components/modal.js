@@ -10,7 +10,7 @@ const ModalPage = props => {
 
     return (
         <MDBContainer>
-            <MDBBtn onClick={toggle}>Modal</MDBBtn>
+            <MDBBtn onClick={toggle}>Edit Profile</MDBBtn>
             <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>Update Profile</MDBModalHeader>
                 <MDBModalBody>
