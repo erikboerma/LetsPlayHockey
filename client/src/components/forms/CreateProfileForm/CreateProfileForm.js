@@ -1,4 +1,4 @@
-import React from "./node_modules/react";
+import React from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -6,9 +6,9 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn
-} from "./node_modules/mdbreact";
+} from "mdbreact";
 import Checkbox from "../../Checkbox/Checkbox";
-import Select from "./node_modules/react-select";
+import Select from "react-select";
 import { position, shot, skillLevel, days, notice } from "../../../constants";
 import "./createProfileForm.css";
 
