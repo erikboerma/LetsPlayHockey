@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import RegisterForm from '../forms/RegisterForm/RegisterForm';
+import { withGlobalState } from 'react-globally';
+import RegisterForm from '../Forms/RegisterForm/RegisterForm';
 import axios from 'axios';
-
 
 const Register = props => {
   const [firstName, setFirstName] = useState();
@@ -14,6 +14,10 @@ const Register = props => {
 
   let history = useHistory();
 
+  const validate = () => {
+
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -24,7 +28,7 @@ const Register = props => {
         lastName,
         email,
         username,
-        password
+        password,
       }
     ).then(resp => {
       console.log(resp);
@@ -49,4 +53,4 @@ const Register = props => {
   );
 };
 
-export default Register;
+export default withGlobalState(Register);
