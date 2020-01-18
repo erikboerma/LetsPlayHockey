@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { withGlobalState } from 'react-globally'
-import LoginForm from '../forms/LoginForm/LoginForm';
+import LoginForm from '../Forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 const Login = props => {
@@ -13,7 +13,7 @@ const Login = props => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.post(
+    await axios.post(
       '/loginUser',
       {
         username,
@@ -23,9 +23,10 @@ const Login = props => {
       console.log(resp);
       const userLoggedIn = "user found & logged in"
       if (userLoggedIn) {
-        props.setGlobalState({ jwt: resp.data.token });
+        localStorage.setItem('authToken', resp.data.token)
+        props.setGlobalState({ authToken: resp.data.token });
         history.push('/Dashboard');
-      }
+      };
     });
   };
 

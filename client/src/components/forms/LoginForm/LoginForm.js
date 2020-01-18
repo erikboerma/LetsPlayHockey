@@ -9,7 +9,7 @@ import {
   MDBBtn,
   MDBModalFooter
 } from "mdbreact";
-import "./style.css";
+import "./loginForm.css";
 
 const LoginForm = props => (
   <MDBContainer>
@@ -25,17 +25,13 @@ const LoginForm = props => (
             <form onSubmit={props.handleSubmit}>
               <MDBInput
                 label="Your username"
-                group
-                validate
                 error="wrong"
                 success="right"
                 onChange={e => props.setUsername(e.target.value)}
               />
               <MDBInput
                 label="Your password"
-                group
                 type="password"
-                validate
                 containerClass="mb-0"
                 onChange={e => props.setPassword(e.target.value)}
               />
@@ -47,7 +43,7 @@ const LoginForm = props => (
               </p>
               <div className="text-center mb-3">
                 <MDBBtn
-                  type="button"
+                  type="submit"
                   gradient="blue"
                   rounded
                   className="btn-block z-depth-1a"
