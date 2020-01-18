@@ -19,7 +19,7 @@ const Dashboard = props => {
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    
+
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -46,8 +46,6 @@ const Dashboard = props => {
       <div className="row">
         <div className="col-4">
           <img className="avatar" src={defaultAvatar} />
-        </div>
-        <div className="col-8">
           <ul>
             <li>
               <div className="dashboard-name row">
@@ -55,30 +53,27 @@ const Dashboard = props => {
                   <span>
                     {firstName} {lastName}
                   </span>
-                  {/* <span>Valon Rama</span> */}
+                  <span>Player Name</span>
                 </h2>
-                <div><MDBBtn
-                  onClick={handleClick}
-                  >
-                    < ModalPage position={position} skill={skill} shot={shot} notice={notice} />
-                </MDBBtn>
 
-                </div>
               </div>
             </li>
-            <li className="secondary dashboard-text">{position}</li>
+            <li>Position: <span className="secondary dashboard-text">{position}</span></li>
             <li>
-              Skill Level -
+              Skill Level: 
               <span className="secondary dashboard-text"> {skill}</span>
             </li>
             <li>Availability:</li>
             <li>
-              Notice Needed -
+              Notice Needed: 
               <span className="secondary dashboard-text"> {notice}</span>
             </li>
           </ul>
+          < ModalPage position={position} skill={skill} shot={shot} notice={notice} />
+        </div>
 
-          <br />
+        <br />
+        <div className="col-8">
           <h1>
             <u>Available Games</u>
           </h1>

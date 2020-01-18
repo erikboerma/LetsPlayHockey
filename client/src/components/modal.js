@@ -9,24 +9,24 @@ const ModalPage = props => {
     };
 
     return (
-        <MDBContainer>
+        <MDBContainer >
             <MDBBtn onClick={toggle}>Edit Profile</MDBBtn>
             <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>Update Profile</MDBModalHeader>
                 <MDBModalBody>
                     <MDBInput label="position">
-                    {props.position}
+                        {props.position}
                     </MDBInput>
                     <MDBInput label="shot">
-                    {props.shot}
+                        {props.shot}
                     </MDBInput>
                     <MDBInput label="skill">
-                    {props.skill}
+                        {props.skill}
                     </MDBInput>
                     <MDBInput label="notice">
-                    {props.notice}
+                        {props.notice}
                     </MDBInput>
-        </MDBModalBody>
+                </MDBModalBody>
                 <MDBModalFooter>
                     <MDBBtn color="secondary" onClick={toggle}>Close</MDBBtn>
                     <MDBBtn color="primary">Save changes</MDBBtn>
