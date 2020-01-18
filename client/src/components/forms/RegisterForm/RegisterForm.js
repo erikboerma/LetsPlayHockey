@@ -10,18 +10,22 @@ import {
 } from "mdbreact";
 import "./registerForm.css";
 
-const RegisterForm = props => (
-  <MDBContainer>
-    <MDBRow>
-      <MDBCol md="6">
-        <MDBCard>
-          <MDBCardBody className="mx-4">
-            <div className="text-center">
-              <h3 className="dark-grey-text mb-5">
-                <strong>Register</strong>
-              </h3>
-            </div>
-            <form onSubmit={props.submitForm}>
+const RegisterForm = props => {
+  if (props.currentStep !== 1) {
+    return null
+  }
+
+  return (
+    <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody className="mx-4">
+              <div className="text-center">
+                <h3 className="dark-grey-text mb-5">
+                  <strong>Register</strong>
+                </h3>
+              </div>
               <MDBInput
                 label="First Name"
                 error="wrong"
@@ -65,16 +69,17 @@ const RegisterForm = props => (
                   gradient="blue"
                   rounded
                   className="btn-block z-depth-1a"
+                  onClick={props.nextStep}
                 >
-                  Register
+                  Next
                 </MDBBtn>
               </div>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-);
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+  );
+};
 
 export default RegisterForm;
