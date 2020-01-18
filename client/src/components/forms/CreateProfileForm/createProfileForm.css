@@ -12,11 +12,20 @@
     -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
     box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
-.checkbox {
-    width: 20px;
-    height: 20px;
-}
 
 img.homeBG{
     margin-top: 50px;
+}
+
+.drop-down {
+    justify-content: space-between;
+}
+
+.drop-down > div > h4 {
+    padding-top: 4px;
+}
+
+.position-select {
+    width: 50%;
+    padding-bottom: 4px;
 }

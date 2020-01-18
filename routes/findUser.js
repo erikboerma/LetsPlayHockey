@@ -6,15 +6,11 @@ module.exports = app => {
     passport.authenticate('jwt', {
       session: false
     }, (err, user, info) => {
-      console.log(`\nUser Server Side - ${JSON.stringify(user)}`)
-
       if (err) {
         console.log(err);
       }
       if (info !== undefined) {
-        console.log(info)
         console.log(info.message);
-        console.log("Here")
         res.status(401).send(info.message);
       } else {
         User.findOne({
@@ -28,6 +24,11 @@ module.exports = app => {
               auth: true,
               firstName: userInfo.firstName,
               lastName: userInfo.lastName,
+              position: userInfo.position,
+              skillLevel: userInfo.skillLevel,
+              shot: userInfo.shot,
+              availability: userInfo.availability,
+              notice: userInfo.notice,
               email: userInfo.email,
               username: userInfo.username,
               password: userInfo.password,

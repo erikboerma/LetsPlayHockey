@@ -1,10 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
-<<<<<<< HEAD
 const TeamModel = require('./models/teams');
-=======
-const TeamModel = require('./models/team');
->>>>>>> origin
 
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
   host: "127.0.0.1",
