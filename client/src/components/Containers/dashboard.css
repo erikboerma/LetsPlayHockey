@@ -7,6 +7,10 @@
     height: 250px;
 }
 
+#modalContainer {
+    background-color: black;
+    color: white;
+}
 
 .dashboard-name {
     justify-content: space-between;
