@@ -6,6 +6,8 @@ import axios from "axios";
 import Calendar from "../Calendar/Calendar";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
 import ModalPage from "../modal"
+import ModalPage2 from "../addTeamModal"
+import { MDBModalFooter } from "mdbreact";
 
 
 const Dashboard = props => {
@@ -45,7 +47,7 @@ const Dashboard = props => {
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <img className="avatar" src={defaultAvatar} />
+          <img className="avatar" alt="Your photo" src={defaultAvatar} />
           <ul>
             <li>
               <div className="dashboard-name row">
@@ -53,7 +55,7 @@ const Dashboard = props => {
                   <span>
                     {firstName} {lastName}
                   </span>
-                  <span>Player Name</span>
+                  
                 </h2>
 
               </div>
@@ -69,20 +71,23 @@ const Dashboard = props => {
               <span className="secondary dashboard-text"> {notice}</span>
             </li>
           </ul>
+          <MDBModalFooter>
           < ModalPage position={position} skill={skill} shot={shot} notice={notice} />
+          < ModalPage2 />
+          </MDBModalFooter>
         </div>
 
         <br />
-        <div className="col-8">
+        <div className="col-1"></div>
+        <div className="col-7">
           <h1>
             <u>Available Games</u>
           </h1>
-          <Calendar />
           <br />
           <h1>
             <u>Selected Games</u>
           </h1>
-          <Calendar />
+          
         </div>
       </div>
     </div>
