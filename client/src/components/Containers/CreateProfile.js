@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import CreateProfileForm from "../Forms/CreateProfileForm/CreateProfileForm";
 import { withGlobalState } from "react-globally";
-import rinkLine from "../../assets/images/icerink.png";
 import axios from "axios";
 
 const CreateProfile = props => {
@@ -62,7 +61,6 @@ const CreateProfile = props => {
 
   return (
     <CreateProfileForm
-      rinkImg={rinkLine}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
