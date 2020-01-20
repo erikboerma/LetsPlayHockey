@@ -1,13 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
     const Team = sequelize.define("Team", {
-        teamName: {
+        name: {
             type: DataTypes.STRING,
             validate: {
                 // allowNull: false,
                 notEmpty: true
             }
         },
-        positionsAvailable: {
+        positions: {
             type: DataTypes.INTEGER,
             validate: {
                 // allowNull: false,
@@ -15,25 +15,6 @@ module.exports = (sequelize, DataTypes) => {
                 max: 15
             }
         },
-        location: {
-            type: DataTypes.STRING,
-            validate: {
-                // allowNull: false,
-                notEmpty: true,
-            }
-        },
-        date: {
-            type: DataTypes.DATE,
-        },
-        time: {
-            type: DataTypes.TIME,
-        }
     });
-    Team.associate = (models) => {
-        Team.hasMany(models.User,
-            {
-                as: 'Team',
-            })
-    };
     return Team;
 };

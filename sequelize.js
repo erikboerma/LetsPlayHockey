@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
+const UserAvailabilityModel = require('./models/userAvailability');
 const TeamModel = require('./models/team');
 
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
@@ -8,7 +9,11 @@ const sequelize = new Sequelize('letsplayhockey', 'root', null, {
 });
 
 const User = UserModel(sequelize, Sequelize);
+const userAvailability = UserAvailabilityModel(sequelize, Sequelize);
 const Team = TeamModel(sequelize, Sequelize);
+
+User.hasMany(userAvailability);
+userAvailability.belongsTo(User);
 
 sequelize.sync().then(() => {
   // eslint-disable-next-line no-console

@@ -102,12 +102,6 @@ const MasterForm = () => {
           handleSubmit={handleSubmit}
           prevStep={_prev}
         />
-        {/* <LoginForm
-          currentStep={currentStep}
-          setUsername={setUsername}
-          setPassword={setPassword}
-        /> */}
-
       </form>
     </>
   );
