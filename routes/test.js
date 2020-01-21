@@ -1,18 +1,19 @@
 const Models = require('../sequelize');
 const User = Models.User;
-const UserTeam = Models.UserTeam;
+const UserAvailability = Models.UserAvailability;
 
 module.exports = app => {
   app.post('/test', (req, res, next) => {
-    UserTeam.findOne({
+    console.log(req.body)
+    UserAvailability.findOne({
       where: {
-        UserId: 7,
+        UserId: req.body.id,
       },
     }).then(user => {
-      if (userInfo != null) {
+      if (user != null) {
         user
           .update({
-            monday: true
+            monday: false
           })
           .then(() => {
             console.log('user updated');

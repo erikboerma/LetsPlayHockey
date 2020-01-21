@@ -3,23 +3,6 @@ const Models = require('../sequelize');
 const User = Models.User;
 const UserAvailability = Models.UserAvailability;
 
-
-// const userAvailabilityUpdate = new Promise((resolve, reject) => {
-//   UserAvailability.findOne({
-//     where: {
-//       UserId: req.body.id
-//     }
-//   }).then(userAvailability => {
-//     console.log(userAvailability);
-//     req.body.availability.forEach((key, i) => {
-//       console.log(`Req.Body.Availability - ${JSON.stringify(key)}: ${i}`)
-//       const field = key.label;
-//       userAvailability.update({});
-//     })
-//   })
-// });
-
-
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
 
@@ -36,45 +19,32 @@ module.exports = app => {
       } else {
 
         req.logIn(user, err => {
-          // await User.findOne({
-          //     where: {
-          //       username: req.body.username
-          //     }
-          //   })
-          //   .then(user => {
-          //     console.log(user)
-          //     user
-          //       .update({
-          //         firstName: req.body.firstName,
-          //         lastName: req.body.lastName,
-          //         email: req.body.email,
-          //         position: req.body.position,
-          //         shot: req.body.shot,
-          //         skillLevel: req.body.skillLevel,
-          //         notice: req.body.notice,
-          //       })
-          //   })
-
-          // .then(() => {
-          console.log(user.id)
-          UserAvailability.findOne({
-            where: {
-              UserId: user.id
-            }
-          }).then(userAvailability => {
-            console.log('\n User Availability - ' + userAvailability);
-            userAvailability.update({
-              monday: true
+          User.findOne({
+              where: {
+                username: req.body.username
+              }
             })
-          });
-        })
-
-        // .then(() => {
-        //   console.log('user created in db');
-        //   res.status(200).send({
-        //     message: 'user created'
-        //   });
-        // });
+            .then(user => {
+              console.log(user)
+              user
+                .update({
+                  firstName: req.body.firstName,
+                  lastName: req.body.lastName,
+                  email: req.body.email,
+                  position: req.body.position,
+                  shot: req.body.shot,
+                  skillLevel: req.body.skillLevel,
+                  notice: req.body.notice,
+                })
+            })
+            .then(() => {
+              console.log('user created in db');
+              res.status(200).send({
+                userId: user.id,
+                message: 'user created'
+              });
+            });
+        });
       };
     })(req, res, next);
   })

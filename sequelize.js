@@ -20,6 +20,7 @@ const UserAvailability = UserAvailabilityModel(sequelize, Sequelize);
 const Game = GameModel(sequelize, Sequelize);
 
 User.hasOne(UserAvailability);
+UserAvailability.belongsTo(User);
 
 // This will automatically create a helper table with fields (UserId, TeamId)
 User.belongsToMany(Team, {

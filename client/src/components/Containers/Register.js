@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { withGlobalState } from 'react-globally';
-import RegisterForm from '../Forms/RegisterForm/RegisterForm';
-import CreateProfile from '../Forms/CreateProfileForm/CreateProfileForm';
-import LoginForm from '../Forms/LoginForm/LoginForm';
-import axios from 'axios';
-
+import { withGlobalState } from "react-globally";
+import RegisterForm from "../Forms/RegisterForm/RegisterForm";
+import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
+import axios from "axios";
 
 const MasterForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -46,12 +44,11 @@ const MasterForm = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
-    await axios.post(
-      '/registerUser',
-      {
+    await axios
+      .post("/registerUser", {
         firstName,
         lastName,
         email,
@@ -60,29 +57,39 @@ const MasterForm = () => {
         position,
         shot,
         skillLevel,
-        notice,
-        availability
-      }
-    ).then(resp => {
-      console.log(resp);
-      const userCreated = resp.data.message === "user created"
-      // if (userCreated) {
-        // history.push('/Login');
-      // };
-    });
+        notice
+      })
+      .then(async resp => {
+        console.log(resp);
+        const userCreated = resp.data.message === "user created";
+        const userId = resp.data.userId;
+
+        await axios
+          .post("/test", {
+            userId,
+            availability
+          })
+          .then(resp => {
+            console.log(resp);
+
+            if (userCreated) {
+              history.push("/Login");
+            }
+          });
+      });
   };
 
   const _next = () => {
-    let _currentStep = currentStep >= 2 ? 3 : currentStep + 1
-    setCurrentStep(_currentStep)
-  }
+    let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+    setCurrentStep(_currentStep);
+  };
 
   const _prev = () => {
     // Fill in the information that is still in state at this point
     // if the back button is clicked
-    let _currentStep = currentStep <= 1 ? 1 : currentStep - 1
-    setCurrentStep(_currentStep)
-  }
+    let _currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+    setCurrentStep(_currentStep);
+  };
 
   return (
     <>
@@ -107,6 +114,5 @@ const MasterForm = () => {
     </>
   );
 };
-
 
 export default withGlobalState(MasterForm);

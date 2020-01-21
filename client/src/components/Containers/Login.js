@@ -14,8 +14,7 @@ const Login = props => {
     event.preventDefault();
 
     await axios.post(
-      // '/loginUser',
-      '/test',
+      '/loginUser',
       {
         username,
         password
