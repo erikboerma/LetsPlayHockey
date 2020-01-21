@@ -14,7 +14,6 @@ const Home = () => (
       Short on players and need to see if you can find subs for the game?  You can do that too!<br />
 
       Register and create a profile, indicated the days you're free and the amount of notice you need.. thats it!<br />
-      If you're looking for subs, create a profile and you can search for players!<br />
 
     </h3>
   </div>
