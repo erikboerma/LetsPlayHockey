@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { MDBBtn, MDBIcon } from "mdbreact";
 import { withGlobalState } from "react-globally";
 import "./dashboard.css";
 import axios from "axios";
@@ -19,20 +18,20 @@ const Dashboard = props => {
 
   let history = useHistory();
 
+  // TODO: This still needs work and can be refactored better
   useEffect(() => {
-    // if (props.globalState.authToken === "") {
-    //   useHistory.push("/");
-    // }
+    const token = props.globalState.authToken;
 
-    const token = localStorage.getItem("authToken");
+    if (token === "") {
+      history.push("/");
+    }
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
 
     axios.get(`/findUser`, config).then(resp => {
-      // Potential bug here? Console is loggging 7 times.
-      console.log(resp.data);
+      // Potential bug here? Console is logging 7 times.
       setFirstName(resp.data.firstName);
       setLastName(resp.data.lastName);
       setPosition(resp.data.position);
@@ -59,8 +58,8 @@ const Dashboard = props => {
               </div>
             </li>
             <li>
-              Position:{" "}
-              <span className="secondary dashboard-text">{position}</span>
+              Position:
+              <span className="secondary dashboard-text"> {position}</span>
             </li>
             <li>
               Skill Level:

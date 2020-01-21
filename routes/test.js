@@ -1,5 +1,4 @@
 const Models = require('../sequelize');
-const User = Models.User;
 const UserAvailability = Models.UserAvailability;
 
 module.exports = app => {
@@ -7,11 +6,12 @@ module.exports = app => {
     console.log(req.body)
     UserAvailability.findOne({
       where: {
-        UserId: req.body.id,
+        UserId: req.body.userId,
       },
     }).then(user => {
       if (user != null) {
         user
+        // TODO: Loop through array and do a bulk update
           .update({
             monday: false
           })

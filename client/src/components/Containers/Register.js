@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { withGlobalState } from "react-globally";
 import RegisterForm from "../Forms/RegisterForm/RegisterForm";
 import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
+import HorizontalLinearStepper from "../Stepper";
 import axios from "axios";
 
 const MasterForm = () => {
@@ -79,12 +80,12 @@ const MasterForm = () => {
       });
   };
 
-  const _next = () => {
+  const nextStep = () => {
     let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
     setCurrentStep(_currentStep);
   };
 
-  const _prev = () => {
+  const prevStep = () => {
     // Fill in the information that is still in state at this point
     // if the back button is clicked
     let _currentStep = currentStep <= 1 ? 1 : currentStep - 1;
@@ -92,7 +93,10 @@ const MasterForm = () => {
   };
 
   return (
-    <>
+    <div className="container">
+      <HorizontalLinearStepper
+        currentStep={currentStep}
+      />
       <form onSubmit={handleSubmit}>
         <RegisterForm
           currentStep={currentStep}
@@ -102,16 +106,16 @@ const MasterForm = () => {
           setUsername={setUsername}
           setPassword={setPassword}
           setPasswordConfirm={setPasswordConfirm}
-          nextStep={_next}
+          nextStep={nextStep}
         />
         <CreateProfile
           currentStep={currentStep}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          prevStep={_prev}
+          prevStep={prevStep}
         />
       </form>
-    </>
+    </div>
   );
 };
 
