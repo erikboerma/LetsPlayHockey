@@ -8,6 +8,7 @@ import defaultAvatar from "../../assets/images/default-avatar.jpg";
 import ModalPage from "../modal"
 import ModalPage2 from "../addTeamModal"
 import { MDBModalFooter } from "mdbreact";
+import GameTable from "../Games/Games"
 
 
 const Dashboard = props => {
@@ -83,6 +84,7 @@ const Dashboard = props => {
           <h1>
             <u>Available Games</u>
           </h1>
+          <GameTable />
           <br />
           <h1>
             <u>Selected Games</u>
