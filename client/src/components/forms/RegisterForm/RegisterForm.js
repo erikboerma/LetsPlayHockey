@@ -69,6 +69,7 @@ const RegisterForm = props => {
                   gradient="blue"
                   rounded
                   className="btn-block z-depth-1a"
+                  id="next-submit"
                   onClick={props.nextStep}
                 >
                   Next

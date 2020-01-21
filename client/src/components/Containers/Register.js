@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { withGlobalState } from 'react-globally';
-import RegisterForm from '../Forms/RegisterForm/RegisterForm';
-import CreateProfile from '../Forms/CreateProfileForm/CreateProfileForm';
-import LoginForm from '../Forms/LoginForm/LoginForm';
-import axios from 'axios';
-
+import { withGlobalState } from "react-globally";
+import RegisterForm from "../Forms/RegisterForm/RegisterForm";
+import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
+import HorizontalLinearStepper from "../Stepper";
+import axios from "axios";
 
 const MasterForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -46,12 +45,11 @@ const MasterForm = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
-    await axios.post(
-      '/registerUser',
-      {
+    await axios
+      .post("/registerUser", {
         firstName,
         lastName,
         email,
@@ -61,30 +59,44 @@ const MasterForm = () => {
         shot,
         skillLevel,
         notice
-      }
-    ).then(resp => {
-      console.log(resp);
-      const userCreated = resp.data.message === "user created"
-      if (userCreated) {
-        history.push('/Login');
-      };
-    });
+      })
+      .then(async resp => {
+        console.log(resp);
+        const userCreated = resp.data.message === "user created";
+        const userId = resp.data.userId;
+
+        await axios
+          .post("/test", {
+            userId,
+            availability
+          })
+          .then(resp => {
+            console.log(resp);
+
+            if (userCreated) {
+              history.push("/Login");
+            }
+          });
+      });
   };
 
-  const _next = () => {
-    let _currentStep = currentStep >= 2 ? 3 : currentStep + 1
-    setCurrentStep(_currentStep)
-  }
+  const nextStep = () => {
+    let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+    setCurrentStep(_currentStep);
+  };
 
-  const _prev = () => {
+  const prevStep = () => {
     // Fill in the information that is still in state at this point
     // if the back button is clicked
-    let _currentStep = currentStep <= 1 ? 1 : currentStep - 1
-    setCurrentStep(_currentStep)
-  }
+    let _currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+    setCurrentStep(_currentStep);
+  };
 
   return (
-    <>
+    <div className="container">
+      <HorizontalLinearStepper
+        currentStep={currentStep}
+      />
       <form onSubmit={handleSubmit}>
         <RegisterForm
           currentStep={currentStep}
@@ -94,24 +106,17 @@ const MasterForm = () => {
           setUsername={setUsername}
           setPassword={setPassword}
           setPasswordConfirm={setPasswordConfirm}
-          nextStep={_next}
+          nextStep={nextStep}
         />
         <CreateProfile
           currentStep={currentStep}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          prevStep={_prev}
+          prevStep={prevStep}
         />
-        {/* <LoginForm
-          currentStep={currentStep}
-          setUsername={setUsername}
-          setPassword={setPassword}
-        /> */}
-
       </form>
-    </>
+    </div>
   );
 };
-
 
 export default withGlobalState(MasterForm);

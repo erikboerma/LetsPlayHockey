@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { withGlobalState } from 'react-globally';
 
 class GlobalControls extends Component {
-  setJwt = (token) => {
+  setAuthToken = (token) => {
     this.props.setGlobalState({
       authToken: token
     });
   };
 
-  clearJwt = () => {
+  clearAuthToken = () => {
     this.props.setGlobalState({
       authToken: ""
     });
