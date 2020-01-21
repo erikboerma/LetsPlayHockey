@@ -28,6 +28,8 @@ require("./routes/findTeams")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
 require("./routes/updateUserTest")(app);
+require("./routes/test")(app);
+
 
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));

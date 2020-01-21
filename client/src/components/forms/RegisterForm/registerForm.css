@@ -16,3 +16,7 @@
 .text-center {
     justify-content: left;
 }
+
+#next-submit {
+    margin-top: 25px;
+}
