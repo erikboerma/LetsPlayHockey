@@ -5,7 +5,9 @@ const BCRYPT_SALT_ROUNDS = 12;
 
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
-const User = require('../sequelize');
+const Models = require('../sequelize');
+const User = Models.User;
+const UserAvailability = Models.UserAvailability;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
@@ -34,6 +36,9 @@ passport.use(
                 username,
                 password: hashedPassword
               }).then(user => {
+                UserAvailability.create({
+                  UserId: user.id
+                });
                 console.log('user created');
                 // note the return needed with passport local - remove this return for passport JWT to work
                 return done(null, user);

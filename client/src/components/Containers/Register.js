@@ -60,14 +60,15 @@ const MasterForm = () => {
         position,
         shot,
         skillLevel,
-        notice
+        notice,
+        availability
       }
     ).then(resp => {
       console.log(resp);
       const userCreated = resp.data.message === "user created"
-      if (userCreated) {
-        history.push('/Login');
-      };
+      // if (userCreated) {
+        // history.push('/Login');
+      // };
     });
   };
 

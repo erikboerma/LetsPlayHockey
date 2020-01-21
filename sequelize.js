@@ -15,11 +15,11 @@ const User = UserModel(sequelize, Sequelize);
 const Team = TeamModel(sequelize, Sequelize);
 
 // Target Models
-const userAvailability = UserAvailabilityModel(sequelize, Sequelize);
+const UserAvailability = UserAvailabilityModel(sequelize, Sequelize);
 // const userTeam = UserTeamModel(sequelize, Sequelize);
 const Game = GameModel(sequelize, Sequelize);
 
-User.hasOne(userAvailability);
+User.hasOne(UserAvailability);
 
 // This will automatically create a helper table with fields (UserId, TeamId)
 User.belongsToMany(Team, {
@@ -34,4 +34,4 @@ sequelize.sync().then(() => {
   console.log('Users db and user table have been created');
 });
 
-module.exports = { User, Team };
+module.exports = { User, Team, UserAvailability, Game };

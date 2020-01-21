@@ -14,14 +14,15 @@ const Login = props => {
     event.preventDefault();
 
     await axios.post(
-      '/loginUser',
+      // '/loginUser',
+      '/test',
       {
         username,
         password
       }
     ).then(resp => {
       console.log(resp);
-      const userLoggedIn = resp.data === "user found & logged in";
+      const userLoggedIn = resp.data.auth === true;
       if (userLoggedIn) {
         localStorage.setItem('authToken', resp.data.token)
         props.setGlobalState({ authToken: resp.data.token });

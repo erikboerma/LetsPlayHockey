@@ -1,4 +1,6 @@
-const User = require('../sequelize');
+const Models = require('../sequelize');
+const User = Models.User;
+console.log(User)
 const jwtSecret = require('../config/jwtConfig');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
