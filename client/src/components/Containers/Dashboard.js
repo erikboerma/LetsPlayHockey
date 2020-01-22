@@ -8,6 +8,8 @@ import AddTeamModal from "../Modals/AddTeamModal";
 import CreateTeamModal from '../Modals/CreateTeamModal';
 import Tab from '../Tab/Tab';
 import { useHistory } from "react-router-dom";
+import { MDBModalFooter } from "mdbreact";
+import GameTable from "../Games/Games"
 
 const Dashboard = props => {
   const [firstName, setFirstName] = useState();
