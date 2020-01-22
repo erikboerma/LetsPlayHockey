@@ -45,20 +45,6 @@ const CreateProfileForm = props => {
 
               <div className="row drop-down">
                 <div className="text-center">
-                  <h4>Position</h4>
-                </div>
-                <div className="position-select">
-                  <Select
-                    placeholder="Position"
-                    options={mapArray(position, "position")}
-                    onChange={props.handleChange}
-                  />
-                </div>
-              </div>
-              <hr />
-
-              <div className="row drop-down">
-                <div className="text-center">
                   <h4>Shot</h4>
                 </div>
                 <div className="position-select">
@@ -80,21 +66,6 @@ const CreateProfileForm = props => {
                     placeholder="Skill Level"
                     options={mapArray(skillLevel, "skillLevel")}
                     onChange={props.handleChange}
-                  />
-                </div>
-              </div>
-              <hr />
-
-              <div className="row drop-down">
-                <div className="text-center">
-                  <h4>Availability</h4>
-                </div>
-                <div className="position-select">
-                  <Select
-                    placeholder="Availability"
-                    options={mapArray(days, "availability")}
-                    onChange={props.handleChange}
-                    isMulti
                   />
                 </div>
               </div>

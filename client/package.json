@@ -4,6 +4,7 @@
   "proxy": "http://localhost:3001/",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.8.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
@@ -17,7 +18,8 @@
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+    "react-swipeable-views": "^0.13.5"
   },
   "scripts": {
     "start": "react-scripts start",

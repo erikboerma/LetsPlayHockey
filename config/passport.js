@@ -36,9 +36,6 @@ passport.use(
                 username,
                 password: hashedPassword
               }).then(user => {
-                UserAvailability.create({
-                  UserId: user.id
-                });
                 console.log('user created');
                 // note the return needed with passport local - remove this return for passport JWT to work
                 return done(null, user);
