@@ -8,8 +8,7 @@ import AddTeamModal from "../Modals/AddTeamModal";
 import CreateTeamModal from '../Modals/CreateTeamModal';
 import Tab from '../Tab/Tab';
 import { useHistory } from "react-router-dom";
-import { MDBModalFooter } from "mdbreact";
-import GameTable from "../Games/Games"
+import TeamTable from "../Tables/TeamTable"
 
 const Dashboard = props => {
   const [firstName, setFirstName] = useState();
@@ -40,7 +39,7 @@ const Dashboard = props => {
       headers: { Authorization: `Bearer ${token}` }
     };
 
-    axios.get(`/findUser`, config).then(resp => {
+    axios.get('/findUser', config).then(resp => {
       // Potential bug here? Console is logging 7 times.
       setFirstName(resp.data.firstName);
       setLastName(resp.data.lastName);
@@ -49,6 +48,15 @@ const Dashboard = props => {
       setShot(resp.data.shot);
       setNotice(resp.data.notice);
     });
+
+    axios.get('/findTeam', {id: 1}).then(resp => {
+      console.log(resp)
+      setTeamName(resp.data.name)
+      setOffense(resp.data.offense)
+      setDefense(resp.data.defense)
+      setGoalies(resp.data.goalies)
+      setTotalPlayers(resp.data.totalPlayers)
+    })
   });
 
   const createTeamSubmit = async event => {
@@ -79,10 +87,6 @@ const Dashboard = props => {
               </div>
             </li>
             <li>
-              Position:
-              <span className="secondary dashboard-text"> {position}</span>
-            </li>
-            <li>
               Skill Level:
               <span className="secondary dashboard-text"> {skill}</span>
             </li>
@@ -111,6 +115,13 @@ const Dashboard = props => {
         <br />
         <div className="col-8">
           <Tab></Tab>
+          <TeamTable
+            teamName={teamName}
+            offense={offense}
+            defense={defense}
+            goalies={goalies}
+            totalPlayers={totalPlayers}
+          />
         </div>
       </div>
     </div>
