@@ -48,43 +48,46 @@ const Dashboard = props => {
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <img className="avatar" alt="Your photo" src={defaultAvatar} />
-          <ul>
-            <li>
-              <div className="dashboard-name row">
-                <h2 className="dashboard-text">
-                  <span>
-                    {firstName} {lastName}
-                  </span>
-                </h2>
-              </div>
-            </li>
-            <li>
-              Position:
-              <span className="secondary dashboard-text"> {position}</span>
-            </li>
-            <li>
-              Skill Level:
-              <span className="secondary dashboard-text"> {skill}</span>
-            </li>
-            <li>
-              Availability:
-              <span className="secondary dashboard-text"> {availability}</span>
-            </li>
-            <li>
-              Notice Needed:
-              <span className="secondary dashboard-text"> {notice}</span>
-            </li>
-          </ul>
-          <ModalPage
-            position={position}
-            skill={skill}
-            shot={shot}
-            notice={notice}
-          />
-          <ModalPage2 position={position} />
-        </div>
+          <div className="bioBox" align="center">
 
+            <img className="avatar" alt="Your photo" src={defaultAvatar} />
+            <ul className>
+              <li>
+                <div className="dashboard-name row">
+                  <h2 className="dashboard-text bioName">
+                    <span>
+                      {firstName} {lastName}
+                    </span>
+                  </h2>
+                </div>
+              </li>
+              <li>
+                Position:
+              <span className="secondary dashboard-text"> {position}</span>
+              </li>
+              <li>
+                Skill Level:
+              <span className="secondary dashboard-text"> {skill}</span>
+              </li>
+              <li>
+                Availability:
+              <span className="secondary dashboard-text"> {availability}</span>
+              </li>
+              <li>
+                Notice Needed:
+              <span className="secondary dashboard-text"> {notice}</span>
+              </li>
+            </ul>
+            <ModalPage
+              position={position}
+              skill={skill}
+              shot={shot}
+              notice={notice}
+            />
+            <ModalPage2 position={position} />
+          </div>
+
+        </div>
         <br />
         <div className="col-1"></div>
         <div className="col-7">
