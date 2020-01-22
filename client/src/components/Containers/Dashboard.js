@@ -78,13 +78,14 @@ const Dashboard = props => {
               <span className="secondary dashboard-text"> {notice}</span>
               </li>
             </ul>
-            <ModalPage
-              position={position}
-              skill={skill}
-              shot={shot}
-              notice={notice}
-            />
-            <ModalPage2 position={position} />
+
+              <ModalPage
+                position={position}
+                skill={skill}
+                shot={shot}
+                notice={notice}
+              />
+              <ModalPage2 position={position} />
           </div>
 
         </div>

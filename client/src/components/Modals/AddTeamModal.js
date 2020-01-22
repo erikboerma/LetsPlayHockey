@@ -10,7 +10,7 @@ const ModalPage2 = props => {
 
     return (
         <MDBContainer >
-            <MDBBtn gradient="blue" onClick={toggle}>Add a game</MDBBtn>
+            <MDBBtn gradient="blue" size="sm" className="d-inline" onClick={toggle}>Add a game</MDBBtn>
             <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
                 <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
                 <MDBModalBody>
