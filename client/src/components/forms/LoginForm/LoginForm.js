@@ -11,18 +11,18 @@ import {
 } from "mdbreact";
 import "./loginForm.css";
 
-const LoginForm = props => (
-  <MDBContainer>
-    <MDBRow>
-      <MDBCol md="6">
-        <MDBCard>
-          <MDBCardBody className="mx-4">
-            <div className="text-center">
-              <h3 className="dark-grey-text mb-5">
-                <strong>Sign in</strong>
-              </h3>
-            </div>
-            <form onSubmit={props.handleSubmit}>
+const LoginForm = props => {
+  return (
+    <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody className="mx-4">
+              <div className="text-center">
+                <h3 className="dark-grey-text mb-5">
+                  <strong>Sign in</strong>
+                </h3>
+              </div>
               <MDBInput
                 label="Your username"
                 error="wrong"
@@ -52,20 +52,20 @@ const LoginForm = props => (
                   Sign in
                 </MDBBtn>
               </div>
-            </form>
-          </MDBCardBody>
-          <MDBModalFooter className="mx-5 pt-3 mb-1">
-            <p className="font-small grey-text d-flex justify-content-end">
-              Not a member?
+            </MDBCardBody>
+            <MDBModalFooter className="mx-5 pt-3 mb-1">
+              <p className="font-small grey-text d-flex justify-content-end">
+                Not a member?
               <a href="#!" className="blue-text ml-1">
-                Sign Up
+                  Sign Up
               </a>
-            </p>
-          </MDBModalFooter>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-);
+              </p>
+            </MDBModalFooter>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+  );
+};
 
 export default LoginForm;

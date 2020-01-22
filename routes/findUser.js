@@ -1,5 +1,6 @@
 const passport = require('passport');
-const User = require('../sequelize');
+const Models = require('../sequelize');
+const User = Models.User;
 
 module.exports = app => {
   app.get('/findUser', (req, res, next) => {
@@ -34,6 +35,8 @@ module.exports = app => {
               password: userInfo.password,
               message: 'user found in db',
             });
+
+
           } else {
             console.error('no user exists in db with that username');
             res.status(401).send('no user exists in db with that username');

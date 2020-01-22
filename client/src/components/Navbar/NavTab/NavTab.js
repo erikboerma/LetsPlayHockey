@@ -5,7 +5,7 @@ const NavTab = props => {
   const navItem = (
     <li className="nav-item">
       <Link
-        to={props.location}
+        to={props.location ? props.location : null}
         className={
           window.location.pathname === props.location
             ? "nav-link active"

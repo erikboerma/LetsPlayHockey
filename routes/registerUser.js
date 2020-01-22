@@ -1,10 +1,12 @@
 const passport = require('passport');
-const User = require('../sequelize');
+const Models = require('../sequelize');
+const User = Models.User;
+const UserAvailability = Models.UserAvailability;
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
 
-    console.log('Req.Body - ' + JSON.stringify(req.body))
+    console.log(`Req.Body - ${JSON.stringify(req.body)}\n`)
 
     passport.authenticate('register', (err, user, info) => {
       console.log('User - ' + JSON.stringify(user));
@@ -18,25 +20,32 @@ module.exports = app => {
 
         req.logIn(user, err => {
           User.findOne({
-            where: {
-              username: req.body.username,
-            },
-          }).then(user => {
-            user
-              .update({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-              })
-              .then(() => {
-                console.log('user created in db');
-                res.status(200).send({
-                  message: 'user created'
-                });
+              where: {
+                username: req.body.username
+              }
+            })
+            .then(user => {
+              console.log(user)
+              user
+                .update({
+                  firstName: req.body.firstName,
+                  lastName: req.body.lastName,
+                  email: req.body.email,
+                  position: req.body.position,
+                  shot: req.body.shot,
+                  skillLevel: req.body.skillLevel,
+                  notice: req.body.notice,
+                })
+            })
+            .then(() => {
+              console.log('user created in db');
+              res.status(200).send({
+                userId: user.id,
+                message: 'user created'
               });
-          });
+            });
         });
-      }
+      };
     })(req, res, next);
-  });
-};
+  })
+}

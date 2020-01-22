@@ -7,9 +7,9 @@ import axios from 'axios';
 const Login = props => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
+  
   let history = useHistory();
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -21,7 +21,7 @@ const Login = props => {
       }
     ).then(resp => {
       console.log(resp);
-      const userLoggedIn = "user found & logged in"
+      const userLoggedIn = resp.data.auth === true;
       if (userLoggedIn) {
         localStorage.setItem('authToken', resp.data.token)
         props.setGlobalState({ authToken: resp.data.token });

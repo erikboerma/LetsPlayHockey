@@ -37,12 +37,6 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        position: {
-            type: DataTypes.STRING,
-            validate: {
-                notEmpty: true
-            }
-        },
         shot: {
             type: DataTypes.STRING,
             validate: {
@@ -50,12 +44,6 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         skillLevel: {
-            type: DataTypes.STRING,
-            validate: {
-                notEmpty: true
-            }
-        },
-        availability: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
