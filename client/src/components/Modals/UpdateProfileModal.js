@@ -11,7 +11,7 @@ import { position, shot, skillLevel, days, notice } from "../../constants";
 import { mapSelectArray } from '../../utils';
 
 
-const ModalPage = props => {
+const UpdateProfileModal = props => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => {
@@ -120,4 +120,4 @@ const ModalPage = props => {
   );
 };
 
-export default ModalPage;
+export default UpdateProfileModal;

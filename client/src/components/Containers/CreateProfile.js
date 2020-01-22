@@ -8,7 +8,7 @@ const CreateProfile = props => {
   const [position, setPosition] = useState(null);
   const [shot, setShot] = useState(null);
   const [skillLevel, setSkillLevel] = useState(null);
-  const [availability, setAvailability] = useState([]);
+  // const [availability, setAvailability] = useState([]);
   const [notice, setNotice] = useState();
 
   let history = useHistory();
@@ -52,11 +52,11 @@ const CreateProfile = props => {
       }
     }
     // These conditions will check for multi options
-    else {
-      selectedOption.forEach(data => {
-        setAvailability([...availability, data]);
-      });
-    }
+    // else {
+    //   selectedOption.forEach(data => {
+    //     setAvailability([...availability, data]);
+    //   });
+    // }
   };
 
   return (

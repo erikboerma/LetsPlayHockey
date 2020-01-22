@@ -3,8 +3,10 @@ import { withGlobalState } from "react-globally";
 import "./dashboard.css";
 import axios from "axios";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import ModalPage from "../Modals/UpdateProfileModal";
-import ModalPage2 from "../Modals/AddTeamModal";
+import UpdateProfileModal from "../Modals/UpdateProfileModal";
+import AddTeamModal from "../Modals/AddTeamModal";
+import CreateTeamModal from '../Modals/CreateTeamModal';
+import Tab from '../Tab/Tab';
 import { useHistory } from "react-router-dom";
 
 const Dashboard = props => {
@@ -13,8 +15,14 @@ const Dashboard = props => {
   const [position, setPosition] = useState();
   const [skill, setSkill] = useState();
   const [shot, setShot] = useState();
-  const [availability, setAvailability] = useState();
   const [notice, setNotice] = useState();
+
+  const [teamName, setTeamName] = useState();
+  const [offense, setOffense] = useState();
+  const [defense, setDefense] = useState();
+  const [goalies, setGoalies] = useState();
+  const [totalPlayers, setTotalPlayers] = useState();
+
 
   let history = useHistory();
 
@@ -37,10 +45,21 @@ const Dashboard = props => {
       setPosition(resp.data.position);
       setSkill(resp.data.skillLevel);
       setShot(resp.data.shot);
-      setAvailability(resp.data.availability);
       setNotice(resp.data.notice);
     });
   });
+
+  const createTeamSubmit = async event => {
+    event.preventDefault();
+
+    await axios.post('/createTeam', {
+      teamName,
+      offense,
+      defense,
+      goalies, 
+      totalPlayers
+    })
+  }
 
   return (
     <div className="container">
@@ -66,33 +85,30 @@ const Dashboard = props => {
               <span className="secondary dashboard-text"> {skill}</span>
             </li>
             <li>
-              Availability:
-              <span className="secondary dashboard-text"> {availability}</span>
-            </li>
-            <li>
               Notice Needed:
               <span className="secondary dashboard-text"> {notice}</span>
             </li>
           </ul>
-          <ModalPage
+          <UpdateProfileModal
             position={position}
             skill={skill}
             shot={shot}
             notice={notice}
           />
-          <ModalPage2 position={position} />
+          <AddTeamModal position={position} />
+          <CreateTeamModal 
+            setTeamName={setTeamName}
+            setOffense={setOffense}
+            setDefense={setDefense}
+            setGoalies={setGoalies}
+            setTotalPlayers={setTotalPlayers}
+            handleSubmit={createTeamSubmit}
+          />
         </div>
 
         <br />
-        <div className="col-1"></div>
-        <div className="col-7">
-          <h1>
-            <u>Available Games</u>
-          </h1>
-          <br />
-          <h1>
-            <u>Selected Games</u>
-          </h1>
+        <div className="col-8">
+          <Tab></Tab>
         </div>
       </div>
     </div>

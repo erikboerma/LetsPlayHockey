@@ -7,7 +7,16 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        positions: {
+        offense: {
+            type: DataTypes.INTEGER
+        },
+        defense: {
+            type: DataTypes.INTEGER
+        },
+        goalies: {
+            type: DataTypes.INTEGER
+        },
+        totalPlayers: {
             type: DataTypes.INTEGER,
             validate: {
                 // allowNull: false,
