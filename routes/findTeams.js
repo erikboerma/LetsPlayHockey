@@ -1,4 +1,5 @@
-const Team = require('../sequelize');
+const Models = require('../sequelize');
+const Team = Models.Team;
 
 module.exports = (app) => {
     app.get('/api/findTeams', (req, res) => {
