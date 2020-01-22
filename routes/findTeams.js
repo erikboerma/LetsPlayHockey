@@ -1,28 +1,29 @@
 const Models = require('../sequelize');
 const Team = Models.Team;
-const UserTeam = Models.UserTeam;
+const User = Models.User;
 
 module.exports = app => {
-    app.post('/findTeams', (req, res) => {
-        console.log(`findTeams Req.Body - ${JSON.stringify(req.body)}`)
-        UserTeam.findAll({
-            where: {
-                UserId: req.body.userId
-            }
+    app.get('/findTeams', (req, res) => {
+
+        Team.findAll({
+            include: [{
+                model: User,
+                as: 'users',
+                attributes: ['id'],
+                through: {
+                    model: 'UserTeams',
+                    as: 'userTeams',
+                    attributes: ['TeamId']
+                }
+            }]
         }).then(userTeam => {
             console.log(userTeam)
-            Team.findOne({
-                where: {
-                    id: userTeam[0].TeamId
-                }
-            }).then(team => {
-                if (team != null) {
-                    console.log('teams found in db from findTeams');
-                    res.end(JSON.stringify(team));
-                } else {
-                    console.log('no teams found');
-                }
-            });
+            if (userTeam != null) {
+                console.log('teams found in db from findTeams');
+                res.end(JSON.stringify(userTeam));
+            } else {
+                console.log('no teams found');
+            }
         });
-    });
+    })
 }

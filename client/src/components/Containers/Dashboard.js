@@ -29,37 +29,31 @@ const Dashboard = props => {
       headers: { Authorization: `Bearer ${token}` }
     };
 
-    async function fetchData() {
-      await axios.get("/findUser", config).then(resp => {
-        console.log(resp);
-        setUser({
-          ...user,
-          id: resp.data.id,
-          firstName: resp.data.firstName,
-          lastName: resp.data.lastName,
-          skillLevel: resp.data.skillLevel,
-          shot: resp.data.shot,
-          notice: resp.data.notice
-        });
+    const fetchData = async () => {
+      const userResp = await axios.get("/findUser", config);
+      console.log(userResp);
+      setUser({
+        ...user,
+        id: userResp.data.id,
+        firstName: userResp.data.firstName,
+        lastName: userResp.data.lastName,
+        skillLevel: userResp.data.skillLevel,
+        shot: userResp.data.shot,
+        notice: userResp.data.notice
       });
 
-      await axios
-        .post("/findTeams", {
-          userId
-        })
-        .then(resp => {
-          console.log(resp);
-          setTeams([
-            ...teams,
-            {
-              teamName: resp.data.name,
-              offense: resp.data.offense,
-              defense: resp.data.defense,
-              goalies: resp.data.goalies,
-              totalPlayers: resp.data.totalPlayers
-            }
-          ]);
-        });
+      const teamResp = await axios.get("/findTeams", { userId });
+      console.log(teamResp);
+      setTeams([
+        ...teams,
+        {
+          teamName: teamResp.data.name,
+          offense: teamResp.data.offense,
+          defense: teamResp.data.defense,
+          goalies: teamResp.data.goalies,
+          totalPlayers: teamResp.data.totalPlayers
+        }
+      ]);
     };
 
     fetchData();

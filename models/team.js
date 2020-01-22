@@ -1,3 +1,5 @@
+const Model = require('../sequelize');
+
 module.exports = (sequelize, DataTypes) => {
     const Team = sequelize.define("Team", {
         name: {
@@ -25,5 +27,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
     });
+
+    
     return Team;
 };
