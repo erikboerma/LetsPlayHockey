@@ -12,5 +12,5 @@ module.exports = (app) => {
                 console.log('no teams found');
             }
         });
-    });
+    });     
 };

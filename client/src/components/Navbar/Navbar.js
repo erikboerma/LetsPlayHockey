@@ -22,6 +22,7 @@ const Navbar = props => {
       <ul className="nav nav-tabs">
         <NavTab location="/" title="LetsPlayHockey" logo={logo} />
         <NavTab location="/Dashboard" title="Dashboard" />
+        <NavTab location="/Find Games" title="Find Games" />
         
         {/* TODO: Have the logout clear the global authToken and redirect home */}
         <NavTab location="/" title="Logout" />
