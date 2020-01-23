@@ -12,7 +12,7 @@ import "./registerForm.css";
 
 const RegisterForm = props => {
   if (props.currentStep !== 1) {
-    return null
+    return null;
   }
 
   return (
@@ -30,38 +30,56 @@ const RegisterForm = props => {
                 label="First Name"
                 error="wrong"
                 success="right"
-                onChange={e => props.setFirstName(e.target.value)}
+                value={props.user.firstName ? props.user.firstName : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, firstName: e.target.value })
+                }
               />
               <MDBInput
                 label="Last Name"
                 error="wrong"
                 success="right"
-                onChange={e => props.setLastName(e.target.value)}
+                value={props.user.lastName ? props.user.lastName : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, lastName: e.target.value })
+                }
               />
               <MDBInput
                 label="Email Address"
                 type="email"
                 error="wrong"
                 success="right"
-                onChange={e => props.setEmail(e.target.value)}
+                value={props.user.email ? props.user.email : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, email: e.target.value })
+                }
               />
               <MDBInput
                 label="Username"
                 error="wrong"
                 success="right"
-                onChange={e => props.setUsername(e.target.value)}
+                value={props.user.username ? props.user.username : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, username: e.target.value })
+                }
               />
               <MDBInput
                 label="Password"
                 type="password"
                 containerClass="mb-0"
-                onChange={e => props.setPassword(e.target.value)}
+                value={props.user.password ? props.user.password : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, password: e.target.value })
+                }
               />
               <MDBInput
                 label="Confirm Password"
                 type="password"
                 containerClass="mb-0"
-                onChange={e => props.setPasswordConfirm(e.target.value)}
+                value={props.user.passwordConfirm ? props.user.passwordConfirm : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, passwordConfirm: e.target.value })
+                }
               />
               <div className="text-center mb-3">
                 <MDBBtn

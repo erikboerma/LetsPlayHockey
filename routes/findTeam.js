@@ -1,7 +1,6 @@
 const Models = require('../sequelize');
 const Team = Models.Team;
 
-
 module.exports = app => {
     app.get('/findTeam', (req, res) => {
         Team.findOne({
