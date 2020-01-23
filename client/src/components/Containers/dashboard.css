@@ -17,7 +17,6 @@
 }
 
 .dashboard-name {
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -34,3 +33,9 @@
 .secondary {
     color: #2196F3;
 }
+
+.bioBox {
+    border: 1px solid;
+
+}
+

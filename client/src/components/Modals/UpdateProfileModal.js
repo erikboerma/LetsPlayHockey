@@ -20,7 +20,7 @@ const UpdateProfileModal = props => {
 
   return (
     <MDBContainer>
-      <MDBBtn gradient="blue" onClick={toggle}>
+      <MDBBtn gradient="blue" size="sm" className="d-inline" onClick={toggle}>
         Edit Profile
       </MDBBtn>
       <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
