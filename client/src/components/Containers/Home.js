@@ -1,11 +1,9 @@
 import React from "react";
 import { withGlobalState } from 'react-globally';
 import logo from "../../assets/images/letsPlayHockeyNew.png";
-import rink from "../../assets/images/icehockeyrink.jpg";
 
 const Home = () => (
   <div className="container">
-    {/* <img src={rink} alt="bg" className="homeBg" /> */}
     <img id="logo" src={logo} alt="Logo" />;
          <h3 id="homeText">
       Welcome to Lets Play Hockey!<br />

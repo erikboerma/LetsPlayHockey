@@ -20,7 +20,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && <Box p={2}>{children}</Box>}
     </Typography>
   );
 }
@@ -69,9 +69,8 @@ export default function FullWidthTabs() {
         //   variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="My Teams" {...a11yProps(0)} />
+          <Tab label="My Games" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       {/* <SwipeableViews
