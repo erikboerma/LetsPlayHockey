@@ -9,7 +9,6 @@ const API_PORT = process.env.PORT || 3001;
 
 require('./config/passport');
 
-
 // Middleware
 app.use(Cors());
 app.use(bodyParser.urlencoded({
@@ -24,9 +23,13 @@ app.use('/static', express.static('public'));
 // Routes
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
-require("./routes/findTeams")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
+require("./routes/findTeam")(app);
+require("./routes/findTeams")(app);
+require("./routes/createTeam")(app);
+require("./routes/findGame")(app);
+
 require("./routes/updateUserTest")(app);
 require("./routes/test")(app);
 

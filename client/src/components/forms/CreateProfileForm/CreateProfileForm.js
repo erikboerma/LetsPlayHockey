@@ -7,24 +7,17 @@ import {
   MDBCardBody,
   MDBBtn
 } from "mdbreact";
-import Checkbox from "../../Checkbox/Checkbox";
 import Select from "react-select";
-import { position, shot, skillLevel, days, notice } from "../../../constants";
+import { shot, skillLevel, notice } from "../../../constants";
 import "./createProfileForm.css";
-
-const mapArray = (arr, state) => {
-  let newArr = [];
-  arr.map((key, i) => {
-    newArr.push({
-      state: state,
-      label: key,
-      value: i
-    });
-  });
-  return newArr;
-};
+import mapSelectArray from '../../../utils';
 
 const CreateProfileForm = props => {
+
+  const handleChange = selectedOption => {
+    props.setUser({selectedOption}.value)
+  }
+
   if (props.currentStep !== 2) {
     return null
   }
@@ -45,27 +38,18 @@ const CreateProfileForm = props => {
 
               <div className="row drop-down">
                 <div className="text-center">
-                  <h4>Position</h4>
-                </div>
-                <div className="position-select">
-                  <Select
-                    placeholder="Position"
-                    options={mapArray(position, "position")}
-                    onChange={props.handleChange}
-                  />
-                </div>
-              </div>
-              <hr />
-
-              <div className="row drop-down">
-                <div className="text-center">
                   <h4>Shot</h4>
                 </div>
                 <div className="position-select">
                   <Select
                     placeholder="Shot"
-                    options={mapArray(shot, "shot")}
-                    onChange={props.handleChange}
+                    options={mapSelectArray(shot)}
+                    onChange={handleChange}
+                    // onChange={props.setUser({ ...props.user, selectedOption.value})}
+                    // onChange={e =>
+                    //   console.log(e.target.value)
+                    //   // props.setUser({ ...props.user, shot: e.target.value })
+                    // }
                   />
                 </div>
               </div>
@@ -78,23 +62,10 @@ const CreateProfileForm = props => {
                 <div className="position-select">
                   <Select
                     placeholder="Skill Level"
-                    options={mapArray(skillLevel, "skillLevel")}
-                    onChange={props.handleChange}
-                  />
-                </div>
-              </div>
-              <hr />
-
-              <div className="row drop-down">
-                <div className="text-center">
-                  <h4>Availability</h4>
-                </div>
-                <div className="position-select">
-                  <Select
-                    placeholder="Availability"
-                    options={mapArray(days, "availability")}
-                    onChange={props.handleChange}
-                    isMulti
+                    options={mapSelectArray(skillLevel, "skillLevel")}
+                    onChange={e =>
+                      props.setUser({ ...props.user, skillLevel: e.target.value.value })
+                    }
                   />
                 </div>
               </div>
@@ -107,15 +78,16 @@ const CreateProfileForm = props => {
                 <div className="position-select">
                   <Select
                     placeholder="Notice Needed"
-                    options={mapArray(notice, "notice")}
-                    onChange={props.handleChange}
+                    options={mapSelectArray(notice, "notice")}
+                    onChange={e =>
+                      props.setUser({ ...props.user, notice: e.target.value.value })
+                    }
                   />
                 </div>
               </div>
               <hr />
 
               <div className="row">
-
                 <div className="text-left mb-3">
                   <MDBBtn
                     type="button"

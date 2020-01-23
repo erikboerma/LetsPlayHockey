@@ -3,25 +3,22 @@ import { withGlobalState } from "react-globally";
 import "./dashboard.css";
 import axios from "axios";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import ModalPage from "../Modals/UpdateProfileModal";
-import ModalPage2 from "../Modals/AddTeamModal";
+import UpdateProfileModal from "../Modals/UpdateProfileModal";
+import AddTeamModal from "../Modals/AddTeamModal";
+import CreateTeamModal from "../Modals/CreateTeamModal";
+import Tab from "../Tab/Tab";
 import { useHistory } from "react-router-dom";
-import { MDBModalFooter } from "mdbreact";
-import GameTable from "../Games/Games"
+import TeamTable from "../Tables/TeamTable";
 
 const Dashboard = props => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [position, setPosition] = useState();
-  const [skill, setSkill] = useState();
-  const [shot, setShot] = useState();
-  const [availability, setAvailability] = useState();
-  const [notice, setNotice] = useState();
+  const [user, setUser] = useState({});
+  const [teams, setTeams] = useState([]);
 
   let history = useHistory();
 
   // TODO: This still needs work and can be refactored better
   useEffect(() => {
+    const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
     if (token === "") {
@@ -32,17 +29,35 @@ const Dashboard = props => {
       headers: { Authorization: `Bearer ${token}` }
     };
 
-    axios.get(`/findUser`, config).then(resp => {
-      // Potential bug here? Console is logging 7 times.
-      setFirstName(resp.data.firstName);
-      setLastName(resp.data.lastName);
-      setPosition(resp.data.position);
-      setSkill(resp.data.skillLevel);
-      setShot(resp.data.shot);
-      setAvailability(resp.data.availability);
-      setNotice(resp.data.notice);
-    });
-  });
+    const fetchData = async () => {
+      const userResp = await axios.get("/findUser", config);
+      console.log(userResp);
+      setUser({
+        ...user,
+        id: userResp.data.id,
+        firstName: userResp.data.firstName,
+        lastName: userResp.data.lastName,
+        skillLevel: userResp.data.skillLevel,
+        shot: userResp.data.shot,
+        notice: userResp.data.notice
+      });
+
+      const teamResp = await axios.get("/findTeams", { userId });
+      console.log(teamResp);
+      setTeams([
+        ...teams,
+        {
+          teamName: teamResp.data.name,
+          offense: teamResp.data.offense,
+          defense: teamResp.data.defense,
+          goalies: teamResp.data.goalies,
+          totalPlayers: teamResp.data.totalPlayers
+        }
+      ]);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
@@ -90,16 +105,9 @@ const Dashboard = props => {
 
         </div>
         <br />
-        <div className="col-1"></div>
-        <div className="col-7">
-          <h1>
-            <u>Available Games</u>
-          </h1>
-          <GameTable />
-          <br />
-          <h1>
-            <u>Selected Games</u>
-          </h1>
+        <div className="col-8">
+          <Tab></Tab>
+          <TeamTable teams={teams} />
         </div>
       </div>
     </div>

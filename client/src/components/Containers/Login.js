@@ -24,7 +24,10 @@ const Login = props => {
       const userLoggedIn = resp.data.auth === true;
       if (userLoggedIn) {
         localStorage.setItem('authToken', resp.data.token)
-        props.setGlobalState({ authToken: resp.data.token });
+        props.setGlobalState({
+          userId: resp.data.userId,
+          authToken: resp.data.token
+         });
         history.push('/Dashboard');
       };
     });

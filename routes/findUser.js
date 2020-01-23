@@ -23,12 +23,11 @@ module.exports = app => {
             console.log('user found in db from findUsers');
             res.status(200).send({
               auth: true,
+              id: userInfo.id,
               firstName: userInfo.firstName,
               lastName: userInfo.lastName,
-              position: userInfo.position,
               skillLevel: userInfo.skillLevel,
               shot: userInfo.shot,
-              availability: userInfo.availability,
               notice: userInfo.notice,
               email: userInfo.email,
               username: userInfo.username,

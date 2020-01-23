@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 
-const ModalPage2 = props => {
+const AddTeamModal = props => {
     const [modal, setModal] = useState(false);
 
     const toggle = () => {
@@ -40,4 +40,4 @@ const ModalPage2 = props => {
 
 }
 
-export default ModalPage2;
+export default AddTeamModal;
