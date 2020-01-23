@@ -23,9 +23,10 @@ app.use('/static', express.static('public'));
 // Routes
 require("./routes/registerUser")(app);
 require("./routes/loginUser")(app);
-require("./routes/findTeam")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
+require("./routes/findTeam")(app);
+require("./routes/findTeams")(app);
 require("./routes/createTeam")(app);
 
 require("./routes/updateUserTest")(app);

@@ -28,6 +28,7 @@ module.exports = app => {
             }, jwtSecret.secret);
             res.status(200).send({
               auth: true,
+              userId: user.id,
               token: token,
               message: 'user found & logged in',
             });

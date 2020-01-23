@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withGlobalState } from "react-globally";
 import {
   MDBContainer,
   MDBBtn,
@@ -8,16 +9,26 @@ import {
   MDBModalFooter,
   MDBInput
 } from "mdbreact";
+import axios from "axios";
 
 const CreateTeamModal = props => {
   const [modal, setModal] = useState(false);
+  const [team, setTeam] = useState({});
 
   const toggle = () => {
     setModal(!modal);
   };
 
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    await axios.post("/createTeam", {
+      userId: props.globalState.userId,
+      team});
+  };
+
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <MDBContainer>
         <MDBBtn gradient="blue" onClick={toggle}>
           Create a Team
@@ -27,40 +38,60 @@ const CreateTeamModal = props => {
           <MDBModalBody>
             <MDBInput
               label="Team Name"
-              onChange={e => props.setTeamName(e.target.value)}
+              onChange={e =>
+                setTeam({
+                  ...team,
+                  teamName: e.target.value
+                })
+              }
             >
-              {props.teamName}
             </MDBInput>
             <MDBInput
               label="Offense Needed"
-              onChange={e => props.setOffense(e.target.value)}
+              onChange={e =>
+                setTeam({
+                  ...team,
+                  offense: e.target.value
+                })
+              }
             >
-              {props.offense}
             </MDBInput>
             <MDBInput
               label="Defense Needed"
-              onChange={e => props.setDefense(e.target.value)}
+              onChange={e =>
+                setTeam({
+                  ...team,
+                  defense: e.target.value
+                })
+              }
             >
-              {props.defense}
             </MDBInput>
             <MDBInput
               label="Goalies Needed"
-              onChange={e => props.setGoalies(e.target.value)}
+              onChange={e =>
+                setTeam({
+                  ...team,
+                  goalies: e.target.value
+                })
+              }
             >
-              {props.goalies}
             </MDBInput>
             <MDBInput
               label="Total Players Needed"
-              onChange={e => props.setTotalPlayers(e.target.value)}
+              onChange={e =>
+                setTeam({
+                  ...team,
+                  totalPlayers: e.target.value
+                })
+              }
             >
-              {props.totalPlayers}
             </MDBInput>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn color="primary" size="sm" type="submit">
+            <MDBBtn color="primary" size="sm" type="submit" onClick={toggle}>
               Save Team
             </MDBBtn>
           </MDBModalFooter>
@@ -70,4 +101,4 @@ const CreateTeamModal = props => {
   );
 };
 
-export default CreateTeamModal;
+export default withGlobalState(CreateTeamModal);

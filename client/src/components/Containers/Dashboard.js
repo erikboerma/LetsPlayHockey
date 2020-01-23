@@ -5,30 +5,20 @@ import axios from "axios";
 import defaultAvatar from "../../assets/images/default-avatar.jpg";
 import UpdateProfileModal from "../Modals/UpdateProfileModal";
 import AddTeamModal from "../Modals/AddTeamModal";
-import CreateTeamModal from '../Modals/CreateTeamModal';
-import Tab from '../Tab/Tab';
+import CreateTeamModal from "../Modals/CreateTeamModal";
+import Tab from "../Tab/Tab";
 import { useHistory } from "react-router-dom";
-import TeamTable from "../Tables/TeamTable"
+import TeamTable from "../Tables/TeamTable";
 
 const Dashboard = props => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [position, setPosition] = useState();
-  const [skill, setSkill] = useState();
-  const [shot, setShot] = useState();
-  const [notice, setNotice] = useState();
-
-  const [teamName, setTeamName] = useState();
-  const [offense, setOffense] = useState();
-  const [defense, setDefense] = useState();
-  const [goalies, setGoalies] = useState();
-  const [totalPlayers, setTotalPlayers] = useState();
-
+  const [user, setUser] = useState({});
+  const [teams, setTeams] = useState([]);
 
   let history = useHistory();
 
   // TODO: This still needs work and can be refactored better
   useEffect(() => {
+    const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
     if (token === "") {
@@ -39,37 +29,35 @@ const Dashboard = props => {
       headers: { Authorization: `Bearer ${token}` }
     };
 
-    axios.get('/findUser', config).then(resp => {
-      // Potential bug here? Console is logging 7 times.
-      setFirstName(resp.data.firstName);
-      setLastName(resp.data.lastName);
-      setPosition(resp.data.position);
-      setSkill(resp.data.skillLevel);
-      setShot(resp.data.shot);
-      setNotice(resp.data.notice);
-    });
+    const fetchData = async () => {
+      const userResp = await axios.get("/findUser", config);
+      console.log(userResp);
+      setUser({
+        ...user,
+        id: userResp.data.id,
+        firstName: userResp.data.firstName,
+        lastName: userResp.data.lastName,
+        skillLevel: userResp.data.skillLevel,
+        shot: userResp.data.shot,
+        notice: userResp.data.notice
+      });
 
-    axios.get('/findTeam', {id: 1}).then(resp => {
-      console.log(resp)
-      setTeamName(resp.data.name)
-      setOffense(resp.data.offense)
-      setDefense(resp.data.defense)
-      setGoalies(resp.data.goalies)
-      setTotalPlayers(resp.data.totalPlayers)
-    })
-  });
+      const teamResp = await axios.get("/findTeams", { userId });
+      console.log(teamResp);
+      setTeams([
+        ...teams,
+        {
+          teamName: teamResp.data.name,
+          offense: teamResp.data.offense,
+          defense: teamResp.data.defense,
+          goalies: teamResp.data.goalies,
+          totalPlayers: teamResp.data.totalPlayers
+        }
+      ]);
+    };
 
-  const createTeamSubmit = async event => {
-    event.preventDefault();
-
-    await axios.post('/createTeam', {
-      teamName,
-      offense,
-      defense,
-      goalies, 
-      totalPlayers
-    })
-  }
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
@@ -81,47 +69,36 @@ const Dashboard = props => {
               <div className="dashboard-name row">
                 <h2 className="dashboard-text">
                   <span>
-                    {firstName} {lastName}
+                    {user.firstName} {user.lastName}
                   </span>
                 </h2>
               </div>
             </li>
             <li>
+              Shot:
+              <span className="secondary dashboard-text"> {user.shot}</span>
+            </li>
+            <li>
               Skill Level:
-              <span className="secondary dashboard-text"> {skill}</span>
+              <span className="secondary dashboard-text">
+                {" "}
+                {user.skillLevel}
+              </span>
             </li>
             <li>
               Notice Needed:
-              <span className="secondary dashboard-text"> {notice}</span>
+              <span className="secondary dashboard-text"> {user.notice}</span>
             </li>
           </ul>
-          <UpdateProfileModal
-            position={position}
-            skill={skill}
-            shot={shot}
-            notice={notice}
-          />
-          <AddTeamModal position={position} />
-          <CreateTeamModal 
-            setTeamName={setTeamName}
-            setOffense={setOffense}
-            setDefense={setDefense}
-            setGoalies={setGoalies}
-            setTotalPlayers={setTotalPlayers}
-            handleSubmit={createTeamSubmit}
-          />
+          <UpdateProfileModal user={user} />
+          <AddTeamModal position={user.position} />
+          <CreateTeamModal />
         </div>
 
         <br />
         <div className="col-8">
           <Tab></Tab>
-          <TeamTable
-            teamName={teamName}
-            offense={offense}
-            defense={defense}
-            goalies={goalies}
-            totalPlayers={totalPlayers}
-          />
+          <TeamTable teams={teams} />
         </div>
       </div>
     </div>
