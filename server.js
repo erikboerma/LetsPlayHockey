@@ -28,6 +28,7 @@ require("./routes/updateUser")(app);
 require("./routes/findTeam")(app);
 require("./routes/findTeams")(app);
 require("./routes/createTeam")(app);
+require("./routes/findGame")(app);
 
 require("./routes/updateUserTest")(app);
 require("./routes/test")(app);
