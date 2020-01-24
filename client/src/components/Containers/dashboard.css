@@ -9,6 +9,7 @@
 .avatar {
     width: 250px;
     height: 250px;
+    border: 2px solid black;
 }
 
 #modalContainer {
@@ -33,4 +34,12 @@
 
 .secondary {
     color: #2196F3;
+}
+
+.modalButtonMargin {
+    margin-top: 5px !important;
+}
+
+#modalButton {
+    width: 190px;
 }

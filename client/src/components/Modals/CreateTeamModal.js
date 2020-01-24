@@ -29,8 +29,8 @@ const CreateTeamModal = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <MDBContainer>
-        <MDBBtn gradient="blue" onClick={toggle}>
+      <MDBContainer className="modalButtonMargin">
+        <MDBBtn id="modalButton" gradient="blue" onClick={toggle}>
           Create a Team
         </MDBBtn>
         <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">

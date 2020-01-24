@@ -97,7 +97,7 @@ const Dashboard = props => {
 
         <br />
         <div className="col-8">
-          <Tab></Tab>
+          <Tab />
           <TeamTable teams={teams} />
         </div>
       </div>
