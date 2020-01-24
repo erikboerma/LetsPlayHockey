@@ -6,7 +6,7 @@ import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
 import HorizontalLinearStepper from "../Stepper/Stepper";
 import axios from "axios";
 
-const MasterForm = () => {
+const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [user, setUser] = useState({});
 
@@ -57,4 +57,4 @@ const MasterForm = () => {
   );
 };
 
-export default withGlobalState(MasterForm);
+export default withGlobalState(Register);

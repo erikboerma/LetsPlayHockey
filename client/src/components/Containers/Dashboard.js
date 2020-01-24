@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { withGlobalState } from "react-globally";
-import "./dashboard.css";
-import axios from "axios";
-import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import UpdateProfileModal from "../Modals/UpdateProfileModal";
-import AddTeamModal from "../Modals/AddTeamModal";
-import CreateTeamModal from "../Modals/CreateTeamModal";
-import Tab from "../Tab/Tab";
-import { useHistory } from "react-router-dom";
-import TeamTable from "../Tables/TeamTable";
+import React, { useState, useEffect } from 'react';
+import { withGlobalState } from 'react-globally';
+import './dashboard.css';
+import axios from 'axios';
+import defaultAvatar from '../../assets/images/default-avatar.jpg';
+import UpdateProfileModal from '../Modals/UpdateProfileModal';
+import AddTeamModal from '../Modals/AddTeamModal';
+import CreateTeamModal from '../Modals/CreateTeamModal';
+import Tab from '../Tab/Tab';
+import { useHistory } from 'react-router-dom';
+import TeamTable from '../Tables/TeamTable';
+import GameTable from '../Tables/GameTable';
 
 const Dashboard = props => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
 
@@ -35,11 +37,10 @@ const Dashboard = props => {
 
       const teamResp = await axios.post("/findTeams", { userId });
       const teamRespTeams = teamResp.data[0].Teams;
-      setTeams(teamRespTeams)
+      setTeams(teamRespTeams);
       console.log(teamResp);
       console.log(teamRespTeams);
     };
-
     fetchData();
   }, []);
 
@@ -81,8 +82,18 @@ const Dashboard = props => {
 
         <br />
         <div className="col-8">
-          <Tab />
-          <TeamTable teams={teams} />
+          <Tab 
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
+          <TeamTable
+            currentStep={currentStep}
+            teams={teams}
+          />
+          {/* <GameTable
+            currentStep={currentStep}
+            teams={teams}
+          /> */}
         </div>
       </div>
     </div>
