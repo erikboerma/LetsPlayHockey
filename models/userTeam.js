@@ -4,19 +4,29 @@ const Team = require('./team');
 
 module.exports = (sequelize, DataTypes) => {
     const UserTeam = sequelize.define("UserTeam", {
-        UserId: {
+        userId: {
             type: DataTypes.INTEGER,
             references: {
                 model: User,
                 key: 'id'
             },
         },
-        TeamId: {
+        teamId: {
             type: DataTypes.INTEGER,
             references: {
                 model: Team,
                 key: 'id'
             },
+        },
+        captainId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: User,
+                key: 'id'
+            },
+        },
+        position: {
+            type: DataTypes.STRING
         },
     });
 

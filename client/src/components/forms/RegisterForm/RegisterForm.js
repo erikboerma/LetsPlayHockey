@@ -5,8 +5,8 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBBtn
+  MDBBtn,
+  MDBInput
 } from "mdbreact";
 import "./registerForm.css";
 
@@ -26,26 +26,11 @@ const RegisterForm = props => {
                   <strong>Register</strong>
                 </h3>
               </div>
-              <MDBInput
-                label="First Name"
-                error="wrong"
-                success="right"
-                value={props.user.firstName ? props.user.firstName : null}
-                onChange={e =>
-                  props.setUser({ ...props.user, firstName: e.target.value })
-                }
-              />
-              <MDBInput
-                label="Last Name"
-                error="wrong"
-                success="right"
-                value={props.user.lastName ? props.user.lastName : null}
-                onChange={e =>
-                  props.setUser({ ...props.user, lastName: e.target.value })
-                }
-              />
-              <MDBInput
-                label="Email Address"
+              
+              <input
+                className="register-input form-control"
+                type="text"
+                placeholder="Email Address"
                 type="email"
                 error="wrong"
                 success="right"
@@ -54,8 +39,10 @@ const RegisterForm = props => {
                   props.setUser({ ...props.user, email: e.target.value })
                 }
               />
-              <MDBInput
-                label="Username"
+              <input
+                className="register-input form-control"
+                type="text"
+                placeholder="Username"
                 error="wrong"
                 success="right"
                 value={props.user.username ? props.user.username : null}
@@ -63,8 +50,10 @@ const RegisterForm = props => {
                   props.setUser({ ...props.user, username: e.target.value })
                 }
               />
-              <MDBInput
-                label="Password"
+              <input
+                className="register-input form-control"
+                type="text"
+                placeholder="Password"
                 type="password"
                 containerClass="mb-0"
                 value={props.user.password ? props.user.password : null}
@@ -72,8 +61,10 @@ const RegisterForm = props => {
                   props.setUser({ ...props.user, password: e.target.value })
                 }
               />
-              <MDBInput
-                label="Confirm Password"
+              <input
+                className="register-input form-control"
+                type="text"
+                placeholder="Confirm Password"
                 type="password"
                 containerClass="mb-0"
                 value={props.user.passwordConfirm ? props.user.passwordConfirm : null}

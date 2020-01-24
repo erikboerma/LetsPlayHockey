@@ -27,7 +27,7 @@ const CreateTeamModal = props => {
       team
     });
 
-    window.location.reload();
+    window.location.reload('/Dashboard');
   };
 
   return (
