@@ -2,7 +2,7 @@ const Models = require("../sequelize");
 const Game = Models.Game;
 
 module.exports = app => {
-  app.post("/createTeam", (req, res, next) => {
+  app.post("/createGame", (req, res, next) => {
     console.log(req.body);
     Game
       .create({

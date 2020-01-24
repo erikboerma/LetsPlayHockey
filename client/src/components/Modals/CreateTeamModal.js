@@ -26,8 +26,6 @@ const CreateTeamModal = props => {
       userId: props.globalState.userId,
       team
     });
-
-    window.location.reload('/Dashboard');
   };
 
   return (

@@ -6,7 +6,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn,
-  MDBInput
 } from "mdbreact";
 import "./registerForm.css";
 
@@ -29,7 +28,6 @@ const RegisterForm = props => {
               
               <input
                 className="register-input form-control"
-                type="text"
                 placeholder="Email Address"
                 type="email"
                 error="wrong"
@@ -52,7 +50,6 @@ const RegisterForm = props => {
               />
               <input
                 className="register-input form-control"
-                type="text"
                 placeholder="Password"
                 type="password"
                 containerClass="mb-0"
@@ -63,7 +60,6 @@ const RegisterForm = props => {
               />
               <input
                 className="register-input form-control"
-                type="text"
                 placeholder="Confirm Password"
                 type="password"
                 containerClass="mb-0"

@@ -31,7 +31,6 @@ module.exports = app => {
               notice: userInfo.notice,
               email: userInfo.email,
               username: userInfo.username,
-              password: userInfo.password,
               message: 'user found in db',
             });
 

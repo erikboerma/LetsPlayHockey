@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { withGlobalState } from 'react-globally';
-import './dashboard.css';
-import axios from 'axios';
-import defaultAvatar from '../../assets/images/default-avatar.jpg';
-import UpdateProfileModal from '../Modals/UpdateProfileModal';
-import AddTeamModal from '../Modals/AddTeamModal';
-import CreateTeamModal from '../Modals/CreateTeamModal';
-import Tab from '../Tab/Tab';
-import { useHistory } from 'react-router-dom';
-import TeamTable from '../Tables/TeamTable';
-import GameTable from '../Tables/GameTable';
+import React, { useState, useEffect } from "react";
+import { withGlobalState } from "react-globally";
+import "./dashboard.css";
+import axios from "axios";
+import defaultAvatar from "../../assets/images/default-avatar.jpg";
+import UpdateProfileModal from "../Modals/UpdateProfileModal";
+import AddTeamModal from "../Modals/AddTeamModal";
+import CreateTeamModal from "../Modals/CreateTeamModal";
+import Tab from "../Tab/Tab";
+import { useHistory } from "react-router-dom";
+import TeamTable from "../Tables/TeamTable";
+import Fab from "@material-ui/core/Fab";
+import CameraIcon from "@material-ui/icons/CameraAlt";
+import GameTable from "../Tables/GameTable";
 
 const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -42,13 +44,24 @@ const Dashboard = props => {
       console.log(teamRespTeams);
     };
     fetchData();
-  }, []);
+  }, [history, props.globalState]);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <img className="avatar" alt="Your photo" src={defaultAvatar} />
+          <div className="avatar-container">
+            <img
+              id="avatar"
+              alt=""
+              src={user.avatar ? user.avatar : defaultAvatar}
+            />
+            <Fab variant="extended" id="update-avatar">
+              <CameraIcon />
+              Update Photo
+            </Fab>
+          </div>
+
           <ul>
             <li>
               <div className="dashboard-name row">
@@ -82,14 +95,8 @@ const Dashboard = props => {
 
         <br />
         <div className="col-8">
-          <Tab 
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-          />
-          <TeamTable
-            currentStep={currentStep}
-            teams={teams}
-          />
+          <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
+          <TeamTable currentStep={currentStep} teams={teams} />
           {/* <GameTable
             currentStep={currentStep}
             teams={teams}

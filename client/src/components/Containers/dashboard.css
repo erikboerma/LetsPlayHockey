@@ -6,10 +6,32 @@
 .btn {
     margin: 0;
 }
-.avatar {
+
+.avatar-container {
+    position: relative;
     width: 250px;
     height: 250px;
     border: 2px solid black;
+}
+
+#avatar {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#update-avatar {
+    display: none;
+    position: absolute;
+    bottom: 2%;
+    left: 15%;
+}
+
+#update-avatar {
+    outline: none;
+}
+
+.avatar-container:hover #update-avatar {
+    display: block;
 }
 
 #modalContainer {
