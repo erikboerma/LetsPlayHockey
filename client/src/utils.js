@@ -1,9 +1,9 @@
 // Used for mapping arrays of select components
 const mapSelectArray = arr => {
     let newArr = [];
-    arr.map((key, i) => {
+    arr.map((label, i) => {
         newArr.push({
-            label: key,
+            label: label,
             value: i
         });
     });
