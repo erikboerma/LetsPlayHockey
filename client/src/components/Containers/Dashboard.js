@@ -34,18 +34,11 @@ const Dashboard = props => {
     };
 
     const fetchData = async () => {
-      const userResp = await axios.get("/findUser", config);
-      setUser(userResp.data);
-      console.log(userResp);
-
-      const teamResp = await axios.post("/findTeams", { userId });
-      const teamRespTeams = teamResp.data[0].Teams;
-      const teamRespGames = teamResp.data[0].Teams[0].Games;
-      setTeams(teamRespTeams);
-      setGames(teamRespGames);
-      console.log(teamResp);
-      console.log(teamRespTeams);
-
+      const response = await axios.get("/findUser", config);
+      setUser(response.data);
+      setTeams(response.data[0].Teams);
+      setGames(response.data[0].Teams[0].Games)
+      console.log(response);
     };
     fetchData();
   }, [history, props.globalState]);

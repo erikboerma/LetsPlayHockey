@@ -38,7 +38,6 @@ module.exports = app => {
           if (userInfo !== null) {
             console.log('user found in db from findUsers');
             res.json(userInfo);
-
           } else {
             console.error('no user exists in db with that username');
             res.status(401).send('no user exists in db with that username');
