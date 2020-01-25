@@ -5,6 +5,7 @@ import logo from "../../assets/images/letsPlayHockeyNew.png";
 import { withGlobalState } from "react-globally";
 
 
+
 const Navbar = props => {
   // If user is not authenticated
   if (props.globalState.authToken === "") {
