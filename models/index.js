@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const UserModel = require('./models/user');
-const TeamModel = require('./models/team');
-const GameModel = require('./models/game');
-const UserTeamModel = require('./models/userTeam');
+const UserModel = require('./user');
+const TeamModel = require('./team');
+const GameModel = require('./game');
+const UserTeamModel = require('./userTeam');
 
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
   host: "127.0.0.1",
