@@ -17,7 +17,7 @@ const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
-  const [games, setGames] = useState([]);
+  // const [games, setGames] = useState([]);
 
   let history = useHistory();
 
@@ -36,8 +36,8 @@ const Dashboard = props => {
     const fetchData = async () => {
       const response = await axios.get("/findUser", config);
       setUser(response.data);
-      setTeams(response.data[0].Teams);
-      setGames(response.data[0].Teams[0].Games)
+      setTeams(response.data.teams);
+      // setGames(response.data.teams.games);
       console.log(response);
     };
     fetchData();
@@ -72,7 +72,6 @@ const Dashboard = props => {
               <li>
                 Skill Level:
                 <span className="secondary dashboard-text">
-                  {" "}
                   {user.skillLevel}
                 </span>
               </li>
@@ -83,7 +82,7 @@ const Dashboard = props => {
             </ul>
           </div>
           <UpdateProfileModal user={user} />
-          <AddTeamModal position={user.position} />
+          <AddTeamModal user={user} />
           <CreateTeamModal />
         </div>
 
@@ -93,7 +92,7 @@ const Dashboard = props => {
           <TeamTable currentStep={currentStep} teams={teams} />
           <GameTable
             currentStep={currentStep}
-            games={games}
+            teams={teams}
           />
         </div>
       </div>
