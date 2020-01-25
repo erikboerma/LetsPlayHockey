@@ -14,3 +14,15 @@
     width: 65px;
     height: 50px;
 }
+
+.home-link {
+    display: inline-block;
+}
+
+.home-link > a {
+    padding: 8px;
+}
+
+.home-link > a > li {
+    display: inline-block;
+}

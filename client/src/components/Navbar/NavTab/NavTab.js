@@ -17,11 +17,24 @@ const NavTab = props => {
     </li>
   );
 
+  const navItemHome = (
+    <div className="home-link row">
+    <Link
+      to={props.location ? props.location : null}
+      className={
+        window.location.pathname === props.location
+          ? "nav-link active"
+          : "nav-link"
+      }
+    >
+        <img src={props.logo} id="nav-logo" alt="" />
+        <li className="nav-item">{props.title}</li>
+    </Link>
+      </div>
+  );
+
   return props.logo ? (
-    <div className="row">
-      <img src={props.logo} id="nav-logo" alt=""/>
-      {navItem}
-    </div>
+    <>{navItemHome}</>
   ) : (
     <>{navItem}</>
   );
