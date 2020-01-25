@@ -4,9 +4,13 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    background-color: #D6E5E3;
+    background-color: #D6E5E3 !important;
 }
-
+.nav-link.active {
+    background-color: #D6E5E3 !important;
+    border-color: #d6d6d6 !important;
+    border: 0px !important;
+}
 .nav-item {
     font-weight: 500;
 }
