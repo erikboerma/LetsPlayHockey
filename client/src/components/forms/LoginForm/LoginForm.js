@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   MDBContainer,
   MDBRow,
@@ -7,6 +8,7 @@ import {
   MDBCardBody,
   MDBInput,
   MDBBtn,
+  MDBNavLink,
   MDBModalFooter
 } from "mdbreact";
 import "./loginForm.css";
@@ -39,12 +41,12 @@ const LoginForm = props => {
                   props.setUser({ ...props.user, password: e.target.value })
                 }
               />
-              <p className="font-small blue-text d-flex justify-content-end pb-3">
+              {/* <p className="font-small blue-text d-flex justify-content-end pb-3">
                 Forgot
                 <a href="#!" className="blue-text ml-1">
                   Password?
                 </a>
-              </p>
+              </p> */}
               <div className="text-center mb-3">
                 <MDBBtn
                   type="submit"
@@ -57,13 +59,9 @@ const LoginForm = props => {
                 </MDBBtn>
               </div>
             </MDBCardBody>
-            <MDBModalFooter className="mx-5 pt-3 mb-1">
-              <p className="font-small grey-text d-flex justify-content-end">
+            <MDBModalFooter className="mx-5 pt-3 mb-1 font-small grey-text d-flex justify-content-end">
                 Not a member?
-              <a href="#!" className="blue-text ml-1">
-                  Sign Up
-              </a>
-              </p>
+                <MDBNavLink className="font-small d-flex justify-content-end" to="/Register">Register</MDBNavLink>
             </MDBModalFooter>
           </MDBCard>
         </MDBCol>

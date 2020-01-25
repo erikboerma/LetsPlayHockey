@@ -85,9 +85,11 @@ const Dashboard = props => {
               </li>
             </ul>
           </div>
-          <UpdateProfileModal user={user} />
-          <AddTeamModal position={user.position} />
-          <CreateTeamModal />
+          <div id="modalRow">
+            <UpdateProfileModal user={user} />
+            <AddTeamModal position={user.position} />
+            <CreateTeamModal />
+          </div>
         </div>
 
         <br />
