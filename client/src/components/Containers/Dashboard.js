@@ -94,10 +94,10 @@ const Dashboard = props => {
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          {/* <GameTable
+          <GameTable
             currentStep={currentStep}
             teams={teams}
-          /> */}
+          />
         </div>
       </div>
     </div>
