@@ -1,7 +1,7 @@
 import React from "react";
 import NavTab from "./NavTab/NavTab";
 import "./navbar.css";
-import logo from "../../assets/images/letsPlayHockeyNew.png";
+import logo from "../../assets/images/LetsPlayHockeyTransparent.png";
 import { withGlobalState } from "react-globally";
 
 
