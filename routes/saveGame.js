@@ -2,9 +2,10 @@ const Models = require('../sequelize');
 const Game = Models.Game;
 
 module.exports = (app) => {
-    app.put('/api/findGame/:id', (req, res) => {
-        let id = req.params.id;
-        Game.findByIdAndUpdate(id, { $set: { save: true } })
+    app.post('/api/findGame/:id', (req, res) => {        
+        Game.create({
+            id: req.body.id
+        })
     }).then((game) => {
         res.json(game);
     });

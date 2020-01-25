@@ -13,21 +13,30 @@ const FindGames = () => {
 
   useEffect(() => {
     if (!response) {
-      axios.get("/api/findGame").then(response => {
+      axios.get("/api/findGames").then(response => {
         console.log(response.data);
         setResponse(response.data);
       });
     }
-    axios.post("/api/findGame/:id").then(response => {
-      setResponse(!response);
+    axios.post("/api/findGames/").then(response => {
+      setResponse(response);
     });
   });
 
-  const toggle = event => {
+  const handleClick = event => {
     event.preventDefault();
+    axios.post('/api/findGames/')
+      .then(response => {
+        setResponse(response)
+      }
+        ,
+        (error) => {
+          console.log(error);
+        })
     console.log("click");
+    console.log(response);
   };
-  
+
   return (
     <MDBTable hover>
       <MDBTableHead>
@@ -40,7 +49,7 @@ const FindGames = () => {
       </MDBTableHead>
       <MDBTableBody>
         {response &&
-          response.map(function(game) {
+          response.map(function (game) {
             return (
               <Fragment>
                 <tr>
@@ -50,7 +59,7 @@ const FindGames = () => {
                   <td>{game.time}</td>
                   <MDBBtn
                     tag="a"
-                    onClick={toggle}
+                    onClick={handleClick}
                     size="lg"
                     floating
                     gradient="morpheus-den"
