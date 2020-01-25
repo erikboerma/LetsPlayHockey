@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             },
         },
+        GameId: {
+            type: DataTypes.INTEGER,
+        },
         captain: {
             type: DataTypes.BOOLEAN,
         },

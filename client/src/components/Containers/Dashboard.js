@@ -85,19 +85,21 @@ const Dashboard = props => {
               </li>
             </ul>
           </div>
-          <UpdateProfileModal user={user} />
-          <AddTeamModal position={user.position} />
-          <CreateTeamModal />
+          <div id="modalRow">
+            <UpdateProfileModal user={user} />
+            <AddTeamModal position={user.position} />
+            <CreateTeamModal />
+          </div>
         </div>
 
         <br />
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          {/* <GameTable
+          <GameTable
             currentStep={currentStep}
             teams={teams}
-          /> */}
+          />
         </div>
       </div>
     </div>
