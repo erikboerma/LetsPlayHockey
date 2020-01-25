@@ -9,25 +9,20 @@ import {
 import axios from "axios";
 
 const FindGames = () => {
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState([]);
 
   useEffect(() => {
-    if (!response) {
-      axios.get("/api/findGame").then(response => {
-        console.log(response.data);
-        setResponse(response.data);
-      });
-    }
-    axios.post("/api/findGame/:id").then(response => {
-      setResponse(!response);
+    axios.get("/findAllGames").then(response => {
+      console.log(response.data);
+      setResponse(response.data);
     });
-  });
+  }, []);
 
   const toggle = event => {
     event.preventDefault();
     console.log("click");
   };
-  
+
   return (
     <MDBTable hover>
       <MDBTableHead>
@@ -40,10 +35,10 @@ const FindGames = () => {
       </MDBTableHead>
       <MDBTableBody>
         {response &&
-          response.map(function(game) {
+          response.map((game, i) => {
             return (
-              <Fragment>
-                <tr>
+              <>
+                <tr key={i}>
                   <td>{game.id}</td>
                   <td>{game.location}</td>
                   <td>{game.date}</td>
@@ -52,13 +47,12 @@ const FindGames = () => {
                     tag="a"
                     onClick={toggle}
                     size="lg"
-                    floating
                     gradient="morpheus-den"
                   >
                     <MDBIcon icon="bolt" />
                   </MDBBtn>
                 </tr>
-              </Fragment>
+              </>
             );
           })}
       </MDBTableBody>

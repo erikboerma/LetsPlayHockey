@@ -1,6 +1,6 @@
-// const Models = require('../sequelize');
 const User = require('./user');
 const Team = require('./team');
+const Game = require('./game')
 
 module.exports = (sequelize, DataTypes) => {
     const UserTeam = sequelize.define("UserTeam", {
@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             },
         },
+        // GameId: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: Game,
+        //         key: 'id'
+        //     }
+        // },
         captain: {
             type: DataTypes.BOOLEAN,
         },

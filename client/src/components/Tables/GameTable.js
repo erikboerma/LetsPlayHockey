@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
 const GameTable = props => {
@@ -12,20 +11,18 @@ const GameTable = props => {
       <MDBTableHead>
         <tr>
           <th>Team Name</th>
-          <th>Offense</th>
-          <th>Defense</th>
-          <th>Goalies</th>
-          <th>Total Players</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
         {props.games.map((game, i) => (
           <tr key={i}>
             <td>{game.name}</td>
-            <td>{game.offense}</td>
-            <td>{game.defense}</td>
-            <td>{game.goalies}</td>
-            <td>{game.totalPlayers}</td>
+            <td>{game.date}</td>
+            <td>{game.time}</td>
+            <td>{game.location}</td>
           </tr>
         ))}
       </MDBTableBody>

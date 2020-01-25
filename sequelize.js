@@ -22,7 +22,9 @@ Team.belongsToMany(User, {
   through: UserTeam,
 });
 
-Team.hasMany(Game);
+Team.hasMany(Game, {
+  foreignKey: 'TeamId'
+});
 Game.belongsTo(Team);
 
 sequelize.sync().then(() => {

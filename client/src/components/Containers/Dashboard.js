@@ -17,6 +17,7 @@ const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
+  const [games, setGames] = useState([]);
 
   let history = useHistory();
 
@@ -39,9 +40,12 @@ const Dashboard = props => {
 
       const teamResp = await axios.post("/findTeams", { userId });
       const teamRespTeams = teamResp.data[0].Teams;
+      const teamRespGames = teamResp.data[0].Teams[0].Games;
       setTeams(teamRespTeams);
+      setGames(teamRespGames);
       console.log(teamResp);
       console.log(teamRespTeams);
+
     };
     fetchData();
   }, [history, props.globalState]);
@@ -94,10 +98,10 @@ const Dashboard = props => {
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          {/* <GameTable
+          <GameTable
             currentStep={currentStep}
-            teams={teams}
-          /> */}
+            games={games}
+          />
         </div>
       </div>
     </div>
