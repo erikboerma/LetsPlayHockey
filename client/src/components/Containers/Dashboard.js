@@ -16,7 +16,6 @@ const Dashboard = props => {
 
   let history = useHistory();
 
-  // TODO: This still needs work and can be refactored better
   useEffect(() => {
     const userId = props.globalState.userId;
     const token = props.globalState.authToken;
@@ -31,29 +30,14 @@ const Dashboard = props => {
 
     const fetchData = async () => {
       const userResp = await axios.get("/findUser", config);
+      setUser(userResp.data);
       console.log(userResp);
-      setUser({
-        ...user,
-        id: userResp.data.id,
-        firstName: userResp.data.firstName,
-        lastName: userResp.data.lastName,
-        skillLevel: userResp.data.skillLevel,
-        shot: userResp.data.shot,
-        notice: userResp.data.notice
-      });
 
-      const teamResp = await axios.get("/findTeams", { userId });
+      const teamResp = await axios.post("/findTeams", { userId });
+      const teamRespTeams = teamResp.data[0].Teams;
+      setTeams(teamRespTeams)
       console.log(teamResp);
-      setTeams([
-        ...teams,
-        {
-          teamName: teamResp.data.name,
-          offense: teamResp.data.offense,
-          defense: teamResp.data.defense,
-          goalies: teamResp.data.goalies,
-          totalPlayers: teamResp.data.totalPlayers
-        }
-      ]);
+      console.log(teamRespTeams);
     };
 
     fetchData();
@@ -97,7 +81,7 @@ const Dashboard = props => {
 
         <br />
         <div className="col-8">
-          <Tab></Tab>
+          <Tab />
           <TeamTable teams={teams} />
         </div>
       </div>

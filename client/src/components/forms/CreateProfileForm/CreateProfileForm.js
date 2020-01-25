@@ -13,11 +13,6 @@ import "./createProfileForm.css";
 import mapSelectArray from '../../../utils';
 
 const CreateProfileForm = props => {
-
-  const handleChange = selectedOption => {
-    props.setUser({selectedOption}.value)
-  }
-
   if (props.currentStep !== 2) {
     return null
   }
@@ -44,12 +39,10 @@ const CreateProfileForm = props => {
                   <Select
                     placeholder="Shot"
                     options={mapSelectArray(shot)}
-                    onChange={handleChange}
-                    // onChange={props.setUser({ ...props.user, selectedOption.value})}
-                    // onChange={e =>
-                    //   console.log(e.target.value)
-                    //   // props.setUser({ ...props.user, shot: e.target.value })
-                    // }
+                    // value={props.user.shot ? props.user.shot : null}
+                    onChange={e =>
+                      props.setUser({ ...props.user, shot: e.label })
+                    }
                   />
                 </div>
               </div>
@@ -62,9 +55,10 @@ const CreateProfileForm = props => {
                 <div className="position-select">
                   <Select
                     placeholder="Skill Level"
-                    options={mapSelectArray(skillLevel, "skillLevel")}
+                    options={mapSelectArray(skillLevel)}
+                    // value={props.user.skillLevel ? props.user.skillLevel : null}
                     onChange={e =>
-                      props.setUser({ ...props.user, skillLevel: e.target.value.value })
+                      props.setUser({ ...props.user, skillLevel: e.label })
                     }
                   />
                 </div>
@@ -78,9 +72,10 @@ const CreateProfileForm = props => {
                 <div className="position-select">
                   <Select
                     placeholder="Notice Needed"
-                    options={mapSelectArray(notice, "notice")}
+                    options={mapSelectArray(notice)}
+                    // value={props.user.notice ? props.user.notice : null}
                     onChange={e =>
-                      props.setUser({ ...props.user, notice: e.target.value.value })
+                      props.setUser({ ...props.user, notice: e.label })
                     }
                   />
                 </div>

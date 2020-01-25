@@ -9,8 +9,8 @@ const AddTeamModal = props => {
     };
 
     return (
-        <MDBContainer >
-            <MDBBtn gradient="blue" onClick={toggle}>Add a game</MDBBtn>
+        <MDBContainer className="modalButtonMargin">
+            <MDBBtn id="modalButton" gradient="blue" onClick={toggle}>Add a game</MDBBtn>
             <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
                 <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
                 <MDBModalBody>
