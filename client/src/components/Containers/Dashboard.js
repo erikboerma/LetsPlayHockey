@@ -24,9 +24,9 @@ const Dashboard = props => {
     const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
-    if (token === "") {
-      history.push("/");
-    }
+    // if (token === "") {
+    //   history.push("/");
+    // }
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -49,7 +49,7 @@ const Dashboard = props => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-4">
+        <div className="user-container col-4">
           <div className="avatar-container">
             <img
               id="avatar"
@@ -61,33 +61,30 @@ const Dashboard = props => {
               Update Photo
             </Fab>
           </div>
-
-          <ul>
-            <li>
-              <div className="dashboard-name row">
+          <div className="user-info">
+            <ul>
+              <li>
                 <h2 className="dashboard-text">
-                  <span>
-                    {user.firstName} {user.lastName}
-                  </span>
+                  {user.firstName} {user.lastName}
                 </h2>
-              </div>
-            </li>
-            <li>
-              Shot:
-              <span className="secondary dashboard-text"> {user.shot}</span>
-            </li>
-            <li>
-              Skill Level:
-              <span className="secondary dashboard-text">
-                {" "}
-                {user.skillLevel}
-              </span>
-            </li>
-            <li>
-              Notice Needed:
-              <span className="secondary dashboard-text"> {user.notice}</span>
-            </li>
-          </ul>
+              </li>
+              <li>
+                Shot:
+                <span className="secondary dashboard-text"> {user.shot}</span>
+              </li>
+              <li>
+                Skill Level:
+                <span className="secondary dashboard-text">
+                  {" "}
+                  {user.skillLevel}
+                </span>
+              </li>
+              <li>
+                Notice Needed:
+                <span className="secondary dashboard-text"> {user.notice}</span>
+              </li>
+            </ul>
+          </div>
           <UpdateProfileModal user={user} />
           <AddTeamModal position={user.position} />
           <CreateTeamModal />

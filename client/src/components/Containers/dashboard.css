@@ -24,10 +24,16 @@
     position: absolute;
     bottom: 2%;
     left: 15%;
+    outline: none;
+    height: 30px;
 }
 
-#update-avatar {
-    outline: none;
+#update-avatar > span > svg {
+    margin-right: 7px;
+}
+
+.avatar-container {
+    margin: 0 auto;
 }
 
 .avatar-container:hover #update-avatar {
@@ -64,4 +70,21 @@
 
 #modalButton {
     width: 190px;
+}
+
+.user-container {
+    padding: 35px 15px 35px 15px;
+    background-image: linear-gradient(to bottom right, lightcyan, lightblue);
+    margin-left: auto;
+    align-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 10px lightgrey;
+}
+
+.user-info {
+    padding: inherit;
+}
+
+.user-info > ul {
+    background-color: inherit;
 }
