@@ -18,6 +18,12 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             },
         },
+        captain: {
+            type: DataTypes.BOOLEAN,
+        },
+        position: {
+            type: DataTypes.STRING
+        },
     });
 
     return UserTeam;

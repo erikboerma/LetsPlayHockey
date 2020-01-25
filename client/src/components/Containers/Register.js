@@ -6,7 +6,7 @@ import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
 import HorizontalLinearStepper from "../Stepper/Stepper";
 import axios from "axios";
 
-const MasterForm = () => {
+const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [user, setUser] = useState({});
 
@@ -15,30 +15,7 @@ const MasterForm = () => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    // TODO: FIX THIS
-    const firstName = user.firstName;
-    const lastName = user.lastName;
-    const email = user.email;
-    const username = user.username;
-    const password = user.password;
-    const shot = user.shot;
-    const skillLevel = user.skillLevel;
-    const notice = user.notice;
-
-
-    const resp = await axios
-      .post("/registerUser",
-        {
-          firstName,
-          lastName,
-          email,
-          username,
-          password,
-          shot,
-          skillLevel,
-          notice
-        }
-      )
+    const resp = await axios.post("/registerUser", user);
 
     console.log(resp);
     const userCreated = resp.data.message === "user created";
@@ -80,4 +57,4 @@ const MasterForm = () => {
   );
 };
 
-export default withGlobalState(MasterForm);
+export default withGlobalState(Register);

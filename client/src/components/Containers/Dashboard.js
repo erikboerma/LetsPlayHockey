@@ -9,8 +9,12 @@ import CreateTeamModal from "../Modals/CreateTeamModal";
 import Tab from "../Tab/Tab";
 import { useHistory } from "react-router-dom";
 import TeamTable from "../Tables/TeamTable";
+import Fab from "@material-ui/core/Fab";
+import CameraIcon from "@material-ui/icons/CameraAlt";
+import GameTable from "../Tables/GameTable";
 
 const Dashboard = props => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
 
@@ -20,9 +24,9 @@ const Dashboard = props => {
     const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
-    if (token === "") {
-      history.push("/");
-    }
+    // if (token === "") {
+    //   history.push("/");
+    // }
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -35,45 +39,52 @@ const Dashboard = props => {
 
       const teamResp = await axios.post("/findTeams", { userId });
       const teamRespTeams = teamResp.data[0].Teams;
-      setTeams(teamRespTeams)
+      setTeams(teamRespTeams);
       console.log(teamResp);
       console.log(teamRespTeams);
     };
-
     fetchData();
-  }, []);
+  }, [history, props.globalState]);
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-4">
-          <img className="avatar" alt="Your photo" src={defaultAvatar} />
-          <ul>
-            <li>
-              <div className="dashboard-name row">
+        <div className="user-container col-4">
+          <div className="avatar-container">
+            <img
+              id="avatar"
+              alt=""
+              src={user.avatar ? user.avatar : defaultAvatar}
+            />
+            <Fab variant="extended" id="update-avatar">
+              <CameraIcon />
+              Update Photo
+            </Fab>
+          </div>
+          <div className="user-info">
+            <ul>
+              <li>
                 <h2 className="dashboard-text">
-                  <span>
-                    {user.firstName} {user.lastName}
-                  </span>
+                  {user.firstName} {user.lastName}
                 </h2>
-              </div>
-            </li>
-            <li>
-              Shot:
-              <span className="secondary dashboard-text"> {user.shot}</span>
-            </li>
-            <li>
-              Skill Level:
-              <span className="secondary dashboard-text">
-                {" "}
-                {user.skillLevel}
-              </span>
-            </li>
-            <li>
-              Notice Needed:
-              <span className="secondary dashboard-text"> {user.notice}</span>
-            </li>
-          </ul>
+              </li>
+              <li>
+                Shot:
+                <span className="secondary dashboard-text"> {user.shot}</span>
+              </li>
+              <li>
+                Skill Level:
+                <span className="secondary dashboard-text">
+                  {" "}
+                  {user.skillLevel}
+                </span>
+              </li>
+              <li>
+                Notice Needed:
+                <span className="secondary dashboard-text"> {user.notice}</span>
+              </li>
+            </ul>
+          </div>
           <UpdateProfileModal user={user} />
           <AddTeamModal position={user.position} />
           <CreateTeamModal />
@@ -81,8 +92,12 @@ const Dashboard = props => {
 
         <br />
         <div className="col-8">
-          <Tab />
-          <TeamTable teams={teams} />
+          <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
+          <TeamTable currentStep={currentStep} teams={teams} />
+          {/* <GameTable
+            currentStep={currentStep}
+            teams={teams}
+          /> */}
         </div>
       </div>
     </div>

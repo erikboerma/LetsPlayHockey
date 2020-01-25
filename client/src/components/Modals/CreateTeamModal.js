@@ -24,7 +24,8 @@ const CreateTeamModal = props => {
 
     await axios.post("/createTeam", {
       userId: props.globalState.userId,
-      team});
+      team
+    });
   };
 
   return (
@@ -44,8 +45,7 @@ const CreateTeamModal = props => {
                   teamName: e.target.value
                 })
               }
-            >
-            </MDBInput>
+            ></MDBInput>
             <MDBInput
               label="Offense Needed"
               onChange={e =>
@@ -54,8 +54,7 @@ const CreateTeamModal = props => {
                   offense: e.target.value
                 })
               }
-            >
-            </MDBInput>
+            ></MDBInput>
             <MDBInput
               label="Defense Needed"
               onChange={e =>
@@ -64,8 +63,7 @@ const CreateTeamModal = props => {
                   defense: e.target.value
                 })
               }
-            >
-            </MDBInput>
+            ></MDBInput>
             <MDBInput
               label="Goalies Needed"
               onChange={e =>
@@ -74,8 +72,7 @@ const CreateTeamModal = props => {
                   goalies: e.target.value
                 })
               }
-            >
-            </MDBInput>
+            ></MDBInput>
             <MDBInput
               label="Total Players Needed"
               onChange={e =>
@@ -84,14 +81,18 @@ const CreateTeamModal = props => {
                   totalPlayers: e.target.value
                 })
               }
-            >
-            </MDBInput>
+            ></MDBInput>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn color="primary" size="sm" type="submit" onClick={toggle}>
+            <MDBBtn
+              color="primary"
+              size="sm"
+              type="submit"
+              onClick={handleSubmit}
+            >
               Save Team
             </MDBBtn>
           </MDBModalFooter>

@@ -24,7 +24,8 @@ module.exports = app => {
             console.log(teamCreated)
             UserTeam.create({
               UserId: req.body.userId,
-              TeamId: teamCreated.id
+              TeamId: teamCreated.id,
+              captain: true
             }).then(() => {
               console.log("Team added in createTeam route");
               res.status(200).send({

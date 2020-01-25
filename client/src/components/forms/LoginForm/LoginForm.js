@@ -27,13 +27,17 @@ const LoginForm = props => {
                 label="Your username"
                 error="wrong"
                 success="right"
-                onChange={e => props.setUsername(e.target.value)}
+                onChange={e =>
+                  props.setUser({ ...props.user, username: e.target.value })
+                }
               />
               <MDBInput
                 label="Your password"
                 type="password"
                 containerClass="mb-0"
-                onChange={e => props.setPassword(e.target.value)}
+                onChange={e =>
+                  props.setUser({ ...props.user, password: e.target.value })
+                }
               />
               <p className="font-small blue-text d-flex justify-content-end pb-3">
                 Forgot

@@ -7,7 +7,7 @@ const mapSelectArray = arr => {
             value: i
         });
     });
-    return newArr;
+    return newArr
 };
 
 export default mapSelectArray;
