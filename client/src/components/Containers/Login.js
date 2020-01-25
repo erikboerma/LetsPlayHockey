@@ -5,38 +5,31 @@ import LoginForm from '../Forms/LoginForm/LoginForm';
 import axios from 'axios';
 
 const Login = props => {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  
+  const [user, setUser] = useState({});
+
   let history = useHistory();
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post(
-      '/loginUser',
-      {
-        username,
-        password
-      }
-    ).then(resp => {
-      console.log(resp);
-      const userLoggedIn = resp.data.auth === true;
-      if (userLoggedIn) {
-        localStorage.setItem('authToken', resp.data.token)
-        props.setGlobalState({
-          userId: resp.data.userId,
-          authToken: resp.data.token
-         });
-        history.push('/Dashboard');
-      };
-    });
+    const resp = await axios.post('/loginUser', user);
+    console.log(resp);
+
+    const userLoggedIn = resp.data.auth === true;
+    if (userLoggedIn) {
+      localStorage.setItem('authToken', resp.data.token)
+      props.setGlobalState({
+        userId: resp.data.userId,
+        authToken: resp.data.token
+      });
+      history.push('/Dashboard');
+    };
   };
 
   return (
     <LoginForm
-      setUsername={setUsername}
-      setPassword={setPassword}
+      user={user}
+      setUser={setUser}
       submitForm={handleSubmit}
     >
     </LoginForm>

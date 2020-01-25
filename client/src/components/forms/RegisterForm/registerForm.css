@@ -20,3 +20,13 @@
 #next-submit {
     margin-top: 25px;
 }
+
+.register-input {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.drop-down {
+    padding-left: 20px;
+    padding-right: 20px;
+}

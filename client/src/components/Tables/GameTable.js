@@ -1,9 +1,9 @@
+
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import './TeamTable.css';
 
-const TeamTable = props => {
-  if (props.currentStep !== 0) {
+const GameTable = props => {
+  if (props.currentStep !== 1) {
     return null;
   };
 
@@ -19,13 +19,13 @@ const TeamTable = props => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {props.teams.map((team, i) => (
+        {props.games.map((game, i) => (
           <tr key={i}>
-            <td>{team.name}</td>
-            <td>{team.offense}</td>
-            <td>{team.defense}</td>
-            <td>{team.goalies}</td>
-            <td>{team.totalPlayers}</td>
+            <td>{game.name}</td>
+            <td>{game.offense}</td>
+            <td>{game.defense}</td>
+            <td>{game.goalies}</td>
+            <td>{game.totalPlayers}</td>
           </tr>
         ))}
       </MDBTableBody>
@@ -33,4 +33,4 @@ const TeamTable = props => {
   );
 };
 
-export default TeamTable;
+export default GameTable;

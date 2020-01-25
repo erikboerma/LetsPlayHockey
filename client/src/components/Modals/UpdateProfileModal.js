@@ -35,21 +35,6 @@ const UpdateProfileModal = props => {
 
           <div className="row drop-down">
             <div className="text-center">
-              <h4>Position: </h4>
-            </div>
-            <div className="position-select">
-              <Select
-                placeholder="Position"
-                // options={mapSelectArray(position, "position")}
-                onChange={props.handleChange}
-                // value={props.position}
-              />
-            </div>
-          </div>
-          <hr />
-
-          <div className="row drop-down">
-            <div className="text-center">
               <h4>Shot: </h4>
             </div>
             <div className="position-select">

@@ -5,7 +5,7 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBBtn
+  MDBBtn,
 } from "mdbreact";
 import Select from "react-select";
 import { shot, skillLevel, notice } from "../../../constants";
@@ -30,6 +30,29 @@ const CreateProfileForm = props => {
                 </h3>
               </div>
               <hr />
+
+              <input 
+                className="register-input form-control"
+                type="text" 
+                placeholder="First Name"
+                error="wrong"
+                success="right"
+                value={props.user.firstName ? props.user.firstName : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, firstName: e.target.value })
+                }
+              />
+              <input
+                className="register-input form-control"
+                type="text" 
+                placeholder="Last Name"
+                error="wrong"
+                success="right"
+                value={props.user.lastName ? props.user.lastName : null}
+                onChange={e =>
+                  props.setUser({ ...props.user, lastName: e.target.value })
+                }
+              />
 
               <div className="row drop-down">
                 <div className="text-center">

@@ -1,7 +1,7 @@
 const Models = require('../sequelize');
 const Game = Models.Game;
 
-module.exports = (app) => {
+module.exports = app => {
     app.get('/findGames', (req, res) => {
         Game.findAll({
         }).then((game) => {

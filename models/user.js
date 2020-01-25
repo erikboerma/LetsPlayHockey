@@ -55,9 +55,10 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
+        avatar: {
+            type: DataTypes.STRING
+        }
     });
-
-    
 
     return User;
 };

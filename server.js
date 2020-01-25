@@ -21,18 +21,13 @@ app.use(express.static("public"));
 app.use('/static', express.static('public'));
 
 // Routes
-require("./routes/registerUser")(app);
+require("./routes/createTeam")(app);
 require("./routes/loginUser")(app);
+require("./routes/findGames")(app);
+require("./routes/findTeams")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
-require("./routes/findTeam")(app);
-require("./routes/findTeams")(app);
-require("./routes/createTeam")(app);
-require("./routes/findGame")(app);
-
-require("./routes/updateUserTest")(app);
-require("./routes/test")(app);
-
+require("./routes/registerUser")(app);
 
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));

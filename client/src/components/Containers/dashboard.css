@@ -6,10 +6,38 @@
 .btn {
     margin: 0;
 }
-.avatar {
+
+.avatar-container {
+    position: relative;
     width: 250px;
     height: 250px;
     border: 2px solid black;
+}
+
+#avatar {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#update-avatar {
+    display: none;
+    position: absolute;
+    bottom: 2%;
+    left: 15%;
+    outline: none;
+    height: 30px;
+}
+
+#update-avatar > span > svg {
+    margin-right: 7px;
+}
+
+.avatar-container {
+    margin: 0 auto;
+}
+
+.avatar-container:hover #update-avatar {
+    display: block;
 }
 
 #modalContainer {
@@ -42,4 +70,21 @@
 
 #modalButton {
     width: 190px;
+}
+
+.user-container {
+    padding: 35px 15px 35px 15px;
+    background-image: linear-gradient(to bottom right, lightcyan, lightblue);
+    margin-left: auto;
+    align-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 10px lightgrey;
+}
+
+.user-info {
+    padding: inherit;
+}
+
+.user-info > ul {
+    background-color: inherit;
 }
