@@ -69,7 +69,6 @@ const CreateProfileForm = props => {
                   />
                 </div>
               </div>
-            
               <hr />
 
               <div className="row drop-down">
@@ -127,7 +126,7 @@ const CreateProfileForm = props => {
                     className="btn-block z-depth-1a"
                     onClick={props.handleSubmit}
                   >
-                    Register 
+                    Register
                 </MDBBtn>
                 </div>
               </div>
