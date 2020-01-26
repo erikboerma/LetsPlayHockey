@@ -1,90 +1,94 @@
-.container {
-    margin-top: 50px;
-    padding-left: 0 !important;
+.wrapper {
+  margin-top: 50px;
+  padding-left: 0 !important;
 }
 /* overwriting the bootstrap margin */
 .btn {
-    margin: 0;
+  margin: 0;
 }
 
 .avatar-container {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    border: 2px solid black;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border: 2px solid black;
 }
 
 #avatar {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #update-avatar {
-    display: none;
-    position: absolute;
-    bottom: 2%;
-    left: 15%;
-    outline: none;
-    height: 30px;
+  display: none;
+  position: absolute;
+  bottom: 2%;
+  left: 15%;
+  outline: none;
+  height: 30px;
 }
 
 #update-avatar > span > svg {
-    margin-right: 7px;
+  margin-right: 7px;
 }
 
 .avatar-container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .avatar-container:hover #update-avatar {
-    display: block;
+  display: block;
 }
 
 #modalContainer {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .dashboard-name {
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .dashboard-text {
-    font-weight: 600;
-    text-align: left;
+  font-weight: 600;
+  text-align: left;
 }
 
 .dashboard-text > span {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
-
 .secondary {
-    color: #2196F3;
+  color: #2196f3;
 }
 
 .modalButtonMargin {
-    margin-top: 5px !important;
+  margin-top: 5px !important;
 }
 
 #modalButton {
-    width: 190px;
+  width: 190px;
 }
 
 .user-container {
-    padding: 35px 15px 35px 15px;
-    background-image: linear-gradient(to bottom right, lightcyan, lightblue);
-    margin-left: auto;
-    align-content: center;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px 10px lightgrey;
+  padding: 35px 15px 35px 15px;
+  background-image: linear-gradient(to bottom right, #D6E5E3,#9FD8CB);
+  margin-left: auto;
+  align-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 10px lightgrey;
 }
 
 .user-info {
-    padding: inherit;
+  padding: inherit;
 }
 
 .user-info > ul {
-    background-color: inherit;
+  background-color: inherit;
+}
+
+#modalRow {
+  text-align: center;
+  
 }

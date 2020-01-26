@@ -30,9 +30,7 @@ const RegisterForm = props => {
                 className="register-input form-control"
                 placeholder="Email Address"
                 type="email"
-                error="wrong"
-                success="right"
-                value={props.user.email ? props.user.email : null}
+                value={props.user.email ? props.user.email : ""}
                 onChange={e =>
                   props.setUser({ ...props.user, email: e.target.value })
                 }
@@ -41,9 +39,7 @@ const RegisterForm = props => {
                 className="register-input form-control"
                 type="text"
                 placeholder="Username"
-                error="wrong"
-                success="right"
-                value={props.user.username ? props.user.username : null}
+                value={props.user.username ? props.user.username : ""}
                 onChange={e =>
                   props.setUser({ ...props.user, username: e.target.value })
                 }
@@ -52,8 +48,7 @@ const RegisterForm = props => {
                 className="register-input form-control"
                 placeholder="Password"
                 type="password"
-                containerClass="mb-0"
-                value={props.user.password ? props.user.password : null}
+                value={props.user.password ? props.user.password : ""}
                 onChange={e =>
                   props.setUser({ ...props.user, password: e.target.value })
                 }
@@ -62,8 +57,7 @@ const RegisterForm = props => {
                 className="register-input form-control"
                 placeholder="Confirm Password"
                 type="password"
-                containerClass="mb-0"
-                value={props.user.passwordConfirm ? props.user.passwordConfirm : null}
+                value={props.user.passwordConfirm ? props.user.passwordConfirm : ""}
                 onChange={e =>
                   props.setUser({ ...props.user, passwordConfirm: e.target.value })
                 }

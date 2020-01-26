@@ -44,7 +44,7 @@ const Dashboard = props => {
   }, [history, props.globalState]);
 
   return (
-    <div className="container">
+    <div className="wrapper container">
       <div className="row">
         <div className="user-container col-4">
           <div className="avatar-container">
@@ -81,9 +81,11 @@ const Dashboard = props => {
               </li>
             </ul>
           </div>
-          <UpdateProfileModal user={user} />
-          <AddTeamModal user={user} />
-          <CreateTeamModal />
+          <div id="modalRow">
+            <UpdateProfileModal user={user} />
+            <AddTeamModal position={user.position} />
+            <CreateTeamModal />
+          </div>
         </div>
 
         <br />

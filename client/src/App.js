@@ -9,18 +9,31 @@ import Register from "./components/Containers/Register";
 import Dashboard from "./components/Containers/Dashboard";
 import Games from "./components/Containers/Games";
 
-
 const App = () => (
   <>
     <GlobalControls>
       <Router>
-        <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/Register" component={Register} />
-          <Route exact path="/Dashboard" component={Dashboard} />
-          <Route exact path="/Games" component={Games} />
+          <Route exact path="/">
+            <Navbar />
+            <Home />
+          </Route>
+          <Route exact path="/Login">
+            <Navbar />
+            <Login />
+          </Route>
+          <Route exact path="/Register">
+            <Navbar />
+            <Register />
+          </Route>
+          <Route exact path="/Dashboard">
+            <Navbar />
+            <Dashboard />
+          </Route>
+          <Route exact path="/Games">
+            <Navbar />
+            <Games />
+          </Route>
         </Switch>
       </Router>
     </GlobalControls>

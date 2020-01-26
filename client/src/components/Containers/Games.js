@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
+import { withGlobalState } from "react-globally";
 import {
   MDBTable,
   MDBTableBody,
@@ -8,56 +9,65 @@ import {
 } from "mdbreact";
 import axios from "axios";
 
-const FindGames = () => {
-  const [response, setResponse] = useState([]);
+const FindGames = props => {
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     axios.get("/findAllGames").then(response => {
       console.log(response.data);
-      setResponse(response.data);
+      setGames(response.data);
     });
   }, []);
 
-  const toggle = event => {
+  const handleClick = async (event, i) => {
     event.preventDefault();
-    console.log("click");
+    const userId = props.globalState.userId;
+    const teamId = null;
+    const gameId = event.target.getAttribute("data-index");
+
+    const resp = await axios.post("/api/saveGame/", {
+      userId,
+      // teamId,
+      gameId: parseInt(gameId)
+    });
   };
 
   return (
-    <MDBTable hover>
-      <MDBTableHead>
-        <tr>
-          <th>Team Name</th>
-          <th>Location</th>
-          <th>Date</th>
-          <th>Time</th>
-        </tr>
-      </MDBTableHead>
-      <MDBTableBody>
-        {response &&
-          response.map((game, i) => {
-            return (
-              <>
+    <div className="wrapper container">
+      <MDBTable hover>
+        <MDBTableHead>
+          <tr>
+            <th>Team Name</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </MDBTableHead>
+        <MDBTableBody>
+          {games &&
+            games.map((game, i) => {
+              return (
                 <tr key={i}>
-                  <td>{game.id}</td>
                   <td>{game.location}</td>
                   <td>{game.date}</td>
                   <td>{game.time}</td>
-                  <MDBBtn
-                    tag="a"
-                    onClick={toggle}
-                    size="lg"
-                    gradient="morpheus-den"
-                  >
-                    <MDBIcon icon="bolt" />
-                  </MDBBtn>
+                  <td>
+                    <MDBBtn
+                      data-index={game.id}
+                      onClick={handleClick}
+                      size="lg"
+                      gradient="morpheus-den"
+                    >
+                      <MDBIcon icon="bolt" />
+                    </MDBBtn>
+                  </td>
                 </tr>
-              </>
-            );
-          })}
-      </MDBTableBody>
-    </MDBTable>
+              );
+            })}
+        </MDBTableBody>
+      </MDBTable>
+    </div>
   );
 };
 
-export default FindGames;
+export default withGlobalState(FindGames);

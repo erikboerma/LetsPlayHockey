@@ -1,13 +1,29 @@
+.nav-wrapper {
+    background-color: #D6E5E3 !important;
+}
+
 .nav-tabs {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     height: 100px;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    background-color: inherit;
 }
-
+.nav-link.active {
+    background-color: near-moon-gradient !important;
+    border-color: #d6d6d6 !important;
+    border: 0px !important;
+}
 .nav-item {
     font-weight: 500;
+}
+
+.nav-item-container {
+    display: flex;
 }
 
 #nav-logo {

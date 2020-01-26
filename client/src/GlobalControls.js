@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
-import { withGlobalState } from 'react-globally';
+import React from "react";
+import { withGlobalState } from "react-globally";
 
-class GlobalControls extends Component {
-  setAuthToken = (token) => {
-    this.props.setGlobalState({
-      authToken: token
+const GlobalControls = props => {
+  const setUserSession = ({ token, userId }) => {
+    props.setGlobalState({
+      authToken: token,
+      userId
     });
   };
 
-  clearAuthToken = () => {
-    this.props.setGlobalState({
-      authToken: ""
+  const clearUserSession = () => {
+    props.setGlobalState({
+      authToken: "",
+      userId: null
     });
   };
 
-  render() {
-    return (
-      <>
-        {this.props.children}
-      </>
-    )
-  }
+  return <div clearUserSession={clearUserSession}>{props.children} </div>;
 };
-
 
 export default withGlobalState(GlobalControls);

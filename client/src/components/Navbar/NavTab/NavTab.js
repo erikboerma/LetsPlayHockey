@@ -7,7 +7,7 @@ const NavTab = props => {
       <Link
         to={props.location ? props.location : null}
         className={
-          window.location.pathname === props.location
+          window.location.pathname === props.location && props.title !== "Logout"
             ? "nav-link active"
             : "nav-link"
         }

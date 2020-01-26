@@ -4,8 +4,10 @@ const TeamModel = require('./team');
 const GameModel = require('./game');
 const UserTeamModel = require('./userTeam');
 
+const jaws = process.env.JAWSDB_URL || "127.0.0.1";
+
 const sequelize = new Sequelize('letsplayhockey', 'root', null, {
-  host: "127.0.0.1",
+  host: jaws,
   dialect: "mysql",
 });
 
