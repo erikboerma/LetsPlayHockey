@@ -3,6 +3,7 @@ const Cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const passport = require('passport');
+const path = require('path');
 
 const app = express();
 const API_PORT = process.env.PORT || 3001;
@@ -30,6 +31,15 @@ require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
 require("./routes/registerUser")(app);
 
+if (process.env.NODE_ENV === 'production') {
+    // Exprees will serve up production assets
+    app.use(express.static('client/build'));
+
+    // Express serve up index.html file if it doesn't recognize route
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
 

@@ -6,10 +6,6 @@ import { withGlobalState } from "react-globally";
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a9b66599ce18a0765bcb943f5ffa67d2b13d8bff
 const Navbar = props => {
   
 // If user is not authenticated
