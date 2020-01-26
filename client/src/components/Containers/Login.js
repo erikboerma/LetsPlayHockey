@@ -27,15 +27,13 @@ const Login = props => {
   };
 
   return (
-    <>
-    </>
     
-    // <LoginForm
-    //   user={user}
-    //   setUser={setUser}
-    //   submitForm={handleSubmit}
-    // >
-    // </LoginForm>
+    <LoginForm
+      user={user}
+      setUser={setUser}
+      submitForm={handleSubmit}
+    >
+    </LoginForm>
   );
 }
 
