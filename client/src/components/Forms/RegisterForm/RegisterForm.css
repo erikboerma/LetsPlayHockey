@@ -1,0 +1,49 @@
+.form-elegant .font-small {
+    font-size: 0.8rem;
+}
+
+.form-elegant .z-depth-1a {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+
+.text-center {
+    justify-content: left;
+}
+
+#next-submit {
+    margin-top: 25px;
+}
+
+.register-input {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.drop-down {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.MuiPaper-root, .MuiStepper-root, .MuiStepper-horizontal, .MuiPaper-elevation0 {
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 10px lightgrey;
+}
+
+.md-form {
+    background-color: #f2f2f2;
+}
+
+.md-form label {
+    transform: translateX(10px) translateY(10px)
+}
+
+.md-form label.active {
+    transform: translateY(-23px) scale(0.8);
+}
