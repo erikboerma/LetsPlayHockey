@@ -1,3 +1,3 @@
-const Dashboard = require('./Dashboard.jsx');
+import Dashboard from './Dashboard';
 
 export default Dashboard;

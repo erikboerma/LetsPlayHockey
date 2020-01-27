@@ -16,7 +16,7 @@ const initialState = {
 ReactDOM.render(
   <Provider globalState={initialState}>
       <App />
-  // </Provider>,
+  </Provider>,
   document.getElementById('root')
 );
 
