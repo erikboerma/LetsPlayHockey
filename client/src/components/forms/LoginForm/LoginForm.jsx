@@ -11,7 +11,7 @@ import {
   MDBNavLink,
   MDBModalFooter
 } from "mdbreact";
-import "./loginForm.css";
+import "./LoginForm.css";
 
 const LoginForm = props => {
   return (

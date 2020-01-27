@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
-import "./dashboard.css";
+import "./Dashboard.css";
 import axios from "axios";
-import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import UpdateProfileModal from "../Modals/UpdateProfileModal";
-import AddTeamModal from "../Modals/AddTeamModal";
-import CreateTeamModal from "../Modals/CreateTeamModal";
-import Tab from "../Tab/Tab";
+import defaultAvatar from "assets/images/default-avatar.jpg";
+import UpdateProfileModal from "components/Modals/UpdateProfileModal";
+import AddTeamModal from "components/Modals/AddTeamModal";
+import CreateTeamModal from "components/Modals/CreateTeamModal";
+import Tab from "components/Tab/Tab";
 import { useHistory } from "react-router-dom";
-import TeamTable from "../Tables/TeamTable";
+import TeamTable from "components/Tables/TeamTable";
 import Fab from "@material-ui/core/Fab";
 import CameraIcon from "@material-ui/icons/CameraAlt";
-import GameTable from "../Tables/GameTable";
+import GameTable from "components/Tables/GameTable";
 
 const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
-  // const [games, setGames] = useState([]);
 
   let history = useHistory();
 
@@ -92,10 +91,7 @@ const Dashboard = props => {
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          <GameTable
-            currentStep={currentStep}
-            teams={teams}
-          />
+          <GameTable currentStep={currentStep} teams={teams} />
         </div>
       </div>
     </div>

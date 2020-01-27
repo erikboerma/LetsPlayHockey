@@ -1,14 +1,14 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import './TeamTable.css';
+import "./TeamTable.css";
 
-const TeamTable = props => {
-  if (props.currentStep !== 0) {
+const TeamTable = ({ currentStep, teams }) => {
+  if (currentStep !== 0) {
     return null;
-  };
+  }
 
   return (
-    <MDBTable hover className='dashboard-table'>
+    <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
           <th>Team Name</th>
@@ -19,7 +19,7 @@ const TeamTable = props => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {props.teams.map((team, i) => (
+        {teams.map((team, i) => (
           <tr key={i}>
             <td>{team.name}</td>
             <td>{team.offense}</td>

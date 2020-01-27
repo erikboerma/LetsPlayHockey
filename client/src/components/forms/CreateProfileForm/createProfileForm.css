@@ -18,7 +18,13 @@ img.homeBG{
 }
 
 .drop-down {
+    display: flex;
     justify-content: space-between;
+}
+
+.drop-down > h5 {
+    position: relative;
+    top: 7px
 }
 
 .drop-down > div > h4 {
@@ -28,4 +34,16 @@ img.homeBG{
 .position-select {
     width: 50%;
     padding-bottom: 4px;
+}
+
+.md-form {
+    background-color: #f2f2f2;
+}
+
+.md-form label {
+    transform: translateX(10px) translateY(10px)
+}
+
+.md-form label.active {
+    transform: translateY(-23px) scale(0.8);
 }
