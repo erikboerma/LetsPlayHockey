@@ -1,0 +1,49 @@
+.form-elegant .font-small {
+    font-size: 0.8rem;
+}
+
+.form-elegant .z-depth-1a {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+
+img.homeBG{
+    margin-top: 50px;
+}
+
+.drop-down {
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-down > h5 {
+    position: relative;
+    top: 7px
+}
+
+.drop-down > div > h4 {
+    padding-top: 4px;
+}
+
+.position-select {
+    width: 50%;
+    padding-bottom: 4px;
+}
+
+.md-form {
+    background-color: #f2f2f2;
+}
+
+.md-form label {
+    transform: translateX(10px) translateY(10px)
+}
+
+.md-form label.active {
+    transform: translateY(-23px) scale(0.8);
+}
