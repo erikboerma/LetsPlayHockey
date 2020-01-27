@@ -9,7 +9,7 @@ import {
   MDBInput
 } from "mdbreact";
 
-const AddTeamModal = props => {
+const AddGameModal = props => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => {
@@ -43,4 +43,4 @@ const AddTeamModal = props => {
   );
 };
 
-export default AddTeamModal;
+export default AddGameModal;
