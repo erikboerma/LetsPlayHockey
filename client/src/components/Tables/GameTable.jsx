@@ -4,10 +4,10 @@ import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 const GameTable = props => {
   if (props.currentStep !== 1) {
     return null;
-  };
+  }
 
   return (
-    <MDBTable hover className='dashboard-table'>
+    <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
           <th>Team Name</th>
@@ -17,7 +17,7 @@ const GameTable = props => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {props.teams.map((team, i) => (
+        {props.teams.map((team, i) =>
           team.Games.map((game, i) => (
             <tr key={i}>
               <td>{team.name}</td>
@@ -26,8 +26,7 @@ const GameTable = props => {
               <td>{game.location}</td>
             </tr>
           ))
-        ))
-        }
+        )}
       </MDBTableBody>
     </MDBTable>
   );

@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
-import "./dashboard.css";
-import axios from "axios";
-import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import UpdateProfileModal from "../Modals/UpdateProfileModal";
-import AddTeamModal from "../Modals/AddTeamModal";
-import CreateTeamModal from "../Modals/CreateTeamModal";
-import Tab from "../Tab/Tab";
 import { useHistory } from "react-router-dom";
-import TeamTable from "../Tables/TeamTable";
+import axios from "axios";
+import defaultAvatar from "assets/images/default-avatar.jpg";
+import UpdateProfileModal from "components/Modals/UpdateProfileModal";
+import AddTeamModal from "components/Modals/AddGameModal";
+import CreateTeamModal from "components/Modals/CreateTeamModal";
+import TeamTable from "components/Tables/TeamTable";
+import GameTable from "components/Tables/GameTable";
+import Tab from "components/Tab";
 import Fab from "@material-ui/core/Fab";
 import CameraIcon from "@material-ui/icons/CameraAlt";
-import GameTable from "../Tables/GameTable";
+import "./Dashboard.css";
 
 const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
-  // const [games, setGames] = useState([]);
 
   let history = useHistory();
 
@@ -25,9 +24,9 @@ const Dashboard = props => {
     const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
-    // if (token === "") {
-    //   history.push("/");
-    // }
+    if (token === "") {
+      history.push("/");
+    }
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -37,7 +36,6 @@ const Dashboard = props => {
       const response = await axios.get("/findUser", config);
       setUser(response.data);
       setTeams(response.data.teams);
-      // setGames(response.data.teams.games);
       console.log(response);
     };
     fetchData();
@@ -82,9 +80,8 @@ const Dashboard = props => {
             </ul>
           </div>
           <div id="modalRow">
-            <UpdateProfileModal user={user} />
-            <AddTeamModal position={user.position} />
             <CreateTeamModal />
+            <UpdateProfileModal />
           </div>
         </div>
 
@@ -92,10 +89,7 @@ const Dashboard = props => {
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          <GameTable
-            currentStep={currentStep}
-            teams={teams}
-          />
+          <GameTable currentStep={currentStep} teams={teams} />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { withGlobalState } from 'react-globally';
-import logo from "../../assets/images/LetsPlayHockeyTransparent.png";
+import logo from "assets/images/LetsPlayHockeyTransparent.png";
 
 const Home = () => (
   <div className="wrapper container">

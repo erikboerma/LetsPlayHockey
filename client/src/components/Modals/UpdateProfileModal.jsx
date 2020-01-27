@@ -4,12 +4,11 @@ import {
   MDBBtn,
   MDBModal,
   MDBModalBody,
-  MDBModalFooter,
+  MDBModalFooter
 } from "mdbreact";
 import Select from "react-select";
 import { shot, skillLevel, notice } from "../../constants";
-import mapSelectArray from '../../utils';
-
+import mapSelectArray from "../../utils";
 
 const UpdateProfileModal = props => {
   const [modal, setModal] = useState(false);

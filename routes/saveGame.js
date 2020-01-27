@@ -13,7 +13,8 @@ module.exports = app => {
         }).then(userTeam => {
             console.log(userTeam)
             userTeam.update({
-                GameId: req.body.gameId
+                GameId: req.body.gameId,
+                captain: false
             })
         }).then(game => {
             res.json(game);

@@ -18,7 +18,6 @@ module.exports = app => {
             offense: req.body.team.offense,
             defense: req.body.team.defense,
             goalies: req.body.team.goalies,
-            totalPlayers: req.body.team.totalPlayers
           })
           .then(teamCreated => {
             console.log(teamCreated)
