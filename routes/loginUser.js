@@ -1,4 +1,4 @@
-const Models = require('../sequelize');
+const Models = require('../models');
 const User = Models.User;
 const asyncHandler = require('express-async-handler')
 const jwtSecret = require('../config/jwtConfig');

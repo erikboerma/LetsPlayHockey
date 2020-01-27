@@ -1,11 +1,10 @@
-const Models = require('../sequelize');
+const Models = require('../models');
 const Game = Models.Game;
 
 module.exports = app => {
-    app.get('/api/findGames', (req, res) => {
+    app.get('/findAllGames', (req, res) => {
         Game.findAll({
         }).then(game => {
-            // console.log(game);
             if (game !== null) {
                 console.log('teams found in db from findGames');
                 res.json(game);

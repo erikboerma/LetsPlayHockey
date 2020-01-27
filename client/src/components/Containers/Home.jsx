@@ -1,9 +1,9 @@
 import React from "react";
 import { withGlobalState } from 'react-globally';
-import logo from "../../assets/images/LetsPlayHockeyTransparent.png";
+import logo from "assets/images/LetsPlayHockeyTransparent.png";
 
 const Home = () => (
-  <div className="container">
+  <div className="wrapper container">
     <img id="logo" src={logo} alt="Logo" />
          <h3 id="homeText">
       <strong>A resource designed for hockey players to be able to find players or games when they want!  <br />

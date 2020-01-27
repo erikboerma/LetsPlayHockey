@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from "react-globally";
-import RegisterForm from "../Forms/RegisterForm/RegisterForm";
-import CreateProfile from "../Forms/CreateProfileForm/CreateProfileForm";
-import HorizontalLinearStepper from "../Stepper/Stepper";
+import RegisterForm from "components/Forms/RegisterForm";
+import CreateProfile from "components/Forms/CreateProfileForm/";
+import HorizontalLinearStepper from "components/Stepper/Stepper";
 import axios from "axios";
 
 const Register = () => {
@@ -36,7 +36,7 @@ const Register = () => {
 
   // TODO: Look for a cleaner handleChange function
   return (
-    <div className="container">
+    <div className="wrapper container">
       <HorizontalLinearStepper currentStep={currentStep} />
       <form onSubmit={handleSubmit}>
         <RegisterForm

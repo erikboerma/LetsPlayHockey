@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
-import "./dashboard.css";
-import axios from "axios";
-import defaultAvatar from "../../assets/images/default-avatar.jpg";
-import UpdateProfileModal from "../Modals/UpdateProfileModal";
-import AddTeamModal from "../Modals/AddTeamModal";
-import CreateTeamModal from "../Modals/CreateTeamModal";
-import Tab from "../Tab/Tab";
 import { useHistory } from "react-router-dom";
-import TeamTable from "../Tables/TeamTable";
+import axios from "axios";
+import defaultAvatar from "assets/images/default-avatar.jpg";
+import UpdateProfileModal from "components/Modals/UpdateProfileModal";
+import AddTeamModal from "components/Modals/AddTeamModal";
+import CreateTeamModal from "components/Modals/CreateTeamModal";
+import TeamTable from "components/Tables/TeamTable";
+import GameTable from "components/Tables/GameTable";
+import Tab from "components/Tab";
 import Fab from "@material-ui/core/Fab";
 import CameraIcon from "@material-ui/icons/CameraAlt";
-import GameTable from "../Tables/GameTable";
+import "./Dashboard.css";
 
 const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -24,30 +24,25 @@ const Dashboard = props => {
     const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
-    // if (token === "") {
-    //   history.push("/");
-    // }
+    if (token === "") {
+      history.push("/");
+    }
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
 
     const fetchData = async () => {
-      const userResp = await axios.get("/findUser", config);
-      setUser(userResp.data);
-      console.log(userResp);
-
-      const teamResp = await axios.post("/findTeams", { userId });
-      const teamRespTeams = teamResp.data[0].Teams;
-      setTeams(teamRespTeams);
-      console.log(teamResp);
-      console.log(teamRespTeams);
+      const response = await axios.get("/findUser", config);
+      setUser(response.data);
+      setTeams(response.data.teams);
+      console.log(response);
     };
     fetchData();
   }, [history, props.globalState]);
 
   return (
-    <div className="container">
+    <div className="wrapper container">
       <div className="row">
         <div className="user-container col-4">
           <div className="avatar-container">
@@ -75,7 +70,6 @@ const Dashboard = props => {
               <li>
                 Skill Level:
                 <span className="secondary dashboard-text">
-                  {" "}
                   {user.skillLevel}
                 </span>
               </li>
@@ -86,9 +80,9 @@ const Dashboard = props => {
             </ul>
           </div>
           <div id="modalRow">
-            <UpdateProfileModal user={user} />
-            <AddTeamModal position={user.position} />
+            <AddTeamModal />
             <CreateTeamModal />
+            <UpdateProfileModal />
           </div>
         </div>
 
@@ -96,10 +90,7 @@ const Dashboard = props => {
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />
-          <GameTable
-            currentStep={currentStep}
-            teams={teams}
-          />
+          <GameTable currentStep={currentStep} teams={teams} />
         </div>
       </div>
     </div>
