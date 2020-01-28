@@ -1,21 +1,24 @@
 import React from "react";
-
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBBtn,
   MDBNavLink,
   MDBModalFooter
 } from "mdbreact";
+import { useForm } from "react-hook-form";
 import "./LoginForm.css";
 
-const LoginForm = ({ submitForm, handleChange }) => {
+const LoginForm = ({ submitForm }) => {
+  const { register, handleSubmit, errors } = useForm();
+
   return (
-    <form className="needs-validation" onSubmit={submitForm} noValidate>
+    <form
+      onSubmit={handleSubmit(submitForm)}
+    >
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6">
@@ -26,23 +29,25 @@ const LoginForm = ({ submitForm, handleChange }) => {
                     <strong>Sign in</strong>
                   </h3>
                 </div>
-                <MDBInput
-                  label="Your username"
-                  error="wrong"
-                  success="right"
+                <label>Username:</label>
+                <input
+                  className="form-control"
                   name="username"
-                  onChange={handleChange}
+                  ref={register({ required: true })}
                 />
-                <div className="invalid-feedback">
-                  Invalid Username
-                </div>
-                <MDBInput
-                  label="Your password"
-                  type="password"
-                  containerClass="mb-0"
+                {errors.username && (
+                  <span className="invalid">Username is Required</span>
+                )}
+                <label>Password:</label>
+                <input
+                  className="form-control"
                   name="password"
-                  onChange={handleChange}
+                  type="password"
+                  ref={register({ required: true })}
                 />
+                {errors.password && (
+                  <span className="invalid">Password is Required</span>
+                )}
                 <div className="text-center mb-3">
                   <MDBBtn
                     type="submit"
