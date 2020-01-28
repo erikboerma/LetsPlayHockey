@@ -30,14 +30,20 @@ require("./routes/updateUser")(app);
 require("./routes/registerUser")(app);
 
 if (process.env.NODE_ENV === 'production') {
-    // Exprees will serve up production assets
+    // Express will serve up production assets
     app.use(express.static('client/build'));
 
     // Express serve up index.html file if it doesn't recognize route
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-}
+
+    // app.get('/heroku/resources/:id',
+    //     passport.authenticate('heroku-addon'),
+    //     (request, response) => {
+    //         response.redirect("/");
+    //     });
+};
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
 
