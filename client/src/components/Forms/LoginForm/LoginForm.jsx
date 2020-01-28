@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import "./LoginForm.css";
 
 const LoginForm = ({ submitForm }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setError } = useForm();
 
   return (
     <form
@@ -38,16 +38,26 @@ const LoginForm = ({ submitForm }) => {
                 {errors.username && (
                   <span className="invalid">Username is Required</span>
                 )}
+
                 <label>Password:</label>
                 <input
                   className="form-control"
                   name="password"
                   type="password"
-                  ref={register({ required: true })}
+                  ref={register({ 
+                    required: true,
+                    validate: {
+                      passlength: value => value.length > 8
+                    }
+                  })}
                 />
+                {errors.password && errors.password.type === 'passlength' && (
+                  <span className="invalid">Password needs to be at least 8 characters in length</span>
+                )}
                 {errors.password && (
                   <span className="invalid">Password is Required</span>
                 )}
+
                 <div className="text-center mb-3">
                   <MDBBtn
                     type="submit"

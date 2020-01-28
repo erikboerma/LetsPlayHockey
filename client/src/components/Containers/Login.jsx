@@ -7,7 +7,7 @@ import LoginForm from "components/Forms/LoginForm";
 const Login = props => {
   let history = useHistory();
 
-  const handleSubmit = async data => {
+  const submitForm = async data => {
     console.log(data)
 
     const resp = await axios.post("/loginUser", data);
@@ -27,7 +27,7 @@ const Login = props => {
   return (
     <div className="wrapper container">
       <LoginForm
-        submitForm={handleSubmit}
+        submitForm={submitForm}
       />
     </div>
   );
