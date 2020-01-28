@@ -6,19 +6,20 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn,
+  MDBInput
 } from "mdbreact";
 import Select from "react-select";
 import { shot, skillLevel, notice } from "../../../constants";
-import "./createProfileForm.css";
-import mapSelectArray from '../../../utils';
+import "./CreateProfileForm.css";
+import mapSelectArray from "utils";
 
 const CreateProfileForm = props => {
   if (props.currentStep !== 2) {
-    return null
+    return null;
   }
 
   return (
-    <MDBContainer>
+    <MDBContainer className="wrapper">
       <img src={props.rinkImg} alt="bg" className="homeBg" />
       <MDBRow>
         <MDBCol md="6">
@@ -31,10 +32,10 @@ const CreateProfileForm = props => {
               </div>
               <hr />
 
-              <input 
+              <MDBInput
                 className="register-input form-control"
-                type="text" 
-                placeholder="First Name"
+                type="text"
+                label="First Name"
                 error="wrong"
                 success="right"
                 value={props.user.firstName ? props.user.firstName : null}
@@ -42,10 +43,10 @@ const CreateProfileForm = props => {
                   props.setUser({ ...props.user, firstName: e.target.value })
                 }
               />
-              <input
+              <MDBInput
                 className="register-input form-control"
-                type="text" 
-                placeholder="Last Name"
+                type="text"
+                label="Last Name"
                 error="wrong"
                 success="right"
                 value={props.user.lastName ? props.user.lastName : null}
@@ -54,10 +55,8 @@ const CreateProfileForm = props => {
                 }
               />
 
-              <div className="row drop-down">
-                <div className="text-center">
-                  <h4>Shot</h4>
-                </div>
+              <div className="drop-down">
+                <h5>Shot</h5>
                 <div className="position-select">
                   <Select
                     placeholder="Shot"
@@ -69,13 +68,11 @@ const CreateProfileForm = props => {
                   />
                 </div>
               </div>
-            
+
               <hr />
 
-              <div className="row drop-down">
-                <div className="text-center">
-                  <h4>Skill Level</h4>
-                </div>
+              <div className="drop-down">
+                <h5>Skill Level</h5>
                 <div className="position-select">
                   <Select
                     placeholder="Skill Level"
@@ -89,10 +86,8 @@ const CreateProfileForm = props => {
               </div>
               <hr />
 
-              <div className="row drop-down">
-                <div className="text-center">
-                  <h4>Notice Needed</h4>
-                </div>
+              <div className="drop-down">
+                <h5>Notice Needed</h5>
                 <div className="position-select">
                   <Select
                     placeholder="Notice Needed"
@@ -116,7 +111,7 @@ const CreateProfileForm = props => {
                     onClick={props.prevStep}
                   >
                     Back
-                </MDBBtn>
+                  </MDBBtn>
                 </div>
 
                 <div className="text-right mb-3">
@@ -127,8 +122,8 @@ const CreateProfileForm = props => {
                     className="btn-block z-depth-1a"
                     onClick={props.handleSubmit}
                   >
-                    Register 
-                </MDBBtn>
+                    Register
+                  </MDBBtn>
                 </div>
               </div>
             </MDBCardBody>

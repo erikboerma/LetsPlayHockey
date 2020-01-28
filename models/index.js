@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const UserModel = require('./models/user');
-const TeamModel = require('./models/team');
-const GameModel = require('./models/game');
-const UserTeamModel = require('./models/userTeam');
+const UserModel = require('./user');
+const TeamModel = require('./team');
+const GameModel = require('./game');
+const UserTeamModel = require('./userTeam');
 
 const jaws = process.env.JAWSDB_URL || "127.0.0.1";
 
@@ -24,7 +24,9 @@ Team.belongsToMany(User, {
   through: UserTeam,
 });
 
-Team.hasMany(Game);
+Team.hasMany(Game, {
+  foreignKey: 'TeamId'
+});
 Game.belongsTo(Team);
 
 sequelize.sync().then(() => {

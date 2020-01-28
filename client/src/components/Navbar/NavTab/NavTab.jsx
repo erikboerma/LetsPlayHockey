@@ -7,7 +7,8 @@ const NavTab = props => {
       <Link
         to={props.location ? props.location : null}
         className={
-          window.location.pathname === props.location
+          window.location.pathname === props.location &&
+          props.title !== "Logout"
             ? "nav-link active"
             : "nav-link"
         }
@@ -18,26 +19,22 @@ const NavTab = props => {
   );
 
   const navItemHome = (
-    <div className="home-link row">
-    <Link
-      to={props.location ? props.location : null}
-      className={
-        window.location.pathname === props.location
-          ? "nav-link active"
-          : "nav-link"
-      }
-    >
+    <div className="nav-item-home">
+      <Link
+        to={props.location ? props.location : null}
+        className={
+          window.location.pathname === props.location
+            ? "nav-link active"
+            : "nav-link"
+        }
+      >
         <img src={props.logo} id="nav-logo" alt="" />
         <li className="nav-item">{props.title}</li>
-    </Link>
-      </div>
+      </Link>
+    </div>
   );
 
-  return props.logo ? (
-    <>{navItemHome}</>
-  ) : (
-    <>{navItem}</>
-  );
+  return props.logo ? <>{navItemHome}</> : <>{navItem}</>;
 };
 
 export default NavTab;

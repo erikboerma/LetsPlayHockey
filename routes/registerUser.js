@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Models = require('../sequelize');
+const Models = require('../models');
 const User = Models.User;
 
 module.exports = app => {

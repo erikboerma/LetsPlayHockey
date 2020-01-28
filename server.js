@@ -25,8 +25,6 @@ app.use('/static', express.static('public'));
 require("./routes/createTeam")(app);
 require("./routes/loginUser")(app);
 require("./routes/findGames")(app);
-require("./routes/saveGame")(app);
-require("./routes/findTeams")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
 require("./routes/registerUser")(app);
