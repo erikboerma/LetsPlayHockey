@@ -24,11 +24,9 @@ const AddGameModal = props => {
       <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
         <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
         <MDBModalBody>
-          <MDBInput label="Team Name">{props.team}</MDBInput>
-          <MDBInput label="Rink">{props.location}</MDBInput>
+          <MDBInput label="Location">{props.location}</MDBInput>
           <MDBInput label="Date">{props.date}</MDBInput>
           <MDBInput label="Time">{props.time}</MDBInput>
-          <MDBInput label="Players Needed">{props.players}</MDBInput>
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={toggle} size="sm">

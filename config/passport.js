@@ -122,6 +122,6 @@ passport.use(
   }),
 );
 
-passport.use(new PassportHerokuAddon({
-  sso_salt: process.env.SSO_SALT
-}));
+// passport.use(new PassportHerokuAddon({
+//   sso_salt: process.env.SSO_SALT
+// }));
