@@ -4,7 +4,6 @@ const User = Models.User;
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
-
     console.log(`Req.Body - ${JSON.stringify(req.body)}\n`)
 
     passport.authenticate('register', (err, user, info) => {

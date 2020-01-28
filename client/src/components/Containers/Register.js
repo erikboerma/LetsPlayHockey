@@ -16,7 +16,6 @@ const Register = () => {
     event.preventDefault();
 
     const resp = await axios.post("/registerUser", user);
-
     console.log(resp);
     const userCreated = resp.data.message === "user created";
     if (userCreated) {
