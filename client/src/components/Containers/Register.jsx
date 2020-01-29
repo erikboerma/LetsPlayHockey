@@ -14,27 +14,29 @@ const Register = () => {
 
   let history = useHistory();
 
-  const submitForm = async data => {
+  const submitForm = async (data, step) => {
     console.log(data);
 
     const resp = await axios.post("/registerUser", data);
-
     console.log(resp);
+
     const userCreated = resp.data.message === "user created";
     const usernameTaken = resp.data === "username already taken";
-    
+
     if (usernameTaken) {
       setBackendErrors("Username Already Taken")
     } else if (userCreated) {
-      history.push("/Login");
+      let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+      setCurrentStep(_currentStep);
+      // history.push("/Login");
     };
   };
 
+  // TODO: Move the steps into the submitform function and 
+  // add checks in there. Therefore all front end validation will
+  // be handled within that function.
   const nextStep = () => {
-    if (!errors) {
-      let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-      setCurrentStep(_currentStep);
-    };
+    history.push("/Login");
   };
 
   const prevStep = () => {
@@ -52,13 +54,16 @@ const Register = () => {
           register={register}
           errors={errors}
           watch={watch}
+          handleSubmit={handleSubmit}
           backendErrors={backendErrors}
+          submitForm={submitForm}
         />
         <CreateProfile
           currentStep={currentStep}
           prevStep={prevStep}
           register={register}
           handleSubmit={handleSubmit}
+          nextStep={nextStep}
           errors={errors}
         />
       </form>
