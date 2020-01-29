@@ -21,7 +21,7 @@ passport.use(
       try {
         User.findOne({
           where: {
-            username: username.username,
+            username: username,
           },
         }).then(user => {
           if (user != null) {

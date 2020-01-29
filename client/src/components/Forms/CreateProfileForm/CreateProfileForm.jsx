@@ -12,10 +12,8 @@ import "../Form.css";
 const CreateProfileForm = ({
   currentStep,
   prevStep,
-  handleSubmit,
   register,
   errors,
-  submitForm
 }) => {
   if (currentStep !== 2) {
     return null;
@@ -37,6 +35,7 @@ const CreateProfileForm = ({
               <label>First Name:</label>
               <input
                 className="form-control"
+                onChange={handleChange}
                 name="firstName"
                 ref={register({
                   required: "This Field is Required",
@@ -55,6 +54,7 @@ const CreateProfileForm = ({
               <label>Last Name:</label>
               <input
                 className="form-control"
+                onChange={handleChange}
                 name="lastName"
                 ref={register({
                   required: "This Field is Required",
@@ -156,7 +156,6 @@ const CreateProfileForm = ({
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={handleSubmit(submitForm)}
                   >
                     Register
                   </MDBBtn>

@@ -52,7 +52,7 @@
 
 .dashboard-text {
   font-weight: 600;
-  text-align: left;
+  text-align: center;
 }
 
 .dashboard-text > span {
@@ -81,7 +81,7 @@
 }
 
 .user-info {
-  padding: inherit;
+  padding: 5px 15px 35px 15px;
 }
 
 .user-info > ul {
@@ -90,5 +90,4 @@
 
 #modalRow {
   text-align: center;
-  
 }

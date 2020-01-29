@@ -10,14 +10,12 @@ import {
 import "../Form.css";
 
 const RegisterForm = ({
-  submitForm,
   currentStep,
   handleChange,
-  handleSubmit,
+  response,
   register,
   errors,
   watch,
-  backendErrors
 }) => {
   if (currentStep !== 1) {
     return null;
@@ -33,8 +31,8 @@ const RegisterForm = ({
                 <h3 className="dark-grey-text mb-5">
                   <strong>Register</strong>
                 </h3>
-                {backendErrors && (
-                  <span className="invalid">{backendErrors}</span>
+                {response && (
+                  <span className="invalid">{response}</span>
                 )}
               </div>
 
@@ -42,6 +40,7 @@ const RegisterForm = ({
               <input
                 className="form-control"
                 name="email"
+                onChange={handleChange}
                 ref={register({
                   required: "This Field is Required",
                   pattern: {
@@ -79,6 +78,7 @@ const RegisterForm = ({
               <input
                 className="form-control"
                 name="password"
+                onChange={handleChange}
                 type="password"
                 ref={register({
                   required: "This Field is Required",
@@ -98,6 +98,7 @@ const RegisterForm = ({
               <input
                 className="form-control"
                 name="confirmPassword"
+                onChange={handleChange}
                 type="password"
                 ref={register({
                   required: "This Field is Required",
@@ -118,7 +119,6 @@ const RegisterForm = ({
                   rounded
                   className="btn-block z-depth-1a"
                   id="next-submit"
-                  onClick={handleSubmit(submitForm)}
                 >
                   Next
                 </MDBBtn>

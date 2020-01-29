@@ -10,7 +10,7 @@ import axios from "axios";
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [user, setUser] = useState();
-  const [backendErrors, setBackendErrors] = useState();
+  const [response, setResponse] = useState();
   const { register, handleSubmit, errors, watch } = useForm();
 
   let history = useHistory();
@@ -22,36 +22,38 @@ const Register = () => {
     });
   };
 
-  // TODO: Use one function on registerUser route
-  // TODO: And createprofile submit on updateUser route
-  const submitForm = async (data, step) => {
+  const submitForm = async data => {
     console.log(data);
 
-    const resp = await axios.post("/registerUser", {
-      username: user,
-      data
-    }
-    );
+    const resp = await axios.post("/registerUser", data);
     console.log(resp);
 
-    
     const userCreated = resp.data.message === "user created";
     const usernameTaken = resp.data === "username already taken";
 
     if (usernameTaken) {
-      setBackendErrors("Username Already Taken")
+      setResponse("Username Already Taken")
     } else if (userCreated) {
       let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
       setCurrentStep(_currentStep);
-      if (_currentStep === 3) {
-        history.push("/Login");
-      };
     };
   };
 
-  // TODO: Move the steps into the submitform function and
-  // add checks in there. Therefore all front end validation will
-  // be handled within that function.
+  const updateForm = async data => {
+    console.log(data);
+
+    const resp = await axios.post("/updateUser", {
+      user,
+      data
+    });
+    console.log(resp)
+
+    const userUpdated = resp.data.message === "user updated";
+    if (userUpdated) {
+      history.push("/Login");
+    };
+  };
+
   const prevStep = () => {
     let _currentStep = currentStep <= 1 ? 1 : currentStep - 1;
     setCurrentStep(_currentStep);
@@ -63,20 +65,19 @@ const Register = () => {
       <form onSubmit={handleSubmit(submitForm)}>
         <RegisterForm
           currentStep={currentStep}
-          submitForm={submitForm}
-          backendErrors={backendErrors}
+          handleChange={handleChange}
+          response={response}
           register={register}
-          handleSubmit={handleSubmit}
           errors={errors}
           watch={watch}
-          handleChange={handleChange}
         />
+      </form>
+      <form onSubmit={handleSubmit(updateForm)}>
         <CreateProfile
           currentStep={currentStep}
-          submitForm={submitForm}
+          handleChange={handleChange}
           prevStep={prevStep}
           register={register}
-          handleSubmit={handleSubmit}
           errors={errors}
         />
       </form>
