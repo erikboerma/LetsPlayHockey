@@ -12,25 +12,27 @@ const TeamTable = ({ currentStep, teams }) => {
     <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
-          <th>Team Name</th>
-          <th>Offense</th>
-          <th>Defense</th>
-          <th>Goalies</th>
-          <th></th>
+          <th className="tableText">Team Name</th>
+          <th className="tableText">Offense</th>
+          <th className="tableText">Defense</th>
+          <th className="tableText">Goalies</th>
+          <th className="tableText">Total Players</th>
+
         </tr>
       </MDBTableHead>
       <MDBTableBody>
         {teams.map((team, i) => (
           <tr key={i}>
-            <td>{team.name}</td>
-            <td>0/{team.offense}</td>
-            <td>0/{team.defense}</td>
-            <td>0/{team.goalies}</td>
+            <td className="teamText">{team.name}</td>
+            <td className="teamText">0/{team.offense}</td>
+            <td className="teamText">0/{team.defense}</td>
+            <td className="teamText">0/{team.goalies}</td>
             {team.userTeams.captain ? (
-              <td>
+              <td className="teamText">
                 <AddGameModal />
               </td>
             ) : null}
+
           </tr>
         ))}
       </MDBTableBody>
