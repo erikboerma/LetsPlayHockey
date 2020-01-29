@@ -4,37 +4,37 @@ import { withGlobalState } from "react-globally";
 import RegisterForm from "components/Forms/RegisterForm";
 import CreateProfile from "components/Forms/CreateProfileForm/";
 import HorizontalLinearStepper from "components/Stepper/Stepper";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [user, setUser] = useState({});
+  const [backendErrors, setBackendErrors] = useState();
+  const { register, handleSubmit, errors, setErrors, watch } = useForm();
 
   let history = useHistory();
 
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    setUser({
-      ...user,
-      [name]: value
-    });
-  };
+  const submitForm = async data => {
+    console.log(data);
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    const resp = await axios.post("/registerUser", user);
+    const resp = await axios.post("/registerUser", data);
 
     console.log(resp);
     const userCreated = resp.data.message === "user created";
-    if (userCreated) {
+    const usernameTaken = resp.data === "username already taken";
+    
+    if (usernameTaken) {
+      setBackendErrors("Username Already Taken")
+    } else if (userCreated) {
       history.push("/Login");
     };
   };
 
   const nextStep = () => {
-    let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-    setCurrentStep(_currentStep);
+    if (!errors) {
+      let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+      setCurrentStep(_currentStep);
+    };
   };
 
   const prevStep = () => {
@@ -42,24 +42,24 @@ const Register = () => {
     setCurrentStep(_currentStep);
   };
 
-  // TODO: Look for a cleaner handleInputChange function
   return (
     <div className="wrapper container">
       <HorizontalLinearStepper currentStep={currentStep} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(submitForm)}>
         <RegisterForm
-          user={user}
           currentStep={currentStep}
           nextStep={nextStep}
-          handleInputChange={handleInputChange}
+          register={register}
+          errors={errors}
+          watch={watch}
+          backendErrors={backendErrors}
         />
         <CreateProfile
-          user={user}
-          setUser={setUser}
           currentStep={currentStep}
           prevStep={prevStep}
-          handleInputChange={handleInputChange}
+          register={register}
           handleSubmit={handleSubmit}
+          errors={errors}
         />
       </form>
     </div>
