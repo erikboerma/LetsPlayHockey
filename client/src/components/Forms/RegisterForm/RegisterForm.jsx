@@ -6,11 +6,11 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn,
-  MDBInput
 } from "mdbreact";
-import "./RegisterForm.css";
+import "../Form.css";
 
-const RegisterForm = ({ user, currentStep, nextStep, handleInputChange }) => {
+
+const RegisterForm = ({ currentStep, nextStep, register, errors, watch, backendErrors }) => {
   if (currentStep !== 1) {
     return null;
   }
@@ -25,40 +25,84 @@ const RegisterForm = ({ user, currentStep, nextStep, handleInputChange }) => {
                 <h3 className="dark-grey-text mb-5">
                   <strong>Register</strong>
                 </h3>
+                {backendErrors && (
+                  <span className="invalid">
+                    {backendErrors}
+                  </span>
+                )}
               </div>
 
-              <MDBInput
-                className="register-input form-control"
-                label="Email Address"
-                type="email"
+              <label>Email Address:</label>
+              <input
+                className="form-control"
                 name="email"
-                value={user.email ? user.email : ""}
-                onChange={handleInputChange}
+                ref={register({
+                  required: 'This Field is Required',
+                  pattern: {
+                    value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    message: 'Invalid email address',
+                  }
+                })}
               />
-              <MDBInput
-                className="register-input form-control"
-                type="text"
-                label="Username"
+              {errors.email && errors.email.message && (
+                <span className="invalid">
+                  {errors.email && errors.email.message}
+                </span>
+              )}
+
+              <label>Username:</label>
+              <input
+                className="form-control"
                 name="username"
-                value={user.username ? user.username : ""}
-                onChange={handleInputChange}
+                ref={register({
+                  required: 'This Field is Required',
+                  minLength: {
+                    value: 6,
+                    message: "Username must be at least 6 characters in length"
+                  }
+                })}
               />
-              <MDBInput
-                className="register-input form-control"
-                label="Password"
-                type="password"
+              {errors.username && errors.username.message && (
+                <span className="invalid">
+                  {errors.username && errors.username.message}
+                </span>
+              )}
+
+              <label>Password:</label>
+              <input
+                className="form-control"
                 name="password"
-                value={user.password ? user.password : ""}
-                onChange={handleInputChange}
-              />
-              <MDBInput
-                className="register-input form-control"
-                label="Confirm Password"
                 type="password"
-                name="passwordConfirm"
-                value={user.passwordConfirm ? user.passwordConfirm : ""}
-                onChange={handleInputChange}
+                ref={register({
+                  required: 'This Field is Required',
+                  minLength: {
+                    value: 8,
+                    message: "Password must be at least 8 characters in length"
+                  }
+                })}
               />
+              {errors.password && errors.password.message && (
+                <span className="invalid">
+                  {errors.password && errors.password.message}
+                </span>
+              )}
+
+              <label>Confirm Password:</label>
+              <input
+                className="form-control"
+                name="confirmPassword"
+                type="password"
+                ref={register({
+                  required: 'This Field is Required',
+                  validate: (value) => value === watch('password') || "Passwords do not match"
+                })}
+              />
+              {errors.confirmPassword && errors.confirmPassword.message && (
+                <span className="invalid">
+                  {errors.confirmPassword && errors.confirmPassword.message}
+                </span>
+              )}
+
               <div className="text-center mb-3">
                 <MDBBtn
                   type="submit"
