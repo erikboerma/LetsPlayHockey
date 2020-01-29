@@ -28,6 +28,7 @@ require("./routes/findGames")(app);
 require("./routes/findUser")(app);
 require("./routes/updateUser")(app);
 require("./routes/registerUser")(app);
+require("./routes/createGame")(app);
 
 if (process.env.NODE_ENV === 'production') {
     // Exprees will serve up production assets

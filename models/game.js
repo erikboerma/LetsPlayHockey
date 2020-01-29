@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME
         },
         TeamId: {
-            type:DataTypes.INTEGER
+            type: DataTypes.INTEGER
         }
     });
     return Game;
