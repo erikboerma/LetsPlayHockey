@@ -11,21 +11,21 @@ const TeamTable = ({ currentStep, teams }) => {
     <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
-          <th>Team Name</th>
-          <th>Offense</th>
-          <th>Defense</th>
-          <th>Goalies</th>
-          <th>Total Players</th>
+          <th className="tableText">Team Name</th>
+          <th className="tableText">Offense</th>
+          <th className="tableText">Defense</th>
+          <th className="tableText">Goalies</th>
+          <th className="tableText">Total Players</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
         {teams.map((team, i) => (
           <tr key={i}>
-            <td>{team.name}</td>
-            <td>{team.offense}</td>
-            <td>{team.defense}</td>
-            <td>{team.goalies}</td>
-            <td>{team.totalPlayers}</td>
+            <td className="teamText">{team.name}</td>
+            <td className="teamText">{team.offense}</td>
+            <td className="teamText">{team.defense}</td>
+            <td className="teamText">{team.goalies}</td>
+            <td className="teamText">{team.totalPlayers}</td>
           </tr>
         ))}
       </MDBTableBody>
