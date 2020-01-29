@@ -7,17 +7,15 @@ import {
   MDBCardBody,
   MDBBtn,
 } from "mdbreact";
-import Select from "react-select";
-import { shot, skillLevel, notice } from "../../../constants";
-import "./CreateProfileForm.css";
-import mapSelectArray from "utils";
+import "../Form.css";
 
 const CreateProfileForm = ({
-  user,
-  setUser,
   currentStep,
   prevStep,
-  handleSubmit
+  handleSubmit,
+  register,
+  errors,
+  nextStep
 }) => {
   if (currentStep !== 2) {
     return null;
@@ -39,49 +37,72 @@ const CreateProfileForm = ({
               <div className="drop-down">
                 <h5>Shot</h5>
                 <div className="position-select">
-                  <Select
+                  <select
+                    className="custom-select"
                     name="shot"
-                    placeholder="Shot"
-                    options={mapSelectArray(shot)}
-                    // value={user.shot ? user.shot : null}
-                    onChange={e =>
-                      setUser({ ...user, shot: e.label })
-                    }
-                  />
+                    ref={register({
+                      required: true
+                    })}>
+                    <option value="">Choose...</option>
+                    <option value="Left Hand">Left Hand</option>
+                    <option value="Right Hand">Right Hand</option>
+                  </select>
                 </div>
               </div>
-
               <hr />
+              {errors.shot && (
+                <span className="invalid">
+                  Please Select an Option
+                </span>
+              )}
 
               <div className="drop-down">
                 <h5>Skill Level</h5>
                 <div className="position-select">
-                  <Select
-                    placeholder="Skill Level"
-                    options={mapSelectArray(skillLevel)}
-                    // value={user.skillLevel ? user.skillLevel : null}
-                    onChange={e =>
-                      setUser({ ...user, skillLevel: e.label })
-                    }
-                  />
+                  <select
+                    className="custom-select"
+                    name="skillLevel"
+                    ref={register({
+                      required: true
+                    })}>
+                    <option value="">Choose...</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="Novice">Novice</option>
+                  </select>
                 </div>
               </div>
               <hr />
+              {errors.skillLevel && (
+                <span className="invalid">
+                  Please Select an Option
+                </span>
+              )}
 
               <div className="drop-down">
-                <h5>Notice Needed</h5>
+                <h5>Notice</h5>
                 <div className="position-select">
-                  <Select
-                    placeholder="Notice Needed"
-                    options={mapSelectArray(notice)}
-                    // value={user.notice ? user.notice : null}
-                    onChange={e =>
-                      setUser({ ...user, notice: e.label })
-                    }
-                  />
+                  <select
+                    className="custom-select"
+                    name="notice"
+                    ref={register({
+                      required: true
+                    })}>
+                    <option value="">Choose...</option>
+                    <option value="1 Day">1 Day</option>
+                    <option value="2 Days">2 Days</option>
+                    <option value="3 Days">3 Days</option>
+                    <option value="4+ Days">4+ Days</option>
+                  </select>
                 </div>
               </div>
               <hr />
+              {errors.notice && (
+                <span className="invalid">
+                  Please Select an Option
+                </span>
+              )}
 
               <div className="row">
                 <div className="text-left mb-3">
@@ -102,7 +123,7 @@ const CreateProfileForm = ({
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={handleSubmit}
+                    onClick={handleSubmit(nextStep)}
                   >
                     Register
                   </MDBBtn>

@@ -10,7 +10,7 @@ import {
 import "../Form.css";
 
 
-const RegisterForm = ({ currentStep, nextStep, register, errors, watch, backendErrors }) => {
+const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, register, errors, watch, backendErrors }) => {
   if (currentStep !== 1) {
     return null;
   }
@@ -110,7 +110,7 @@ const RegisterForm = ({ currentStep, nextStep, register, errors, watch, backendE
                   rounded
                   className="btn-block z-depth-1a"
                   id="next-submit"
-                  onClick={nextStep}
+                  onClick={handleSubmit(submitForm)}
                 >
                   Next
                 </MDBBtn>
