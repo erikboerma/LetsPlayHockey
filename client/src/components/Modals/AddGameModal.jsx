@@ -102,4 +102,4 @@ const AddGameModal = props => {
   );
 };
 
-export default withGlobalState(AddTeamModal);
+export default withGlobalState(AddGameModal);
