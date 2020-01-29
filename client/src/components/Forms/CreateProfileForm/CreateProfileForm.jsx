@@ -9,7 +9,7 @@ import {
 } from "mdbreact";
 import Select from "react-select";
 import { shot, skillLevel, notice } from "../../../constants";
-import "./CreateProfileForm.css";
+import "../Form.css";
 import mapSelectArray from "utils";
 
 const CreateProfileForm = ({

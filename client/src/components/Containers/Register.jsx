@@ -10,7 +10,7 @@ import axios from "axios";
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [backendErrors, setBackendErrors] = useState();
-  const { register, handleSubmit, errors, setErrors, watch } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm();
 
   let history = useHistory();
 

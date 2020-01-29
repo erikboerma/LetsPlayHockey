@@ -33,11 +33,11 @@ const LoginForm = ({ backendErrors, register, errors }) => {
               <input
                 className="form-control"
                 name="username"
-                ref={register({ required: "This Field is Required" })}
+                ref={register({ required: true })}
               />
               {errors.username && (
                 <span className="invalid">
-                  {errors.username}
+                  This Field is Required
                 </span>
               )}
 
@@ -47,12 +47,12 @@ const LoginForm = ({ backendErrors, register, errors }) => {
                 name="password"
                 type="password"
                 ref={register({
-                  required: "This Field is Required",
+                  required: true,
                 })}
               />
               {errors.password && (
                 <span className="invalid">
-                  {errors.password}
+                  This Field is Required
                 </span>
               )}
 

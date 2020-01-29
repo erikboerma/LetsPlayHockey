@@ -16,7 +16,7 @@ const TeamTable = ({ currentStep, teams }) => {
           <th className="tableText">Offense</th>
           <th className="tableText">Defense</th>
           <th className="tableText">Goalies</th>
-          <th className="tableText">Total Players</th>
+          <th className="tableText"></th>
 
         </tr>
       </MDBTableHead>
