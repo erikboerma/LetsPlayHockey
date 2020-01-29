@@ -13,7 +13,7 @@
     box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
 
-img.homeBG{
+img.homeBG {
     margin-top: 50px;
 }
 
@@ -22,12 +22,12 @@ img.homeBG{
     justify-content: space-between;
 }
 
-.drop-down > h5 {
+.drop-down>h5 {
     position: relative;
     top: 7px
 }
 
-.drop-down > div > h4 {
+.drop-down>div>h4 {
     padding-top: 4px;
 }
 
@@ -38,6 +38,10 @@ img.homeBG{
 
 .md-form {
     background-color: #f2f2f2;
+}
+
+.md-form .form-control {
+    padding-left: 10px;
 }
 
 .md-form label {

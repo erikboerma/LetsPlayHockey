@@ -1,0 +1,17 @@
+.dashboard-tab {
+    padding-left: 15px;
+    width: 335px;
+    border-radius: 0;
+}
+
+.dashboard-tab > header {
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 2px;
+}
+
+.dashboard-tab > header > div > div > div > button {
+    border: 1px black solid;
+    border-radius: 10px 10px 0 0;
+    background-color: #AFD3CE;
+}

@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from "react-globally";
-import LoginForm from "components/Forms/LoginForm";
 import axios from "axios";
+import LoginForm from "components/Forms/LoginForm";
 
 const Login = props => {
-  const [user, setUser] = useState({});
-
   let history = useHistory();
 
-  const handleSubmit = async event => {
-    event.preventDefault();
+  const submitForm = async data => {
+    console.log(data)
 
-    const resp = await axios.post("/loginUser", user);
+    const resp = await axios.post("/loginUser", data);
     console.log(resp);
 
     const userLoggedIn = resp.data.auth === true;
@@ -23,16 +21,14 @@ const Login = props => {
         authToken: resp.data.token
       });
       history.push("/Dashboard");
-    }
+    };
   };
 
   return (
     <div className="wrapper container">
       <LoginForm
-        user={user}
-        setUser={setUser}
-        submitForm={handleSubmit}
-      ></LoginForm>
+        submitForm={submitForm}
+      />
     </div>
   );
 };
