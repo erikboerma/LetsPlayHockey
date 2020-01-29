@@ -12,6 +12,7 @@ import "../Form.css";
 const CreateProfileForm = ({
   currentStep,
   prevStep,
+  handleChange,
   register,
   errors,
 }) => {
