@@ -6,6 +6,7 @@ module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
 
     console.log(`Req.Body - ${JSON.stringify(req.body)}\n`)
+    console.log(req.body.username.username);
 
     passport.authenticate('register', (err, user, info) => {
       console.log('User - ' + JSON.stringify(user));
@@ -22,20 +23,20 @@ module.exports = app => {
         req.logIn(user, err => {
           User.findOne({
               where: {
-                username: req.body.username
+                username: req.body.username.username
               }
             })
             .then(user => {
               console.log(user)
               user
                 .update({
-                  firstName: req.body.firstName,
-                  lastName: req.body.lastName,
-                  email: req.body.email,
-                  position: req.body.position,
-                  shot: req.body.shot,
-                  skillLevel: req.body.skillLevel,
-                  notice: req.body.notice,
+                  firstName: req.body.data.firstName,
+                  lastName: req.body.data.lastName,
+                  email: req.body.data.email,
+                  position: req.body.data.position,
+                  shot: req.body.data.shot,
+                  skillLevel: req.body.data.skillLevel,
+                  notice: req.body.data.notice,
                 })
             })
             .then(() => {

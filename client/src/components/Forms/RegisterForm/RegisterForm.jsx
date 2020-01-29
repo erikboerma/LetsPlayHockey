@@ -5,12 +5,20 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBBtn,
+  MDBBtn
 } from "mdbreact";
 import "../Form.css";
 
-
-const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, register, errors, watch, backendErrors }) => {
+const RegisterForm = ({
+  submitForm,
+  currentStep,
+  handleChange,
+  handleSubmit,
+  register,
+  errors,
+  watch,
+  backendErrors
+}) => {
   if (currentStep !== 1) {
     return null;
   }
@@ -26,9 +34,7 @@ const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, registe
                   <strong>Register</strong>
                 </h3>
                 {backendErrors && (
-                  <span className="invalid">
-                    {backendErrors}
-                  </span>
+                  <span className="invalid">{backendErrors}</span>
                 )}
               </div>
 
@@ -37,10 +43,10 @@ const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, registe
                 className="form-control"
                 name="email"
                 ref={register({
-                  required: 'This Field is Required',
+                  required: "This Field is Required",
                   pattern: {
                     value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: 'Invalid email address',
+                    message: "Invalid email address"
                   }
                 })}
               />
@@ -54,8 +60,9 @@ const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, registe
               <input
                 className="form-control"
                 name="username"
+                onChange={handleChange}
                 ref={register({
-                  required: 'This Field is Required',
+                  required: "This Field is Required",
                   minLength: {
                     value: 6,
                     message: "Username must be at least 6 characters in length"
@@ -74,7 +81,7 @@ const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, registe
                 name="password"
                 type="password"
                 ref={register({
-                  required: 'This Field is Required',
+                  required: "This Field is Required",
                   minLength: {
                     value: 8,
                     message: "Password must be at least 8 characters in length"
@@ -93,8 +100,9 @@ const RegisterForm = ({ submitForm, currentStep, nextStep, handleSubmit, registe
                 name="confirmPassword"
                 type="password"
                 ref={register({
-                  required: 'This Field is Required',
-                  validate: (value) => value === watch('password') || "Passwords do not match"
+                  required: "This Field is Required",
+                  validate: value =>
+                    value === watch("password") || "Passwords do not match"
                 })}
               />
               {errors.confirmPassword && errors.confirmPassword.message && (

@@ -5,7 +5,7 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBBtn,
+  MDBBtn
 } from "mdbreact";
 import "../Form.css";
 
@@ -15,7 +15,7 @@ const CreateProfileForm = ({
   handleSubmit,
   register,
   errors,
-  nextStep
+  submitForm
 }) => {
   if (currentStep !== 2) {
     return null;
@@ -34,6 +34,42 @@ const CreateProfileForm = ({
               </div>
               <hr />
 
+              <label>First Name:</label>
+              <input
+                className="form-control"
+                name="firstName"
+                ref={register({
+                  required: "This Field is Required",
+                  pattern: {
+                    value: /^[a-zA-Z ]+$/,
+                    message: "Invalid characters in name"
+                  }
+                })}
+              />
+              {errors.firstName && errors.firstName.message && (
+                <span className="invalid">
+                  {errors.firstName && errors.firstName.message}
+                </span>
+              )}
+
+              <label>Last Name:</label>
+              <input
+                className="form-control"
+                name="lastName"
+                ref={register({
+                  required: "This Field is Required",
+                  pattern: {
+                    value: /^[a-zA-Z ]+$/,
+                    message: "Invalid characters in name"
+                  }
+                })}
+              />
+              {errors.lastName && errors.lastName.message && (
+                <span className="invalid">
+                  {errors.lastName && errors.lastName.message}
+                </span>
+              )}
+
               <div className="drop-down">
                 <h5>Shot</h5>
                 <div className="position-select">
@@ -42,7 +78,8 @@ const CreateProfileForm = ({
                     name="shot"
                     ref={register({
                       required: true
-                    })}>
+                    })}
+                  >
                     <option value="">Choose...</option>
                     <option value="Left Hand">Left Hand</option>
                     <option value="Right Hand">Right Hand</option>
@@ -51,9 +88,7 @@ const CreateProfileForm = ({
               </div>
               <hr />
               {errors.shot && (
-                <span className="invalid">
-                  Please Select an Option
-                </span>
+                <span className="invalid">Please Select an Option</span>
               )}
 
               <div className="drop-down">
@@ -64,7 +99,8 @@ const CreateProfileForm = ({
                     name="skillLevel"
                     ref={register({
                       required: true
-                    })}>
+                    })}
+                  >
                     <option value="">Choose...</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -75,9 +111,7 @@ const CreateProfileForm = ({
               </div>
               <hr />
               {errors.skillLevel && (
-                <span className="invalid">
-                  Please Select an Option
-                </span>
+                <span className="invalid">Please Select an Option</span>
               )}
 
               <div className="drop-down">
@@ -88,7 +122,8 @@ const CreateProfileForm = ({
                     name="notice"
                     ref={register({
                       required: true
-                    })}>
+                    })}
+                  >
                     <option value="">Choose...</option>
                     <option value="1 Day">1 Day</option>
                     <option value="2 Days">2 Days</option>
@@ -99,9 +134,7 @@ const CreateProfileForm = ({
               </div>
               <hr />
               {errors.notice && (
-                <span className="invalid">
-                  Please Select an Option
-                </span>
+                <span className="invalid">Please Select an Option</span>
               )}
 
               <div className="row">
@@ -123,7 +156,7 @@ const CreateProfileForm = ({
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={handleSubmit(nextStep)}
+                    onClick={handleSubmit(submitForm)}
                   >
                     Register
                   </MDBBtn>

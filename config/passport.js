@@ -18,11 +18,10 @@ passport.use(
       session: false,
     },
     (username, password, done) => {
-      console.log('Passport Username - ' + username)
       try {
         User.findOne({
           where: {
-            username: username,
+            username: username.username,
           },
         }).then(user => {
           if (user != null) {
