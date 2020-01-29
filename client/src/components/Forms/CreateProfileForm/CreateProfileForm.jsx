@@ -6,7 +6,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn,
-  MDBInput
 } from "mdbreact";
 import Select from "react-select";
 import { shot, skillLevel, notice } from "../../../constants";
@@ -18,7 +17,6 @@ const CreateProfileForm = ({
   setUser,
   currentStep,
   prevStep,
-  handleInputChange,
   handleSubmit
 }) => {
   if (currentStep !== 2) {
@@ -37,27 +35,6 @@ const CreateProfileForm = ({
                 </h3>
               </div>
               <hr />
-
-              <MDBInput
-                className="register-input form-control"
-                type="text"
-                label="First Name"
-                name="firstName"
-                error="wrong"
-                success="right"
-                value={user.firstName ? user.firstName : ""}
-                onChange={handleInputChange}
-              />
-              <MDBInput
-                className="register-input form-control"
-                type="text"
-                label="Last Name"
-                name="lastName"
-                error="wrong"
-                success="right"
-                value={user.lastName ? user.lastName : ""}
-                onChange={handleInputChange}
-              />
 
               <div className="drop-down">
                 <h5>Shot</h5>
