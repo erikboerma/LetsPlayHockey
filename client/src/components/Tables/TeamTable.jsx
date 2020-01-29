@@ -27,12 +27,13 @@ const TeamTable = ({ currentStep, teams }) => {
             <td className="teamText">0/{team.offense}</td>
             <td className="teamText">0/{team.defense}</td>
             <td className="teamText">0/{team.goalies}</td>
-            {team.userTeams.captain ? (
+            {team.userTeams.captain && (
               <td className="teamText">
-                <AddGameModal />
+                <AddGameModal
+                  teamId={team.id}
+                />
               </td>
-            ) : null}
-
+            )}
           </tr>
         ))}
       </MDBTableBody>

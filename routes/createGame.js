@@ -6,11 +6,10 @@ module.exports = app => {
     console.log(req.body);
     Game
       .create({
-        name: req.body.teamName,
-        offense: req.body.offense,
-        defense: req.body.defense,
-        goalies: req.body.goalies,
-        totalPlayers: req.body.totalPlayers
+        location: req.body.game.location,
+        date: req.body.game.date,
+        time: req.body.game.time,
+        TeamId: req.body.TeamId,
       })
       .then(() => {
         console.log("Game Created");

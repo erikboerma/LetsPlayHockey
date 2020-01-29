@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import defaultAvatar from "assets/images/default-avatar.jpg";
 import UpdateProfileModal from "components/Modals/UpdateProfileModal";
-import AddTeamModal from "components/Modals/AddGameModal";
 import CreateTeamModal from "components/Modals/CreateTeamModal";
 import TeamTable from "components/Tables/TeamTable";
 import GameTable from "components/Tables/GameTable";
@@ -21,7 +20,6 @@ const Dashboard = props => {
   let history = useHistory();
 
   useEffect(() => {
-    const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
     if (token === "") {
