@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import defaultAvatar from "assets/images/default-avatar.jpg";
 import UpdateProfileModal from "components/Modals/UpdateProfileModal";
-import AddTeamModal from "components/Modals/AddTeamModal";
+import AddTeamModal from "components/Modals/AddGameModal";
 import CreateTeamModal from "components/Modals/CreateTeamModal";
 import TeamTable from "components/Tables/TeamTable";
 import GameTable from "components/Tables/GameTable";
@@ -80,13 +80,13 @@ const Dashboard = props => {
             </ul>
           </div>
           <div id="modalRow">
-            <AddTeamModal />
             <CreateTeamModal />
             <UpdateProfileModal />
           </div>
         </div>
 
         <br />
+        {/* <div className="col-1"></div> */}
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />

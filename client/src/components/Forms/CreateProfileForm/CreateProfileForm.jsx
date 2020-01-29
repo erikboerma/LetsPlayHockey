@@ -13,14 +13,20 @@ import { shot, skillLevel, notice } from "../../../constants";
 import "./CreateProfileForm.css";
 import mapSelectArray from "utils";
 
-const CreateProfileForm = props => {
-  if (props.currentStep !== 2) {
+const CreateProfileForm = ({
+  user,
+  setUser,
+  currentStep,
+  prevStep,
+  handleInputChange,
+  handleSubmit
+}) => {
+  if (currentStep !== 2) {
     return null;
   }
 
   return (
     <MDBContainer className="wrapper">
-      <img src={props.rinkImg} alt="bg" className="homeBg" />
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
@@ -36,34 +42,33 @@ const CreateProfileForm = props => {
                 className="register-input form-control"
                 type="text"
                 label="First Name"
+                name="firstName"
                 error="wrong"
                 success="right"
-                value={props.user.firstName ? props.user.firstName : null}
-                onChange={e =>
-                  props.setUser({ ...props.user, firstName: e.target.value })
-                }
+                value={user.firstName ? user.firstName : ""}
+                onChange={handleInputChange}
               />
               <MDBInput
                 className="register-input form-control"
                 type="text"
                 label="Last Name"
+                name="lastName"
                 error="wrong"
                 success="right"
-                value={props.user.lastName ? props.user.lastName : null}
-                onChange={e =>
-                  props.setUser({ ...props.user, lastName: e.target.value })
-                }
+                value={user.lastName ? user.lastName : ""}
+                onChange={handleInputChange}
               />
 
               <div className="drop-down">
                 <h5>Shot</h5>
                 <div className="position-select">
                   <Select
+                    name="shot"
                     placeholder="Shot"
                     options={mapSelectArray(shot)}
-                    // value={props.user.shot ? props.user.shot : null}
+                    // value={user.shot ? user.shot : null}
                     onChange={e =>
-                      props.setUser({ ...props.user, shot: e.label })
+                      setUser({ ...user, shot: e.label })
                     }
                   />
                 </div>
@@ -77,9 +82,9 @@ const CreateProfileForm = props => {
                   <Select
                     placeholder="Skill Level"
                     options={mapSelectArray(skillLevel)}
-                    // value={props.user.skillLevel ? props.user.skillLevel : null}
+                    // value={user.skillLevel ? user.skillLevel : null}
                     onChange={e =>
-                      props.setUser({ ...props.user, skillLevel: e.label })
+                      setUser({ ...user, skillLevel: e.label })
                     }
                   />
                 </div>
@@ -92,9 +97,9 @@ const CreateProfileForm = props => {
                   <Select
                     placeholder="Notice Needed"
                     options={mapSelectArray(notice)}
-                    // value={props.user.notice ? props.user.notice : null}
+                    // value={user.notice ? user.notice : null}
                     onChange={e =>
-                      props.setUser({ ...props.user, notice: e.label })
+                      setUser({ ...user, notice: e.label })
                     }
                   />
                 </div>
@@ -108,7 +113,7 @@ const CreateProfileForm = props => {
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={props.prevStep}
+                    onClick={prevStep}
                   >
                     Back
                   </MDBBtn>
@@ -120,7 +125,7 @@ const CreateProfileForm = props => {
                     gradient="blue"
                     rounded
                     className="btn-block z-depth-1a"
-                    onClick={props.handleSubmit}
+                    onClick={handleSubmit}
                   >
                     Register
                   </MDBBtn>

@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import './Tab.css';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,29 +38,19 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 320
-  }
-}));
-
-const FullWidthTabs = props => {
-  const classes = useStyles();
-
+const FullWidthTabs = ({currentStep, setCurrentStep})  => {
   const handleChange = (event, newValue) => {
-    props.setCurrentStep(newValue);
+    setCurrentStep(newValue);
   };
 
   return (
-    <div className={classes.root}>
+    <div className="dashboard-tab">
       <AppBar position="static" color="default">
         <Tabs
-          value={props.currentStep}
+          value={currentStep}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
-          //   variant="fullWidth"
           aria-label="full width tabs example"
         >
           <Tab label="My Teams" {...a11yProps(0)} />

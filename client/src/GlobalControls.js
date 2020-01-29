@@ -16,7 +16,7 @@ const GlobalControls = props => {
     });
   };
 
-  return <div clearUserSession={clearUserSession}>{props.children} </div>;
+  return <div>{props.children}</div>;
 };
 
 export default withGlobalState(GlobalControls);

@@ -11,7 +11,7 @@ import {
 } from "mdbreact";
 import axios from "axios";
 
-const AddTeamModal = props => {
+const AddGameModal = props => {
   const [modal, setModal] = useState(false);
   const [game, setGame] = useState({});
 

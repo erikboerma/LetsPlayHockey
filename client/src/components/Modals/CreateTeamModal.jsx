@@ -73,15 +73,6 @@ const CreateTeamModal = props => {
                 })
               }
             ></MDBInput>
-            <MDBInput
-              label="Total Players Needed"
-              onChange={e =>
-                setTeam({
-                  ...team,
-                  totalPlayers: e.target.value
-                })
-              }
-            ></MDBInput>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">

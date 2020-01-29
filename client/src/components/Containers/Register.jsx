@@ -12,6 +12,14 @@ const Register = () => {
 
   let history = useHistory();
 
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setUser({
+      ...user,
+      [name]: value
+    });
+  };
+
   const handleSubmit = async event => {
     event.preventDefault();
 
@@ -34,23 +42,24 @@ const Register = () => {
     setCurrentStep(_currentStep);
   };
 
-  // TODO: Look for a cleaner handleChange function
+  // TODO: Look for a cleaner handleInputChange function
   return (
     <div className="wrapper container">
       <HorizontalLinearStepper currentStep={currentStep} />
       <form onSubmit={handleSubmit}>
         <RegisterForm
-          currentStep={currentStep}
           user={user}
-          setUser={setUser}
+          currentStep={currentStep}
           nextStep={nextStep}
+          handleInputChange={handleInputChange}
         />
         <CreateProfile
-          currentStep={currentStep}
-          handleSubmit={handleSubmit}
           user={user}
           setUser={setUser}
+          currentStep={currentStep}
           prevStep={prevStep}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
         />
       </form>
     </div>
