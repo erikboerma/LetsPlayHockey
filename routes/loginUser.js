@@ -30,6 +30,7 @@ module.exports = app => {
               auth: true,
               username: user.username,
               userId: user.id,
+              avatar: user.avatar,
               token: token,
               message: 'user found & logged in',
             });

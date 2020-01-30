@@ -7,7 +7,7 @@ module.exports = app => {
     console.log(req.body);
     Team.findOne({
       where: {
-        name: req.body.game.teamName
+        id: req.body.game.teamName
       }
     }).then(team => {
       if (team === null) {

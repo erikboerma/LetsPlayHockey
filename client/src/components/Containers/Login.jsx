@@ -30,6 +30,7 @@ const Login = props => {
       props.setGlobalState({
         username: resp.data.username,
         userId: resp.data.userId,
+        avatar: resp.data.avatar,
         authToken: resp.data.token
       });
       history.push("/Dashboard");
