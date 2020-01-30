@@ -9,6 +9,8 @@ import {
   MDBIcon
 } from "mdbreact";
 import axios from "axios";
+import AddIcon from "@material-ui/icons/Add";
+import IconButton from "@material-ui/core/IconButton";
 
 const FindGames = props => {
   const [games, setGames] = useState([]);
@@ -32,27 +34,30 @@ const FindGames = props => {
     const teamId = parseInt(event.target.getAttribute("data-team-index"));
     const gameId = parseInt(event.target.getAttribute("data-game-index"));
 
-    console.log(userId, teamId, gameId)
+    console.log(event.target);
+    console.log(userId, teamId, gameId);
 
     const resp = await axios.post("/saveGame", {
       userId,
       teamId,
-      gameId,
+      gameId
     });
   };
+
+  if (!games) {
+    return null
+  }
 
   return (
     <div className="wrapper container">
       <MDBTable hover>
         <MDBTableHead>
           <tr>
-            <th>Team Name</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Time</th>
-            {props.globalState.username && (
-              <th></th>
-            )}
+            <th className="dashboard-table-head">Team Name</th>
+            <th className="dashboard-table-head">Location</th>
+            <th className="dashboard-table-head">Date</th>
+            <th className="dashboard-table-head">Time</th>
+            {props.globalState.username && <th></th>}
           </tr>
         </MDBTableHead>
         <MDBTableBody>
@@ -60,21 +65,40 @@ const FindGames = props => {
             games.map((game, i) => {
               return (
                 <tr key={i}>
-                  <td>{game.Team.name}</td>
-                  <td>{game.location}</td>
-                  <td>
+                  <td className="dashboard-table-body">{game.Team.name}</td>
+                  <td className="dashboard-table-body">{game.location}</td>
+                  <td className="dashboard-table-body">
                     <Moment local format="MM/DD/YYYY">
                       {game.datetime}
                     </Moment>
                   </td>
-                  <td>
+                  <td className="dashboard-table-body">
                     <Moment local format="hh:mm A">
                       {game.datetime}
                     </Moment>
                   </td>
                   {props.globalState.username && (
                     <td>
-                      <MDBBtn
+                      <IconButton
+                        data-game-index={game.id}
+                        data-team-index={game.Team.id}
+                        variant="extended"
+                        className="icon-button"
+                        onClick={handleClick}
+                      >
+                        <AddIcon
+                          data-game-index={game.id}
+                          data-team-index={game.Team.id}
+                        />
+                        <span
+                          className="icon-text"
+                          data-game-index={game.id}
+                          data-team-index={game.Team.id}
+                        >
+                          Sign Up
+                        </span>
+                      </IconButton>
+                      {/* <MDBBtn
                         data-game-index={game.id}
                         data-team-index={game.Team.id}
                         onClick={handleClick}
@@ -82,7 +106,7 @@ const FindGames = props => {
                         gradient="morpheus-den"
                       >
                         <MDBIcon icon="bolt" />
-                      </MDBBtn>
+                      </MDBBtn> */}
                     </td>
                   )}
                 </tr>
