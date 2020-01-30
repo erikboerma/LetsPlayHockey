@@ -9,32 +9,28 @@ import {
 
 const MaterialUIPickers = () => {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("21:11")
-  );
+  const [selectedDate, setSelectedDate] = React.useState(new Date("21:11:54"));
 
   const handleDateChange = date => {
     setSelectedDate(date);
   };
-  
+
   return (
-    <label>Choose a Time:
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
-          <KeyboardTimePicker
-            margin="normal"
-            id="time-picker"
-            // label="Choose a Time"
-            value={selectedDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              "aria-label": "change time"
-            }}
-            />
-        </Grid>
-      </MuiPickersUtilsProvider>
-    </label>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            "aria-label": "change time"
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
   );
-}
+};
 
 export default MaterialUIPickers;

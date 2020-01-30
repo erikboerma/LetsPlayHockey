@@ -3,7 +3,7 @@ const User = Models.User;
 
 module.exports = app => {
   app.post('/updateUser', (req, res, next) => {
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     User.findOne({
       where: {
         username: req.body.user.username,

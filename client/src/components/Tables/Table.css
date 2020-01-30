@@ -1,0 +1,36 @@
+.dashboard-table {
+    box-shadow: 3px 3px 8px #888888;
+    margin-left: 15px;
+}
+
+table.table th.dashboard-table-head {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.table td.dashboard-table-body {
+    font-size: 16px;
+    text-align: center;
+    padding: 3px;
+    vertical-align: center;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+}
+
+.table td.dashboard-table-body button{
+    padding: 3px;
+}
+
+svg {
+    font-size: 14px
+}
+
+.icon-text {
+    font-size: 14px
+}
+
+#create-team-col {
+    width: 150px;
+}

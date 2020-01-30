@@ -15,7 +15,7 @@
 }
 
 .nav-tabs .nav-link {
-    border: none
+    border: none;
 }
 
 .nav-link.active {
@@ -30,8 +30,10 @@
     border: 0;
 }
 
-.nav-item {
+.nav-tabs .nav-item {
     font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .nav-item:hover {
@@ -60,4 +62,19 @@
 .nav-item-home > a > li {
     display: inline-block;
     color: #4C6085;
+}
+
+.nav-avatar-container {
+    display: grid
+}
+
+.nav-avatar-container > span {
+    font-weight: 500;
+}
+
+.nav-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
 }

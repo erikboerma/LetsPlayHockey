@@ -14,7 +14,8 @@ module.exports = app => {
         Game.create({
           location: req.body.game.location,
           date: req.body.game.date,
-          time: req.body.game.time
+          time: req.body.game.time,
+          TeamId: team.id
         }).then(() => {
           res.status(200).send({
             auth: true,

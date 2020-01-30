@@ -16,28 +16,30 @@ const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
+  const [response, setResponse] = useState({});
+  const [render, setRender] = useState(true);
 
   let history = useHistory();
+  const token = props.globalState.authToken;
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  const fetchResponse = async () => {
+    const resp = await axios.get("/findUser", config);
+    setUser(resp.data);
+    setTeams(resp.data.teams);
+    setRender(false);
+  };
 
   useEffect(() => {
-    const token = props.globalState.authToken;
-
     if (token === "") {
       history.push("/");
     }
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
-
-    const fetchData = async () => {
-      const response = await axios.get("/findUser", config);
-      setUser(response.data);
-      setTeams(response.data.teams);
-      console.log(response);
-    };
-    fetchData();
-  }, [history, props.globalState]);
+    if (render) {
+      fetchResponse();
+    }
+  }, [render]);
 
   return (
     <div className="wrapper container">
@@ -49,7 +51,7 @@ const Dashboard = props => {
               alt=""
               src={user.avatar ? user.avatar : defaultAvatar}
             />
-            <UpdateAvatarModal />
+            <UpdateAvatarModal setRender={setRender} />
           </div>
           <div className="user-info">
             <ul>
@@ -75,13 +77,12 @@ const Dashboard = props => {
             </ul>
           </div>
           <div id="modalRow">
-            <CreateTeamModal />
-            <UpdateProfileModal />
+            <CreateTeamModal setRender={setRender} />
+            <UpdateProfileModal setRender={setRender} />
           </div>
         </div>
 
         <br />
-        {/* <div className="col-1"></div> */}
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
           <TeamTable currentStep={currentStep} teams={teams} />

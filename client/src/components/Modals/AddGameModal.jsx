@@ -40,6 +40,7 @@ const AddGameModal = props => {
       game
     });
     console.log(resp);
+    props.setRender(true);
   };
 
   return (
@@ -55,7 +56,6 @@ const AddGameModal = props => {
           <MDBModalBody>
             <MDBInput label="Location" name="location" onChange={handleChange} />
             <Date game={game} />
-            <></>
             <Time game={game} />
           </MDBModalBody>
           <MDBModalFooter>

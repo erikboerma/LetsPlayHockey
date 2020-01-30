@@ -1,4 +1,5 @@
 import React from "react";
+import { withGlobalState } from "react-globally";
 import { Link } from "react-router-dom";
 
 const NavTab = props => {
@@ -6,6 +7,7 @@ const NavTab = props => {
     <li className="nav-item">
       <Link
         to={props.location ? props.location : null}
+        onClick={props.onClick}
         className={
           window.location.pathname === props.location &&
           props.title !== "Logout"
@@ -37,4 +39,4 @@ const NavTab = props => {
   return props.logo ? <>{navItemHome}</> : <>{navItem}</>;
 };
 
-export default NavTab;
+export default withGlobalState(NavTab);

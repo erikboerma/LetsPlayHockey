@@ -17,6 +17,7 @@
 #avatar {
   max-width: 100%;
   max-height: 100%;
+  height: fit-content;
 }
 
 #update-avatar {
@@ -90,4 +91,8 @@
 
 #modalRow {
   text-align: center;
+}
+
+.MuiTab-wrapper {
+  font-size: 20px;
 }

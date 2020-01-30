@@ -49,7 +49,8 @@ module.exports = app => {
               notice: userInfo.notice,
               email: userInfo.email,
               username: userInfo.username,
-              teams: userInfo.Teams
+              avatar: userInfo.avatar,
+              teams: userInfo.Teams,
             });
 
           } else {

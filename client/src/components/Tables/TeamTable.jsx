@@ -1,10 +1,10 @@
 import React from "react";
-import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from "mdbreact";
+import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import AddGameModal from "components/Modals/AddGameModal";
-import "./TeamTable.css";
+import "./Table.css";
 
-const TeamTable = ({ currentStep, teams }) => {
-  if (currentStep !== 0) {
+const TeamTable = props => {
+  if (props.currentStep !== 0) {
     return null;
   }
 
@@ -12,23 +12,23 @@ const TeamTable = ({ currentStep, teams }) => {
     <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
-          <th className="tableText">Team Name</th>
-          <th className="tableText">Offense</th>
-          <th className="tableText">Defense</th>
-          <th className="tableText">Goalies</th>
-          <th className="tableText"></th>
+          <th className="dashboard-table-head">Team Name</th>
+          <th className="dashboard-table-head">Offense</th>
+          <th className="dashboard-table-head">Defense</th>
+          <th className="dashboard-table-head">Goalies</th>
+          <th className="dashboard-table-head" id="create-team-col"></th>
 
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {teams.map((team, i) => (
+        {props.teams.map((team, i) => (
           <tr key={i}>
-            <td className="teamText">{team.name}</td>
-            <td className="teamText">0/{team.offense}</td>
-            <td className="teamText">0/{team.defense}</td>
-            <td className="teamText">0/{team.goalies}</td>
+            <td className="dashboard-table-body">{team.name}</td>
+            <td className="dashboard-table-body">0/{team.offense}</td>
+            <td className="dashboard-table-body">0/{team.defense}</td>
+            <td className="dashboard-table-body">0/{team.goalies}</td>
             {team.userTeams.captain && (
-              <td className="teamText">
+              <td className="dashboard-table-body">
                 <AddGameModal
                   teamId={team.id}
                 />

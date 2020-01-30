@@ -26,6 +26,7 @@ const CreateTeamModal = props => {
       userId: props.globalState.userId,
       team
     });
+    props.setRender(true);
   };
 
   return (
@@ -78,12 +79,7 @@ const CreateTeamModal = props => {
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn
-              color="primary"
-              size="sm"
-              type="submit"
-              onClick={handleSubmit}
-            >
+            <MDBBtn color="primary" size="sm" type="submit" onClick={toggle}>
               Save Team
             </MDBBtn>
           </MDBModalFooter>
