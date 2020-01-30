@@ -12,6 +12,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
+import "./modalForms.css";
 
 const AddGameModal = props => {
   const [modal, setModal] = useState(false);
@@ -41,8 +42,8 @@ const AddGameModal = props => {
 
   return (
     <form onSubmit={submitGame}>
-      <MDBContainer className="modalButtonMargin">
-        <IconButton variant="extended" className="icon-button" onClick={toggle}>
+      <MDBContainer className="modalButtonMargin" id="createGameContainer">
+        <IconButton variant="extended" className="icon-button" id="createGameButton" onClick={toggle}>
           <AddIcon />
           <span className="icon-text">Create Game</span>
         </IconButton>
