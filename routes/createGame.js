@@ -16,7 +16,7 @@ module.exports = app => {
     Game.create({
       location: req.body.location,
       datetime: req.body.datetime,
-      TeamId: team.id
+      TeamId: req.body.teamId
     }).then(game => {
       console.log(game.id);
       UserTeam.findOne({
