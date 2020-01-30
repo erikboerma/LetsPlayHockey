@@ -3,15 +3,18 @@
     margin-left: 15px;
 }
 
-.tableText {
+table.table th.dashboard-table-head {
     font-size: large;
     font-weight: bold;
     text-align: center;
-    text-decoration: underline;
+    padding-bottom: 5px;
 }
 
-.teamText{
-    font-size: large;
+.table tbody tr td.dashboard-table-body {
+    font-size: 12px;
     text-align: center;
+}
 
+table td.dashboard-table-btn {
+    padding: 0;
 }

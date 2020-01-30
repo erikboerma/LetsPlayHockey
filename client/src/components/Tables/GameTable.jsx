@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import "./TeamTable.css";
+import "./Table.css";
 
 
 const GameTable = props => {
@@ -12,20 +12,20 @@ const GameTable = props => {
     <MDBTable hover className="dashboard-table">
       <MDBTableHead>
         <tr>
-          <th className="tableText">Team Name</th>
-          <th className="tableText">Date</th>
-          <th className="tableText">Time</th>
-          <th className="tableText">Location</th>
+          <th className="dashboard-table-head">Team Name</th>
+          <th className="dashboard-table-head">Date</th>
+          <th className="dashboard-table-head">Time</th>
+          <th className="dashboard-table-head">Location</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
         {props.teams.map((team, i) =>
           team.Games.map((game, i) => (
             <tr key={i}>
-              <td className="teamText">{team.name}</td>
-              <td className="teamText">{game.date}</td>
-              <td className="teamText">{game.time}</td>
-              <td className="teamText">{game.location}</td>
+              <td className="dashboard-table-body">{team.name}</td>
+              <td className="dashboard-table-body">{game.date}</td>
+              <td className="dashboard-table-body">{game.time}</td>
+              <td className="dashboard-table-body">{game.location}</td>
             </tr>
           ))
         )}

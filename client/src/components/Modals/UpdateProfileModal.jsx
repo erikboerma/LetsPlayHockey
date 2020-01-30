@@ -3,11 +3,11 @@ import {
   MDBContainer,
   MDBBtn,
   MDBModal,
+  MDBModalHeader,
   MDBModalBody,
   MDBModalFooter
 } from "mdbreact";
 import Select from "react-select";
-import mapSelectArray from "../../utils";
 
 const UpdateProfileModal = props => {
   const [modal, setModal] = useState(false);
@@ -22,7 +22,7 @@ const UpdateProfileModal = props => {
         Edit Profile
       </MDBBtn>
       <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
-        {/* <MDBModalHeader toggle={toggle}>Update Profile</MDBModalHeader> */}
+        <MDBModalHeader toggle={toggle}>Update Profile</MDBModalHeader>
         <MDBModalBody className="mx-4">
           <div className="text-center">
             <h3 className="dark-grey-text mb-5">

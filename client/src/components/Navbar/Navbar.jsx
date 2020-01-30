@@ -4,14 +4,14 @@ import "./Navbar.css";
 import logo from "assets/images/LetsPlayHockeyTransparent.png";
 import { withGlobalState } from "react-globally";
 
-const logout = props => {
-  props.setGlobalState({
-    authToken: "",
-    userId: null
-  });
-};
-
 const Navbar = props => {
+  const logout = () => {
+    props.setGlobalState({
+      authToken: "",
+      userId: null
+    });
+  };
+
   // If user is not authenticated
   if (props.globalState.authToken === "") {
     return (

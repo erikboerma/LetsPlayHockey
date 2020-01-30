@@ -82,7 +82,7 @@ const CreateTeamModal = props => {
               color="primary"
               size="sm"
               type="submit"
-              onClick={handleSubmit}
+              onClick={toggle}
             >
               Save Team
             </MDBBtn>

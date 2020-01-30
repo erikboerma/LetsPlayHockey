@@ -17,7 +17,7 @@ const FindGames = props => {
       console.log(response.data);
       setGames(response.data);
     });
-  }, []);
+  }, [games]);
 
   const handleClick = async (event, i) => {
     event.preventDefault();

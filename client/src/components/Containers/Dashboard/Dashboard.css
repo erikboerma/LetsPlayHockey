@@ -92,3 +92,7 @@
 #modalRow {
   text-align: center;
 }
+
+.MuiTab-wrapper {
+  font-size: 20px;
+}

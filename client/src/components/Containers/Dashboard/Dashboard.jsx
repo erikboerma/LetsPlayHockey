@@ -19,25 +19,27 @@ const Dashboard = props => {
 
   let history = useHistory();
 
-  useEffect(() => {
-    const token = props.globalState.authToken;
+  const token = props.globalState.authToken;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
 
+  useEffect(() => {
     if (token === "") {
       history.push("/");
     }
+    fetchResponse();
+  }, []);
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
+  const fetchResponse = async () => {
+    const response = await axios.get("/findUser", config);
+    const respUser = response.data;
+    const respTeam = response.data.teams;
+    setUser(respUser);
+    setTeams(respTeam);
+    await console.log(response);
+  };
 
-    const fetchData = async () => {
-      const response = await axios.get("/findUser", config);
-      setUser(response.data);
-      setTeams(response.data.teams);
-      console.log(response);
-    };
-    fetchData();
-  }, [history, props.globalState]);
 
   return (
     <div className="wrapper container">

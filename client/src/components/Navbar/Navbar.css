@@ -15,7 +15,7 @@
 }
 
 .nav-tabs .nav-link {
-    border: none
+    border: none;
 }
 
 .nav-link.active {
@@ -30,8 +30,10 @@
     border: 0;
 }
 
-.nav-item {
+.nav-tabs .nav-item {
     font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .nav-item:hover {
