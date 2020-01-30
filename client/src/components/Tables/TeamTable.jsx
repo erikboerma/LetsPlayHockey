@@ -31,6 +31,7 @@ const TeamTable = props => {
               <td className="dashboard-table-body">
                 <AddGameModal
                   teamId={team.id}
+                  setRender={props.setRender}
                 />
               </td>
             )}

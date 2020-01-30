@@ -3,11 +3,8 @@ module.exports = (sequelize, DataTypes) => {
         location: {
             type: DataTypes.STRING
         },
-        date: {
-            type: DataTypes.DATEONLY
-        },
-        time: {
-            type: DataTypes.TIME
+        datetime: {
+            type: DataTypes.DATE
         },
         TeamId: {
             type: DataTypes.INTEGER

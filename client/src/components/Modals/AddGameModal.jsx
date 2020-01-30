@@ -12,40 +12,39 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
-import "./modalForms.css";
-import Date from "../Pickers/Date";
-import Time from "../Pickers/Time";
+import Picker from "components/Pickers/Picker";
 import "./Modal.css";
+
+import "date-fns";
 
 const AddGameModal = props => {
   const [modal, setModal] = useState(false);
-  const [game, setGame] = useState({});
+  const [location, setLocation] = useState();
+  const [selectedDate, setSelectedDate] = useState(Date("2014-08-18T21:11:54"));
 
   const toggle = () => {
     setModal(!modal);
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setGame({
-      [name]: value
-    });
+  const handleDateChange = date => {
+    setSelectedDate(date);
   };
 
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const team = { teamId: props.teamId };
-    const resp = await axios.post("/createGame", {
-      team,
-      game
-    });
+    const teamId = props.teamId;
+    const params = {
+      teamId,
+      location,
+      datetime: selectedDate,
+    };
+    const resp = await axios.post("/createGame", params);
     console.log(resp);
     props.setRender(true);
   };
 
   return (
-
     <form onSubmit={handleSubmit}>
       <MDBContainer className="modalButtonMargin" id="createGameContainer">
         <IconButton variant="extended" className="icon-button" onClick={toggle}>
@@ -57,10 +56,9 @@ const AddGameModal = props => {
           <MDBModalBody>
             <label>
               Enter Location:
-              <MDBInput name="location" onChange={handleChange} />
+              <MDBInput name="location" onChange={e => setLocation(e.target.value)} />
             </label>
-            <Date game={game} onChange={handleChange} />
-            <Time game={game} onChange={handleChange} />
+            <Picker date={selectedDate} handleDateChange={handleDateChange} />
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">

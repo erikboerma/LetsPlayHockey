@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import Moment from "react-moment";
 import "./Table.css";
-
 
 const GameTable = props => {
   if (props.currentStep !== 1) {
@@ -23,8 +23,16 @@ const GameTable = props => {
           team.Games.map((game, i) => (
             <tr key={i}>
               <td className="dashboard-table-body">{team.name}</td>
-              <td className="dashboard-table-body">{game.date}</td>
-              <td className="dashboard-table-body">{game.time}</td>
+              <td className="dashboard-table-body">
+                <Moment local format="MM/DD/YYYY">
+                  {game.datetime}
+                </Moment>
+              </td>
+              <td className="dashboard-table-body">
+                <Moment local format="hh:mm A">
+                  {game.datetime}
+                </Moment>
+              </td>
               <td className="dashboard-table-body">{game.location}</td>
             </tr>
           ))
