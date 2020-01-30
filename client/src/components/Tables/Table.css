@@ -34,3 +34,7 @@ svg {
 #create-team-col {
     width: 150px;
 }
+
+.dashboard-table-body {
+    background-color: #fbfbfb;
+}

@@ -1,5 +1,5 @@
 .nav-wrapper {
-    background-color: #D6E5E3 !important;
+    background-color: #b80c09 !important;
 }
 
 .nav-tabs {
@@ -7,7 +7,7 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: 100px;
+    height: 75px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -19,14 +19,14 @@
 }
 
 .nav-link.active {
-    background-color: rgb(175, 211, 206) !important;
+    background-color:white !important;
     border-color: rgb(120, 143, 140) !important;
     border: 0px !important;
     border-radius: 10px;
 }
 
 .nav-link:hover {
-    color: #4C6085;
+    color: #fbfbfb;
     border: 0;
 }
 
@@ -61,7 +61,7 @@
 
 .nav-item-home > a > li {
     display: inline-block;
-    color: #4C6085;
+    color: black;
 }
 
 .nav-avatar-container {

@@ -1,6 +1,8 @@
 .wrapper {
   margin-top: 50px;
   padding-left: 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+
 }
 /* overwriting the bootstrap margin */
 .btn {
@@ -61,7 +63,7 @@
 }
 
 .secondary {
-  color: #2196f3;
+  color: #0B4F6C;
 }
 
 .modalButtonMargin {
@@ -74,7 +76,7 @@
 
 .user-container {
   padding: 35px 15px 35px 15px;
-  background-image: linear-gradient(to bottom right, #D6E5E3,#9FD8CB);
+  background-image: linear-gradient(to bottom right, #fbfbfb, #fbfbfb);
   margin-left: auto;
   align-content: center;
   border-radius: 10px;
@@ -96,3 +98,4 @@
 .MuiTab-wrapper {
   font-size: 20px;
 }
+

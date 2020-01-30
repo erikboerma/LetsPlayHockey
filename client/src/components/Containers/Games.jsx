@@ -35,7 +35,7 @@ const FindGames = props => {
   return (
     <div className="wrapper container">
       <MDBTable hover>
-        <MDBTableHead>
+        <MDBTableHead className="table-head">
           <tr>
             <th>Team Name</th>
             <th>Location</th>

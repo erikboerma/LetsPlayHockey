@@ -49,7 +49,6 @@ const FullWidthTabs = ({currentStep, setCurrentStep})  => {
           value={currentStep}
           onChange={handleChange}
           indicatorColor="primary"
-          textColor="primary"
           aria-label="full width tabs example"
         >
           <Tab label="My Teams" {...a11yProps(0)} />
