@@ -3,6 +3,8 @@ import NavTab from "components/Navbar/NavTab";
 import "./Navbar.css";
 import logo from "assets/images/LetsPlayHockeyTransparent.png";
 import { withGlobalState } from "react-globally";
+import defaultAvatar from "assets/images/default-avatar.jpg";
+
 
 const Navbar = props => {
   const logout = () => {
@@ -41,7 +43,11 @@ const Navbar = props => {
               {/* TODO: Have the logout clear the global authToken and redirect home */}
               <NavTab location="/" title="Logout" onClick={logout} />
               <div className="nav-avatar-container">
-                <img className="nav-avatar" src={props.globalState.avatar} alt="" />
+                <img 
+                  className="nav-avatar" 
+                  src={props.globalState.avatar ? props.globalState.avatar : defaultAvatar} 
+                  alt="" 
+                />
                 <span>{props.globalState.username}</span>
               </div>
             </div>
