@@ -33,8 +33,10 @@ const AddGameModal = props => {
   const handleSubmit = async event => {
     event.preventDefault();
 
+    const userId = props.globalState.userId;
     const teamId = props.teamId;
     const params = {
+      userId,
       teamId,
       location,
       datetime: selectedDate,

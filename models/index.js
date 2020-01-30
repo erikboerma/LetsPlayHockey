@@ -6,9 +6,9 @@ const UserTeamModel = require('./userTeam');
 
 // const jaws = process.env.JAWSDB_URL || "127.0.0.1";
 
-let sequelize; 
-if(process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL) 
+let sequelize;
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL)
 } else {
   sequelize = new Sequelize('letsplayhockey', 'root', null, {
     host: "127.0.0.1",
@@ -29,9 +29,7 @@ Team.belongsToMany(User, {
   through: UserTeam,
 });
 
-Team.hasMany(Game, {
-  foreignKey: 'TeamId'
-});
+Team.hasMany(Game)
 Game.belongsTo(Team);
 
 sequelize.sync().then(() => {

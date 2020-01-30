@@ -1,46 +1,61 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
+import Moment from "react-moment";
 import {
   MDBTable,
   MDBTableBody,
   MDBTableHead,
-  MDBBtn,
-  MDBIcon
 } from "mdbreact";
 import axios from "axios";
+import AddIcon from "@material-ui/icons/Add";
+import IconButton from "@material-ui/core/IconButton";
 
 const FindGames = props => {
   const [games, setGames] = useState([]);
+  const [render, setRender] = useState(true);
+
+  const fetchGames = async () => {
+    const resp = await axios.get("/findAllGames");
+    setGames(resp.data);
+    setRender(false);
+  };
 
   useEffect(() => {
-    axios.get("/findAllGames").then(response => {
-      console.log(response.data);
-      setGames(response.data);
-    });
-  }, [games]);
+    if (render) {
+      fetchGames();
+    }
+  }, [render]);
 
-  const handleClick = async (event, i) => {
-    event.preventDefault();
+  const handleClick = async event => {
+    event.persist();
     const userId = props.globalState.userId;
-    const teamId = null;
-    const gameId = event.target.getAttribute("data-index");
+    const teamId = parseInt(event.target.getAttribute("data-team-index"));
+    const gameId = parseInt(event.target.getAttribute("data-game-index"));
 
-    const resp = await axios.post("/api/saveGame/", {
+    console.log(event.target);
+    console.log(userId, teamId, gameId);
+
+    const resp = await axios.post("/saveGame", {
       userId,
-      // teamId,
-      gameId: parseInt(gameId)
+      teamId,
+      gameId
     });
   };
 
+  if (!games) {
+    return null
+  }
+
   return (
     <div className="wrapper container">
-      <MDBTable hover>
+      <MDBTable hover className="dashboard-table">
         <MDBTableHead>
           <tr>
-            <th>Team Name</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Time</th>
+            <th className="dashboard-table-head">Team Name</th>
+            <th className="dashboard-table-head">Location</th>
+            <th className="dashboard-table-head">Date</th>
+            <th className="dashboard-table-head">Time</th>
+            {props.globalState.username && <th></th>}
           </tr>
         </MDBTableHead>
         <MDBTableBody>
@@ -48,19 +63,50 @@ const FindGames = props => {
             games.map((game, i) => {
               return (
                 <tr key={i}>
-                  <td>{game.location}</td>
-                  <td>{game.date}</td>
-                  <td>{game.time}</td>
-                  <td>
-                    <MDBBtn
-                      data-index={game.id}
-                      onClick={handleClick}
-                      size="lg"
-                      gradient="morpheus-den"
-                    >
-                      <MDBIcon icon="bolt" />
-                    </MDBBtn>
+                  <td className="dashboard-table-body">{game.Team.name}</td>
+                  <td className="dashboard-table-body">{game.location}</td>
+                  <td className="dashboard-table-body">
+                    <Moment local format="MM/DD/YYYY">
+                      {game.datetime}
+                    </Moment>
                   </td>
+                  <td className="dashboard-table-body">
+                    <Moment local format="hh:mm A">
+                      {game.datetime}
+                    </Moment>
+                  </td>
+                  {props.globalState.username && (
+                    <td>
+                      <IconButton
+                        data-game-index={game.id}
+                        data-team-index={game.Team.id}
+                        variant="extended"
+                        className="icon-button"
+                        onClick={handleClick}
+                      >
+                        <AddIcon
+                          data-game-index={game.id}
+                          data-team-index={game.Team.id}
+                        />
+                        <span
+                          className="icon-text"
+                          data-game-index={game.id}
+                          data-team-index={game.Team.id}
+                        >
+                          Sign Up
+                        </span>
+                      </IconButton>
+                      {/* <MDBBtn
+                        data-game-index={game.id}
+                        data-team-index={game.Team.id}
+                        onClick={handleClick}
+                        size="lg"
+                        gradient="morpheus-den"
+                      >
+                        <MDBIcon icon="bolt" />
+                      </MDBBtn> */}
+                    </td>
+                  )}
                 </tr>
               );
             })}
