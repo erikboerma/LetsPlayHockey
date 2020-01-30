@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {withGlobalState} from "react-globally";
+import { withGlobalState } from "react-globally";
 import {
   MDBContainer,
   MDBBtn,
@@ -13,6 +13,8 @@ import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
 import "./modalForms.css";
+import Date from "../Pickers/Date";
+import Time from "../Pickers/Time";
 
 const AddGameModal = props => {
   const [modal, setModal] = useState(false);
@@ -29,42 +31,43 @@ const AddGameModal = props => {
     });
   };
 
-  const submitGame = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
-    const TeamId = props.teamId;
+    const team = { teamId: props.teamId };
     const resp = await axios.post("/createGame", {
-      TeamId,
+      team,
       game
     });
     console.log(resp);
   };
 
   return (
-    <form onSubmit={submitGame}>
+
+    <form onSubmit={handleSubmit}>
       <MDBContainer className="modalButtonMargin" id="createGameContainer">
-        <IconButton variant="extended" className="icon-button" id="createGameButton" onClick={toggle}>
+        <IconButton variant="extended" className="icon-button" onClick={toggle}>
           <AddIcon />
           <span className="icon-text">Create Game</span>
         </IconButton>
         <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
           <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
           <MDBModalBody>
-            <MDBInput label="Location" name="location" onChange={handleChange}>
-              {props.location}
-            </MDBInput>
-            <MDBInput label="Date" name="date" onChange={handleChange}>
-              {props.date}
-            </MDBInput>
-            <MDBInput label="Time" name="time" onChange={handleChange}>
-              {props.time}
-            </MDBInput>
+            <MDBInput label="Location" name="location" onChange={handleChange} />
+            <Date game={game} />
+            <></>
+            <Time game={game} />
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn color="primary" size="sm" type="submit">
+            <MDBBtn
+              color="primary"
+              onClick={handleSubmit}
+              size="sm"
+              type="submit"
+            >
               Save changes
             </MDBBtn>
           </MDBModalFooter>
