@@ -16,7 +16,7 @@ const TeamTable = props => {
           <th className="dashboard-table-head">Offense</th>
           <th className="dashboard-table-head">Defense</th>
           <th className="dashboard-table-head">Goalies</th>
-          <th className="dashboard-table-head"></th>
+          <th className="dashboard-table-head" id="create-team-col"></th>
 
         </tr>
       </MDBTableHead>
@@ -28,7 +28,7 @@ const TeamTable = props => {
             <td className="dashboard-table-body">0/{team.defense}</td>
             <td className="dashboard-table-body">0/{team.goalies}</td>
             {team.userTeams.captain && (
-              <td className="dashboard-table-btn">
+              <td className="dashboard-table-body">
                 <AddGameModal
                   teamId={team.id}
                 />

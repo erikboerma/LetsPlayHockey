@@ -16,30 +16,29 @@ const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
+  const [response, setResponse] = useState({});
 
   let history = useHistory();
-
   const token = props.globalState.authToken;
+
   const config = {
     headers: { Authorization: `Bearer ${token}` }
+  };
+  const fetchResponse = async () => {
+    const resp = await axios.get("/findUser", config);
+    console.log(resp);
+    setResponse(response)
+    // setUser(response.data);
+    // setTeams(response.data.teams);
   };
 
   useEffect(() => {
     if (token === "") {
       history.push("/");
     }
+
     fetchResponse();
-  }, []);
-
-  const fetchResponse = async () => {
-    const response = await axios.get("/findUser", config);
-    const respUser = response.data;
-    const respTeam = response.data.teams;
-    setUser(respUser);
-    setTeams(respTeam);
-    await console.log(response);
-  };
-
+  }, [user]);
 
   return (
     <div className="wrapper container">
@@ -49,7 +48,7 @@ const Dashboard = props => {
             <img
               id="avatar"
               alt=""
-              src={user.avatar ? user.avatar : defaultAvatar}
+              // src={user.avatar ? user.avatar : defaultAvatar}
             />
             <UpdateAvatarModal />
           </div>

@@ -48,7 +48,7 @@ const AddGameModal = props => {
           Update Photo
         </Fab>
         <MDBModal isOpen={modal} toggle={toggle} position="right">
-          <MDBModalHeader toggle={toggle}>Add a Game</MDBModalHeader>
+          <MDBModalHeader toggle={toggle}>Enter Image URL</MDBModalHeader>
           <MDBModalBody>
             <MDBInput
               label="URL to Image Source"

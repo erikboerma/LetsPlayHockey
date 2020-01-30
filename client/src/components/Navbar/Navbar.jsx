@@ -41,7 +41,7 @@ const Navbar = props => {
               {/* TODO: Have the logout clear the global authToken and redirect home */}
               <NavTab location="/" title="Logout" onClick={logout} />
               <div className="nav-avatar-container">
-                <img className="nav-avatar" src={props.globalState.avatar} />
+                <img className="nav-avatar" src={props.globalState.avatar} alt="" />
                 <span>{props.globalState.username}</span>
               </div>
             </div>

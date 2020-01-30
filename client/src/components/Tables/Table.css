@@ -10,11 +10,27 @@ table.table th.dashboard-table-head {
     padding-bottom: 5px;
 }
 
-.table tbody tr td.dashboard-table-body {
-    font-size: 12px;
+.table td.dashboard-table-body {
+    font-size: 16px;
     text-align: center;
+    padding: 3px;
+    vertical-align: center;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }
 
-table td.dashboard-table-btn {
-    padding: 0;
+.table td.dashboard-table-body button{
+    padding: 3px;
+}
+
+svg {
+    font-size: 14px
+}
+
+.icon-text {
+    font-size: 14px
+}
+
+#create-team-col {
+    width: 150px;
 }

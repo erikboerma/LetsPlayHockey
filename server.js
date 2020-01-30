@@ -30,6 +30,7 @@ require("./routes/loginUser")(app);
 require("./routes/registerUser")(app);
 require("./routes/saveGame")(app);
 require("./routes/updateUser")(app);
+require("./routes/logout")(app);
 
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets

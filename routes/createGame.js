@@ -7,15 +7,15 @@ module.exports = app => {
     console.log(req.body);
     Team.findOne({
       where: {
-        id: req.body.game.teamName
+        id: req.body.team.teamId
       }
     }).then(team => {
       if (team === null) {
         Game.create({
           location: req.body.game.location,
           date: req.body.game.date,
-          time: req.body.game.time
-
+          time: req.body.game.time,
+          TeamId: team.id
         }).then(() => {
           res.status(200).send({
             auth: true,
