@@ -6,19 +6,17 @@ module.exports = app => {
     console.log(JSON.stringify(req.body))
     User.findOne({
       where: {
-        username: req.body.user.username,
+        id: req.body.userId,
       },
-    }).then((userInfo) => {
-      if (userInfo != null) {
+    }).then(userInfo => {
+      if (userInfo !== null) {
         console.log('user found in db');
         userInfo
           .update({
-            firstName: req.body.data.firstName,
-            lastName: req.body.data.lastName,
-            shot: req.body.data.shot,
-            skillLevel: req.body.data.skillLevel,
-            notice: req.body.data.notice,
-            avatar: req.body.data.avatar
+            shot: req.body.profile.shot,
+            skillLevel: req.body.profile.skillLevel,
+            notice: req.body.profile.notice,
+            avatar: req.body.profile.avatar
           })
           .then(() => {
             console.log('user updated');
