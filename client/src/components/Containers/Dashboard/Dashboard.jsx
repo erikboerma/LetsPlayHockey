@@ -17,6 +17,7 @@ const Dashboard = props => {
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
   const [response, setResponse] = useState({});
+  const [render, setRender] = useState(true);
 
   let history = useHistory();
   const token = props.globalState.authToken;
@@ -26,19 +27,19 @@ const Dashboard = props => {
   };
   const fetchResponse = async () => {
     const resp = await axios.get("/findUser", config);
-    console.log(resp);
-    setResponse(response)
-    // setUser(response.data);
-    // setTeams(response.data.teams);
+    setUser(resp.data);
+    setTeams(resp.data.teams);
+    setRender(false);
   };
 
   useEffect(() => {
     if (token === "") {
       history.push("/");
     }
-
-    fetchResponse();
-  }, [user]);
+    if (render) {
+      fetchResponse();
+    }
+  }, [render]);
 
   return (
     <div className="wrapper container">
@@ -48,9 +49,9 @@ const Dashboard = props => {
             <img
               id="avatar"
               alt=""
-              // src={user.avatar ? user.avatar : defaultAvatar}
+              src={user.avatar ? user.avatar : defaultAvatar}
             />
-            <UpdateAvatarModal />
+            <UpdateAvatarModal setRender={setRender} />
           </div>
           <div className="user-info">
             <ul>
@@ -76,8 +77,8 @@ const Dashboard = props => {
             </ul>
           </div>
           <div id="modalRow">
-            <CreateTeamModal />
-            <UpdateProfileModal />
+            <CreateTeamModal setRender={setRender} />
+            <UpdateProfileModal setRender={setRender} />
           </div>
         </div>
 

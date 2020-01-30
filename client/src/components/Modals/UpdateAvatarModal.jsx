@@ -37,7 +37,7 @@ const AddGameModal = props => {
       data: avatar
     });
     console.log(resp);
-    
+    props.setRender(true);
   };
 
   return (

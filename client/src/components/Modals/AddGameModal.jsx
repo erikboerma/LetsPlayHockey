@@ -39,6 +39,7 @@ const AddGameModal = props => {
       game
     });
     console.log(resp);
+    props.setRender(true);
   };
 
   return (
