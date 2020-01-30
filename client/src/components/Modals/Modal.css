@@ -1,0 +1,11 @@
+.MuiFormLabel-root .MuiInputLabel-root {
+    transform: none;
+}
+
+label {
+    margin-top: 15px;    
+}
+
+.form-control {
+    width: 100%;
+}

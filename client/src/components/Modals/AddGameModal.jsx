@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
 import Date from "../Pickers/Date";
 import Time from "../Pickers/Time";
+import "./Modal.css";
 
 const AddGameModal = props => {
   const [modal, setModal] = useState(false);
@@ -52,20 +53,18 @@ const AddGameModal = props => {
         <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
           <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
           <MDBModalBody>
-            <MDBInput label="Location" name="location" onChange={handleChange} />
-            <Date game={game} />
-            <Time game={game} />
+            <label>
+              Enter Location:
+              <MDBInput name="location" onChange={handleChange} />
+            </label>
+            <Date game={game} onChange={handleChange} />
+            <Time game={game} onChange={handleChange} />
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn
-              color="primary"
-              onClick={handleSubmit}
-              size="sm"
-              type="submit"
-            >
+            <MDBBtn color="primary" onClick={toggle} size="sm" type="submit">
               Save changes
             </MDBBtn>
           </MDBModalFooter>

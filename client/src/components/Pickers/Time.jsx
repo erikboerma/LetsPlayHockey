@@ -6,6 +6,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker
 } from "@material-ui/pickers";
+import './Picker.css'
 
 const MaterialUIPickers = () => {
   // The first commit of Material-UI
@@ -16,20 +17,23 @@ const MaterialUIPickers = () => {
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change time"
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
+    <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled">
+      Choose a Time:
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Grid container justify="space-around">
+          <KeyboardTimePicker
+            margin="normal"
+            id="time-picker"
+            // label="Time picker"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change time"
+            }}
+          />
+        </Grid>
+      </MuiPickersUtilsProvider>
+    </label>
   );
 };
 

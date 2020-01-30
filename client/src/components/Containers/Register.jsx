@@ -18,6 +18,7 @@ const Register = () => {
   const handleChange = event => {
     const { name, value } = event.target;
     setUser({
+      ...user,
       [name]: value
     });
   };
