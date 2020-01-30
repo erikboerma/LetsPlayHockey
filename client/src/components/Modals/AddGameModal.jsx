@@ -12,6 +12,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
+import "./modalForms.css";
 import Date from "../Pickers/Date";
 import Time from "../Pickers/Time";
 
@@ -43,8 +44,9 @@ const AddGameModal = props => {
   };
 
   return (
+
     <form onSubmit={handleSubmit}>
-      <MDBContainer className="modalButtonMargin">
+      <MDBContainer className="modalButtonMargin" id="createGameContainer">
         <IconButton variant="extended" className="icon-button" onClick={toggle}>
           <AddIcon />
           <span className="icon-text">Create Game</span>
