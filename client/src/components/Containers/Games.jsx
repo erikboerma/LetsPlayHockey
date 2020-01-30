@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withGlobalState } from "react-globally";
+import Moment from "react-moment";
 import {
   MDBTable,
   MDBTableBody,
@@ -11,13 +12,19 @@ import axios from "axios";
 
 const FindGames = props => {
   const [games, setGames] = useState([]);
+  const [render, setRender] = useState(true);
+
+  const fetchGames = async () => {
+    const resp = await axios.get("/findAllGames");
+    setGames(resp.data);
+    setRender(false);
+  };
 
   useEffect(() => {
-    axios.get("/findAllGames").then(response => {
-      console.log(response.data);
-      setGames(response.data);
-    });
-  }, [games]);
+    if (render) {
+      fetchGames();
+    }
+  }, [render]);
 
   const handleClick = async (event, i) => {
     event.preventDefault();
@@ -25,7 +32,7 @@ const FindGames = props => {
     const teamId = null;
     const gameId = event.target.getAttribute("data-index");
 
-    const resp = await axios.post("/api/saveGame/", {
+    const resp = await axios.post("/saveGame", {
       userId,
       // teamId,
       gameId: parseInt(gameId)
@@ -48,9 +55,18 @@ const FindGames = props => {
             games.map((game, i) => {
               return (
                 <tr key={i}>
+                  <td>{game.Team.name}</td>
                   <td>{game.location}</td>
-                  <td>{game.date}</td>
-                  <td>{game.time}</td>
+                  <td>
+                    <Moment local format="MM/DD/YYYY">
+                      {game.datetime}
+                    </Moment>
+                  </td>
+                  <td>
+                    <Moment local format="hh:mm A">
+                      {game.datetime}
+                    </Moment>
+                  </td>
                   <td>
                     <MDBBtn
                       data-index={game.id}
