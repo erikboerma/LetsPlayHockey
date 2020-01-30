@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withGlobalState } from "react-globally";
 import {
   MDBContainer,
   MDBBtn,
@@ -8,8 +9,6 @@ import {
   MDBModalFooter,
   MDBInput
 } from "mdbreact";
-import AddIcon from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
 import Fab from "@material-ui/core/Fab";
 import CameraIcon from "@material-ui/icons/CameraAlt";
@@ -32,8 +31,13 @@ const AddGameModal = props => {
   const submitForm = async event => {
     event.preventDefault();
 
-    const resp = await axios.post("/updateUser", { data: avatar });
+    const username = { username: props.globalState.username };
+    const resp = await axios.post("/updateUser", {
+      user: username,
+      data: avatar
+    });
     console.log(resp);
+    
   };
 
   return (
@@ -66,4 +70,4 @@ const AddGameModal = props => {
   );
 };
 
-export default AddGameModal;
+export default withGlobalState(AddGameModal);

@@ -3,8 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from "mdbreact";
 import AddGameModal from "components/Modals/AddGameModal";
 import "./TeamTable.css";
 
-const TeamTable = ({ currentStep, teams }) => {
-  if (currentStep !== 0) {
+const TeamTable = props => {
+  if (props.currentStep !== 0) {
     return null;
   }
 
@@ -21,7 +21,7 @@ const TeamTable = ({ currentStep, teams }) => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {teams.map((team, i) => (
+        {props.teams.map((team, i) => (
           <tr key={i}>
             <td className="teamText">{team.name}</td>
             <td className="teamText">0/{team.offense}</td>
