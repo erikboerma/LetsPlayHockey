@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {withGlobalState} from "react-globally";
 import {
   MDBContainer,
   MDBBtn,
@@ -12,10 +11,12 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
+import Fab from "@material-ui/core/Fab";
+import CameraIcon from "@material-ui/icons/CameraAlt";
 
 const AddGameModal = props => {
   const [modal, setModal] = useState(false);
-  const [game, setGame] = useState({});
+  const [avatar, setAvatar] = useState();
 
   const toggle = () => {
     setModal(!modal);
@@ -23,47 +24,39 @@ const AddGameModal = props => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setGame({
+    setAvatar({
       [name]: value
     });
   };
 
-  const submitGame = async event => {
+  const submitForm = async event => {
     event.preventDefault();
 
-    const TeamId = props.teamId;
-    const resp = await axios.post("/createGame", {
-      TeamId,
-      game
-    });
+    const resp = await axios.post("/updateUser", { data: avatar });
     console.log(resp);
   };
 
   return (
-    <form onSubmit={submitGame}>
+    <form onSubmit={submitForm}>
       <MDBContainer className="modalButtonMargin">
-        <IconButton variant="extended" className="icon-button" onClick={toggle}>
-          <AddIcon />
-          <span className="icon-text">Create Game</span>
-        </IconButton>
-        <MDBModal isOpen={modal} toggle={toggle} fullHeight position="right">
+        <Fab variant="extended" id="update-avatar" onClick={toggle}>
+          <CameraIcon />
+          Update Photo
+        </Fab>
+        <MDBModal isOpen={modal} toggle={toggle} position="right">
           <MDBModalHeader toggle={toggle}>Add a game</MDBModalHeader>
           <MDBModalBody>
-            <MDBInput label="Location" name="location" onChange={handleChange}>
-              {props.location}
-            </MDBInput>
-            <MDBInput label="Date" name="date" onChange={handleChange}>
-              {props.date}
-            </MDBInput>
-            <MDBInput label="Time" name="time" onChange={handleChange}>
-              {props.time}
-            </MDBInput>
+            <MDBInput
+              label="URL to Image Source"
+              name="avatar"
+              onChange={handleChange}
+            ></MDBInput>
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={toggle} size="sm">
               Close
             </MDBBtn>
-            <MDBBtn color="primary" size="sm" type="submit">
+            <MDBBtn color="primary" size="sm" type="submit" onClick={toggle}>
               Save changes
             </MDBBtn>
           </MDBModalFooter>
@@ -73,4 +66,4 @@ const AddGameModal = props => {
   );
 };
 
-export default withGlobalState(AddGameModal);
+export default AddGameModal;

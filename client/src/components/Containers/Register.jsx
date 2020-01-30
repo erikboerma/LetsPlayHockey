@@ -9,31 +9,48 @@ import axios from "axios";
 
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [backendErrors, setBackendErrors] = useState();
-  const { register, handleSubmit, errors, setErrors, watch } = useForm();
+  const [user, setUser] = useState();
+  const [response, setResponse] = useState();
+  const { register, handleSubmit, errors, watch } = useForm();
 
   let history = useHistory();
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setUser({
+      [name]: value
+    });
+  };
 
   const submitForm = async data => {
     console.log(data);
 
     const resp = await axios.post("/registerUser", data);
-
     console.log(resp);
+
     const userCreated = resp.data.message === "user created";
     const usernameTaken = resp.data === "username already taken";
-    
+
     if (usernameTaken) {
-      setBackendErrors("Username Already Taken")
+      setResponse("Username Already Taken")
     } else if (userCreated) {
-      history.push("/Login");
+      let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+      setCurrentStep(_currentStep);
     };
   };
 
-  const nextStep = () => {
-    if (!errors) {
-      let _currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-      setCurrentStep(_currentStep);
+  const updateForm = async data => {
+    console.log(data);
+
+    const resp = await axios.post("/updateUser", {
+      user,
+      data
+    });
+    console.log(resp)
+
+    const userUpdated = resp.data.message === "user updated";
+    if (userUpdated) {
+      history.push("/Login");
     };
   };
 
@@ -48,17 +65,19 @@ const Register = () => {
       <form onSubmit={handleSubmit(submitForm)}>
         <RegisterForm
           currentStep={currentStep}
-          nextStep={nextStep}
+          handleChange={handleChange}
+          response={response}
           register={register}
           errors={errors}
           watch={watch}
-          backendErrors={backendErrors}
         />
+      </form>
+      <form onSubmit={handleSubmit(updateForm)}>
         <CreateProfile
           currentStep={currentStep}
+          handleChange={handleChange}
           prevStep={prevStep}
           register={register}
-          handleSubmit={handleSubmit}
           errors={errors}
         />
       </form>

@@ -5,45 +5,6 @@ const jwtSecret = require('../config/jwtConfig');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
-// module.exports = app => {
-//   const user = app.post('/loginUser', (req, res, next) => {
-//     passport.authenticate('login', asyncHandler(async(err, user, info) => {
-//       if (err) {
-//         console.log(err);
-//         res.send(err);
-//       }
-//       if (info != undefined) {
-//         console.log(info.message);
-//         res.send(info.message);
-//       } else {
-//         req.logIn(user, err => {
-//           // console.log(`user - ${JSON.stringify(user)}\n`)
-//           User.findOne({
-//             where: {
-//               username: user.username,
-//             }
-//           });
-//         });
-//       };
-
-//       const token = jwt.sign({
-//         id: user.username
-//       }, jwtSecret.secret);
-
-//       await res.status(200).send({
-//         auth: true,
-//         userId: user.id,
-//         token: token,
-//         message: 'user found & logged in'
-//       });
-
-//       await user.update({
-//         authToken: token
-//       });
-//     })(req, res, next);
-//   }));
-// };
-
 module.exports = app => {
   app.post('/loginUser', (req, res, next) => {
     // console.log(`req.body - ${JSON.stringify(req.body)}\n`)

@@ -7,7 +7,6 @@ import {
   MDBModalFooter
 } from "mdbreact";
 import Select from "react-select";
-import { shot, skillLevel, notice } from "../../constants";
 import mapSelectArray from "../../utils";
 
 const UpdateProfileModal = props => {
@@ -39,7 +38,7 @@ const UpdateProfileModal = props => {
             <div className="position-select">
               <Select
                 placeholder="Shot"
-                options={mapSelectArray(shot, "shot")}
+                // options={mapSelectArray(shot, "shot")}
                 onChange={props.handleChange}
               />
             </div>
@@ -53,7 +52,7 @@ const UpdateProfileModal = props => {
             <div className="position-select">
               <Select
                 placeholder="Skill Level"
-                options={mapSelectArray(skillLevel, "skillLevel")}
+                // options={mapSelectArray(skillLevel, "skillLevel")}
                 onChange={props.handleChange}
               />
             </div>
@@ -67,7 +66,7 @@ const UpdateProfileModal = props => {
             <div className="position-select">
               <Select
                 placeholder="Notice Needed"
-                options={mapSelectArray(notice, "notice")}
+                // options={mapSelectArray(notice, "notice")}
                 onChange={props.handleChange}
               />
             </div>

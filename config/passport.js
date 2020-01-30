@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const BCRYPT_SALT_ROUNDS = 12;
 
 const passport = require('passport');
-const PassportHerokuAddon = require('passport-heroku-addon');
 const localStrategy = require('passport-local').Strategy;
 const Models = require('../models');
 const User = Models.User;
@@ -19,7 +18,6 @@ passport.use(
       session: false,
     },
     (username, password, done) => {
-      console.log('Passport Username - ' + username)
       try {
         User.findOne({
           where: {
@@ -121,7 +119,3 @@ passport.use(
     }
   }),
 );
-
-// passport.use(new PassportHerokuAddon({
-//   sso_salt: process.env.SSO_SALT
-// }));

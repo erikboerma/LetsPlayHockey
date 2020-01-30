@@ -4,13 +4,12 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import defaultAvatar from "assets/images/default-avatar.jpg";
 import UpdateProfileModal from "components/Modals/UpdateProfileModal";
-import AddTeamModal from "components/Modals/AddGameModal";
 import CreateTeamModal from "components/Modals/CreateTeamModal";
+import UpdateAvatarModal from "components/Modals/UpdateAvatarModal";
 import TeamTable from "components/Tables/TeamTable";
 import GameTable from "components/Tables/GameTable";
 import Tab from "components/Tab";
-import Fab from "@material-ui/core/Fab";
-import CameraIcon from "@material-ui/icons/CameraAlt";
+
 import "./Dashboard.css";
 
 const Dashboard = props => {
@@ -21,7 +20,6 @@ const Dashboard = props => {
   let history = useHistory();
 
   useEffect(() => {
-    const userId = props.globalState.userId;
     const token = props.globalState.authToken;
 
     if (token === "") {
@@ -51,10 +49,7 @@ const Dashboard = props => {
               alt=""
               src={user.avatar ? user.avatar : defaultAvatar}
             />
-            <Fab variant="extended" id="update-avatar">
-              <CameraIcon />
-              Update Photo
-            </Fab>
+            <UpdateAvatarModal />
           </div>
           <div className="user-info">
             <ul>

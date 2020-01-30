@@ -6,6 +6,7 @@ module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
 
     console.log(`Req.Body - ${JSON.stringify(req.body)}\n`)
+    console.log(req.body.username.username);
 
     passport.authenticate('register', (err, user, info) => {
       console.log('User - ' + JSON.stringify(user));

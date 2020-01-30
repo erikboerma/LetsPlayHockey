@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from "react-globally";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import LoginForm from "components/Forms/LoginForm";
-import { useForm } from "react-hook-form";
 
 const Login = props => {
   const [backendErrors, setBackendErrors] = useState([]);
@@ -12,13 +12,20 @@ const Login = props => {
   let history = useHistory();
 
   const submitForm = async data => {
-    // This line is necessary to display the front end errors
     console.log(data)
 
     const resp = await axios.post("/loginUser", data)
-      
+    console.log(resp);
+
     const userLoggedIn = resp.data.auth === true;
-    if (userLoggedIn) {
+    const wrongUsername = resp.data === "bad username"
+    const wrongPassword = resp.data === "passwords do not match"
+
+    if (wrongUsername) {
+      setBackendErrors("Username does not exist")
+    } else if (wrongPassword) {
+      setBackendErrors("Incorrect Password")
+    } else if (userLoggedIn) {
       localStorage.setItem("authToken", resp.data.token);
       props.setGlobalState({
         userId: resp.data.userId,
@@ -30,9 +37,7 @@ const Login = props => {
 
   return (
     <div className="wrapper container">
-      <form
-        onSubmit={handleSubmit(submitForm)}
-      >
+      <form onSubmit={handleSubmit(submitForm)}>
         <LoginForm
           backendErrors={backendErrors}
           register={register}

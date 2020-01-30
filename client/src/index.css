@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiButtonBase-root.MuiIconButton-root.icon-button {
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #AFD3CE;
+  outline: none;
+}
+
+.MuiButtonBase-root.MuiIconButton-root.icon-button:hover {
+  background-color: #AFD3CE;
+}
