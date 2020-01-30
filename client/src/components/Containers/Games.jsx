@@ -5,8 +5,6 @@ import {
   MDBTable,
   MDBTableBody,
   MDBTableHead,
-  MDBBtn,
-  MDBIcon
 } from "mdbreact";
 import axios from "axios";
 import AddIcon from "@material-ui/icons/Add";
@@ -50,7 +48,7 @@ const FindGames = props => {
 
   return (
     <div className="wrapper container">
-      <MDBTable hover>
+      <MDBTable hover className="dashboard-table">
         <MDBTableHead>
           <tr>
             <th className="dashboard-table-head">Team Name</th>

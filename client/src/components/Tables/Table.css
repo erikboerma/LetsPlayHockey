@@ -14,9 +14,7 @@ table.table th.dashboard-table-head {
     font-size: 16px;
     text-align: center;
     padding: 3px;
-    vertical-align: center;
-    /* margin-top: auto;
-    margin-bottom: auto; */
+    vertical-align: inherit;
 }
 
 svg {
@@ -29,4 +27,14 @@ svg {
 
 #create-team-col {
     width: 150px;
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.icon-button {
+    padding: 3px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+tr {
+    height: 50px
 }
