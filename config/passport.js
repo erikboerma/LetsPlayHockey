@@ -5,9 +5,8 @@ const BCRYPT_SALT_ROUNDS = 12;
 
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
-const Models = require('../sequelize');
+const Models = require('../models');
 const User = Models.User;
-const UserAvailability = Models.UserAvailability;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
@@ -58,6 +57,7 @@ passport.use(
       session: false,
     },
     (username, password, done) => {
+      console.log(username, password)
       try {
         User.findOne({
           where: {

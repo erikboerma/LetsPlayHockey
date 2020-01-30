@@ -1,12 +1,13 @@
 // Used for mapping arrays of select components
-export const mapSelectArray = (arr, state) => {
+const mapSelectArray = arr => {
     let newArr = [];
-    arr.map((key, i) => {
+    arr.map((label, i) => {
         newArr.push({
-            state: state,
-            label: key,
+            label: label,
             value: i
         });
     });
-    return newArr;
+    return newArr
 };
+
+export default mapSelectArray;

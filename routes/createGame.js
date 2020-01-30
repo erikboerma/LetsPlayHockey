@@ -1,16 +1,15 @@
-const Models = require("../sequelize");
+const Models = require("../models");
 const Game = Models.Game;
 
 module.exports = app => {
-  app.post("/createTeam", (req, res, next) => {
+  app.post("/createGame", (req, res, next) => {
     console.log(req.body);
     Game
       .create({
-        name: req.body.teamName,
-        offense: req.body.offense,
-        defense: req.body.defense,
-        goalies: req.body.goalies,
-        totalPlayers: req.body.totalPlayers
+        location: req.body.game.location,
+        date: req.body.game.date,
+        time: req.body.game.time,
+        TeamId: req.body.TeamId,
       })
       .then(() => {
         console.log("Game Created");

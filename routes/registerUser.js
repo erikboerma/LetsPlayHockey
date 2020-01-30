@@ -1,19 +1,21 @@
 const passport = require('passport');
-const Models = require('../sequelize');
+const Models = require('../models');
 const User = Models.User;
-const UserAvailability = Models.UserAvailability;
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
 
     console.log(`Req.Body - ${JSON.stringify(req.body)}\n`)
+    console.log(req.body.username.username);
 
     passport.authenticate('register', (err, user, info) => {
       console.log('User - ' + JSON.stringify(user));
       if (err) {
+        console.log('here')
         console.log(err);
       }
       if (info != undefined) {
+        console.log('here-2')
         console.log(info.message);
         res.send(info.message);
       } else {

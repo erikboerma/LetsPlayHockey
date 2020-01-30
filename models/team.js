@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             validate: {
-                // allowNull: false,
                 notEmpty: true
             }
         },
@@ -19,11 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         totalPlayers: {
             type: DataTypes.INTEGER,
             validate: {
-                // allowNull: false,
                 notEmpty: true,
                 max: 15
             }
         },
     });
+
+    
     return Team;
 };

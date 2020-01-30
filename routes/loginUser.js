@@ -1,6 +1,6 @@
-const Models = require('../sequelize');
+const Models = require('../models');
 const User = Models.User;
-console.log(User)
+const asyncHandler = require('express-async-handler')
 const jwtSecret = require('../config/jwtConfig');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -28,6 +28,7 @@ module.exports = app => {
             }, jwtSecret.secret);
             res.status(200).send({
               auth: true,
+              userId: user.id,
               token: token,
               message: 'user found & logged in',
             });
