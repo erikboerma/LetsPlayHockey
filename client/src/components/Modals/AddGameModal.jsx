@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {withGlobalState} from "react-globally";
 import {
   MDBContainer,
   MDBBtn,
@@ -72,4 +73,4 @@ const AddGameModal = props => {
   );
 };
 
-export default AddGameModal;
+export default withGlobalState(AddGameModal);
