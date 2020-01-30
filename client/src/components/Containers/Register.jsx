@@ -43,10 +43,11 @@ const Register = () => {
   const updateForm = async data => {
     console.log(data);
 
-    const resp = await axios.post("/updateUser", {
+    const params = {
       user,
       data
-    });
+    };
+    const resp = await axios.post("/updateUser", params);
     console.log(resp)
 
     const userUpdated = resp.data.message === "user updated";

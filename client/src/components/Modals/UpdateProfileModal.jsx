@@ -8,7 +8,6 @@ import {
   MDBModalBody,
   MDBModalFooter
 } from "mdbreact";
-import select from "react-select";
 import axios from "axios";
 
 const UpdateProfileModal = props => {
@@ -30,9 +29,9 @@ const UpdateProfileModal = props => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const userId = props.user.id;
+    const username = { username: props.globalState.username };
     const params = {
-      userId,
+      user: username,
       data: profile
     }
     const resp = await axios.post("/updateUser", params);
@@ -62,7 +61,7 @@ const UpdateProfileModal = props => {
                 className="custom-select"
                 placeholder="Shot"
                 name="shot"
-                value={props.user.shot}
+                value={profile.shot ? profile.shot : props.user.shot}
                 onChange={handleChange}
               >
                 <option value="">Choose...</option>
@@ -78,7 +77,7 @@ const UpdateProfileModal = props => {
                   className="custom-select"
                   placeholder="Skill Level"
                   name="skillLevel"
-                  value={props.user.skillLevel}
+                  value={profile.skillLevel ? profile.skillLevel : props.user.skillLevel}
                   onChange={handleChange}
                 >
                   <option value="">Choose...</option>
@@ -97,7 +96,7 @@ const UpdateProfileModal = props => {
                   className="custom-select"
                   placeholder="Notice Needed"
                   onChange={handleChange}
-                  value={props.user.notice}
+                  value={profile.notice ? profile.notice : props.user.notice}
                   name="notice"
                 >
                   <option value="">Choose...</option>
@@ -115,7 +114,7 @@ const UpdateProfileModal = props => {
             <MDBBtn color="danger" onClick={toggle} size="sm">
               Cancel
             </MDBBtn>
-            <MDBBtn color="primary" type="submit" size="sm">
+            <MDBBtn color="primary" type="submit" size="sm" onClick={toggle}>
               Save changes
             </MDBBtn>
           </MDBModalFooter>

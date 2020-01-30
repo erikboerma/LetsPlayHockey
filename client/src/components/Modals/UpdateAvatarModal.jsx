@@ -32,10 +32,11 @@ const AddGameModal = props => {
     event.preventDefault();
 
     const username = { username: props.globalState.username };
-    const resp = await axios.post("/updateUser", {
+    const params = {
       user: username,
       data: avatar
-    });
+    };
+    const resp = await axios.post("/updateUser", params);
     console.log(resp);
     props.setRender(true);
   };

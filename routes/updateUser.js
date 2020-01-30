@@ -6,13 +6,15 @@ module.exports = app => {
     console.log(JSON.stringify(req.body))
     User.findOne({
       where: {
-        id: req.body.userId,
+        username: req.body.user.username,
       },
     }).then(userInfo => {
       if (userInfo !== null) {
         console.log('user found in db');
         userInfo
           .update({
+            firstName: req.body.data.firstName,
+            lastName: req.body.data.lastName,
             shot: req.body.data.shot,
             skillLevel: req.body.data.skillLevel,
             notice: req.body.data.notice,
@@ -28,6 +30,7 @@ module.exports = app => {
       } else {
         console.error('no user exists in db to update');
         res.status(401).send('no user exists in db to update');
+        res.json(req.body)
       }
     });
   });
