@@ -78,7 +78,7 @@ const Dashboard = props => {
           </div>
           <div id="modalRow">
             <CreateTeamModal setRender={setRender} />
-            <UpdateProfileModal setRender={setRender} />
+            <UpdateProfileModal user={user} setRender={setRender} />
           </div>
         </div>
 
