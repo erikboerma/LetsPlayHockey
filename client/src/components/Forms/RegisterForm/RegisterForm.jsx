@@ -9,7 +9,6 @@ import {
 } from "mdbreact";
 import "../Form.css";
 
-
 const RegisterForm = ({ currentStep, nextStep, register, errors, watch, backendErrors }) => {
   if (currentStep !== 1) {
     return null;

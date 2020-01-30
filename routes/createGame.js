@@ -15,7 +15,6 @@ module.exports = app => {
           location: req.body.game.location,
           date: req.body.game.date,
           time: req.body.game.time
-
         }).then(() => {
           res.status(200).send({
             auth: true,

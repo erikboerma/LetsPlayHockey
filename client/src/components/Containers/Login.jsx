@@ -16,10 +16,7 @@ const Login = props => {
     console.log(data)
 
     const resp = await axios.post("/loginUser", data)
-      .then(resp => {
-        console.log(resp);
-      });
-
+      
     const userLoggedIn = resp.data.auth === true;
     if (userLoggedIn) {
       localStorage.setItem("authToken", resp.data.token);
