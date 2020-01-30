@@ -13,10 +13,10 @@ module.exports = app => {
         console.log('user found in db');
         userInfo
           .update({
-            shot: req.body.profile.shot,
-            skillLevel: req.body.profile.skillLevel,
-            notice: req.body.profile.notice,
-            avatar: req.body.profile.avatar
+            shot: req.body.data.shot,
+            skillLevel: req.body.data.skillLevel,
+            notice: req.body.data.notice,
+            avatar: req.body.data.avatar
           })
           .then(() => {
             console.log('user updated');

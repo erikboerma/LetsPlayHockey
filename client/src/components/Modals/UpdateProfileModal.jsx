@@ -33,7 +33,7 @@ const UpdateProfileModal = props => {
     const userId = props.user.id;
     const params = {
       userId,
-      profile
+      data: profile
     }
     const resp = await axios.post("/updateUser", params);
     console.log(resp);
