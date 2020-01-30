@@ -14,14 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         goalies: {
             type: DataTypes.INTEGER
-        },
-        totalPlayers: {
-            type: DataTypes.INTEGER,
-            validate: {
-                notEmpty: true,
-                max: 15
-            }
-        },
+        }
     });
 
     

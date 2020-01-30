@@ -26,16 +26,18 @@ const FindGames = props => {
     }
   }, [render]);
 
-  const handleClick = async (event, i) => {
-    event.preventDefault();
+  const handleClick = async event => {
+    event.persist();
     const userId = props.globalState.userId;
-    const teamId = null;
-    const gameId = event.target.getAttribute("data-index");
+    const teamId = parseInt(event.target.getAttribute("data-team-index"));
+    const gameId = parseInt(event.target.getAttribute("data-game-index"));
+
+    console.log(userId, teamId, gameId)
 
     const resp = await axios.post("/saveGame", {
       userId,
-      // teamId,
-      gameId: parseInt(gameId)
+      teamId,
+      gameId,
     });
   };
 
@@ -48,6 +50,9 @@ const FindGames = props => {
             <th>Location</th>
             <th>Date</th>
             <th>Time</th>
+            {props.globalState.username && (
+              <th></th>
+            )}
           </tr>
         </MDBTableHead>
         <MDBTableBody>
@@ -67,16 +72,19 @@ const FindGames = props => {
                       {game.datetime}
                     </Moment>
                   </td>
-                  <td>
-                    <MDBBtn
-                      data-index={game.id}
-                      onClick={handleClick}
-                      size="lg"
-                      gradient="morpheus-den"
-                    >
-                      <MDBIcon icon="bolt" />
-                    </MDBBtn>
-                  </td>
+                  {props.globalState.username && (
+                    <td>
+                      <MDBBtn
+                        data-game-index={game.id}
+                        data-team-index={game.Team.id}
+                        onClick={handleClick}
+                        size="lg"
+                        gradient="morpheus-den"
+                      >
+                        <MDBIcon icon="bolt" />
+                      </MDBBtn>
+                    </td>
+                  )}
                 </tr>
               );
             })}

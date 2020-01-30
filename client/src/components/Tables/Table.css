@@ -19,10 +19,6 @@ table.table th.dashboard-table-head {
     margin-bottom: auto; */
 }
 
-.table td.dashboard-table-body button{
-    padding: 3px;
-}
-
 svg {
     font-size: 14px
 }

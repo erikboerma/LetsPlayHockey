@@ -1,6 +1,7 @@
 const Models = require("../models");
 const Game = Models.Game;
 const Team = Models.Team;
+const UserTeam = Models.UserTeam;
 
 module.exports = app => {
   app.post("/createGame", (req, res, next) => {
@@ -14,9 +15,27 @@ module.exports = app => {
         Game.create({
           location: req.body.location,
           datetime: req.body.datetime,
-          // time: req.body.time,
           TeamId: team.id
-        }).then(() => {
+        }).then(game => {
+          console.log(game.id);
+          UserTeam.findOne({
+            where: {
+              UserId: req.body.userId,
+              TeamId: req.body.teamId,
+              GameId: game.id,
+            }
+          }).then(userTeam => {
+            if (userTeam === null) {
+              UserTeam.create({
+                UserId: req.body.userId,
+                TeamId: req.body.teamId,
+                GameId: game.id,
+                captain: true,
+              }).then(userTeamCreated => {
+                console.log(userTeamCreated);
+              })
+            };
+          })
           res.status(200).send({
             auth: true,
             message: "Game Created"

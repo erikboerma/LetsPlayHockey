@@ -16,7 +16,6 @@ const Dashboard = props => {
   const [currentStep, setCurrentStep] = useState(0);
   const [user, setUser] = useState({});
   const [teams, setTeams] = useState([]);
-  const [response, setResponse] = useState({});
   const [render, setRender] = useState(true);
 
   let history = useHistory();
@@ -27,6 +26,7 @@ const Dashboard = props => {
   };
   const fetchResponse = async () => {
     const resp = await axios.get("/findUser", config);
+    console.log(resp)
     setUser(resp.data);
     setTeams(resp.data.teams);
     setRender(false);

@@ -27,7 +27,7 @@ module.exports = app => {
             through: {
               model: UserTeam,
               as: 'userTeams',
-              attributes: ['TeamId', 'UserId', 'captain']
+              attributes: ['TeamId', 'UserId', 'GameId', 'captain']
             },
             include: [{
               model: Game,
