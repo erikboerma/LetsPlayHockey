@@ -17,7 +17,8 @@ module.exports = app => {
             lastName: req.body.data.lastName,
             shot: req.body.data.shot,
             skillLevel: req.body.data.skillLevel,
-            notice: req.body.data.notice
+            notice: req.body.data.notice,
+            avatar: req.body.data.avatar
           })
           .then(() => {
             console.log('user updated');
