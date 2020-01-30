@@ -45,7 +45,6 @@ const AddGameModal = props => {
   };
 
   return (
-
     <form onSubmit={handleSubmit}>
       <MDBContainer className="modalButtonMargin" id="createGameContainer">
         <IconButton variant="extended" className="icon-button" onClick={toggle}>

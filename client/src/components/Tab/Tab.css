@@ -13,5 +13,10 @@
 .dashboard-tab > header > div > div > div > button {
     border: 1px black solid;
     border-radius: 10px 10px 0 0;
-    background-color: #AFD3CE;
+    background-color: #fbfbfb;
 }
+
+.dashboard-table-head {
+    background-color: #fbfbfb;
+}
+
