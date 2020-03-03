@@ -85,8 +85,10 @@ const Dashboard = props => {
         <br />
         <div className="col-8">
           <Tab currentStep={currentStep} setCurrentStep={setCurrentStep} />
-          <TeamTable currentStep={currentStep} teams={teams} setRender={setRender}/>
-          <GameTable currentStep={currentStep} teams={teams} setRender={setRender}/>
+          <TeamTable currentStep={currentStep} teams={teams} setRender={setRender} />
+          <GameTable currentStep={currentStep} teams={teams} setRender={setRender}>
+            {props.children}
+          </GameTable>/>
         </div>
       </div>
     </div>

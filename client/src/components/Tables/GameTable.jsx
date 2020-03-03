@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import Moment from "react-moment";
+import moment from 'moment';
 import "./Table.css";
 
 const GameTable = props => {
@@ -21,6 +22,7 @@ const GameTable = props => {
       <MDBTableBody>
         {props.teams.map((team, i) =>
           team.Games.map((game, i) => (
+            moment(game.datetime.toString()).isBefore(moment()) === false && (
             <tr key={i}>
               <td className="dashboard-table-body">{team.name}</td>
               <td className="dashboard-table-body">
@@ -35,6 +37,7 @@ const GameTable = props => {
               </td>
               <td className="dashboard-table-body">{game.location}</td>
             </tr>
+            )
           ))
         )}
       </MDBTableBody>

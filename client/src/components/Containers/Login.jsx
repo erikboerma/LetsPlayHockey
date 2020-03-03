@@ -14,7 +14,7 @@ const Login = props => {
   const submitForm = async data => {
     console.log(data)
 
-    const resp = await axios.post("/loginUser", data)
+    const resp = await axios.post("/loginUser", data);
     console.log(resp);
 
     const userLoggedIn = resp.data.auth === true;
